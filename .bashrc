@@ -4,4 +4,7 @@ eval "$(rbenv init -)"
 
 export PS1='[\W]\$ '
 
-alias ll='ls -l'
+. ~/dotfiles/aliases
+. ~/dotfiles/completions
+. ~/dotfiles/config
+
