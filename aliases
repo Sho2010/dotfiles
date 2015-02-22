@@ -2,6 +2,9 @@
 alias g='git'
 alias gs='git status'
 alias gb='git branch'
+alias gd='git diff'
+alias gdt='git difftool'
+
 # ls
 alias ll='ls -a'
 
@@ -9,5 +12,8 @@ alias ll='ls -a'
 # ruby,rails
 alias be='bundle exec'
 alias bespec='bundle exec spec'
+
+#cd
+alias src='cd ~/src'
 
 
