@@ -1,0 +1,6 @@
+#global git ignore
+
+# OSX
+.DS_Store
+._*
+
