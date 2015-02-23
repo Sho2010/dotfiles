@@ -1,3 +1,7 @@
+#
+export HISTSIZE=20000
+export HISTFILESIZE=20000
+
 # git
 alias g='git'
 alias gs='git status'
@@ -6,8 +10,9 @@ alias gd='git diff'
 alias gdt='git difftool'
 
 # ls
-alias ll='ls -a'
-
+alias ls="ls -G"
+alias ll="ls -lG"
+alias la="ls -laG"
 
 # ruby,rails
 alias be='bundle exec'
@@ -16,4 +21,48 @@ alias bespec='bundle exec spec'
 #cd
 alias src='cd ~/src'
 
+
+function review() {
+  branch=$1
+  if [[ -z $REVIEW_INTEGRATION_BRANCH ]]
+  then
+    REVIEW_INTEGRATION_BRANCH="origin/master"
+  fi
+ 
+  git checkout -B code-review
+  git remote update
+  git reset --hard ${REVIEW_INTEGRATION_BRANCH}
+ 
+  git merge $branch
+ 
+  echo "Reviewing branch $branch"
+}
+ 
+function end-review() {
+  if [[ -z $REVIEW_INTEGRATION_BRANCH ]]
+  then
+    REVIEW_INTEGRATION_BRANCH="origin/master"
+  fi
+  if [[ -z $REVIEW_LOCAL_BRANCH ]]
+  then
+    REVIEW_LOCAL_BRANCH="master"
+  fi
+ 
+  git remote update
+  git checkout -B code-review
+  git reset --hard ${REVIEW_INTEGRATION_BRANCH}
+  git checkout -B ${REVIEW_LOCAL_BRANCH}
+  git reset --hard ${REVIEW_INTEGRATION_BRANCH}
+}
+
+
+
+
+function historyssh() {
+  history | grep " ssh " | awk '!colname[$3]++{print($2,$3)}'
+}
+
+function latest-ssh() {
+  `historyssh | awk 'END {print}'` $@
+}
 
