@@ -1,0 +1,3 @@
+# git
+GIT_PS1_SHOWDIRTYSTATE=true
+export PS1='[\W]$(__git_ps1)\[\033[00m\]\$ '
