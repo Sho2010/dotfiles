@@ -10,9 +10,18 @@ alias gd='git diff'
 alias gdt='git difftool'
 
 # ls
-alias ls="ls -G"
-alias ll="ls -lG"
-alias la="ls -laG"
+case "${OSTYPE}" in
+darwin*)
+  alias ls='ls -G'
+  alias ll='ls -la'
+  alias la="ll"
+  ;;
+linux*)
+  alias ls='ls --color'
+  alias ll='ls -l --color'
+  alias la='ls -la --color'
+  ;;
+esac
 
 # ruby,rails
 alias be='bundle exec'
@@ -21,6 +30,7 @@ alias bespec='bundle exec spec'
 #cd
 alias src='cd ~/src'
 
+alias reload_bashrc='. ~/.bashrc'
 
 function review() {
   branch=$1
