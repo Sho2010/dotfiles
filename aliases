@@ -2,6 +2,15 @@
 export HISTSIZE=20000
 export HISTFILESIZE=20000
 
+alias b="bundle"
+alias be="bundle exec"
+alias bespec="bundle exec rspec"
+alias betest="bundle exec rake test"
+
+alias ru="ruby"
+alias t="thor"
+alias d="docker"
+
 # git
 alias g='git'
 alias gs='git status'
@@ -64,8 +73,6 @@ function end-review() {
   git checkout -B ${REVIEW_LOCAL_BRANCH}
   git reset --hard ${REVIEW_INTEGRATION_BRANCH}
 }
-
-
 
 
 function historyssh() {
