@@ -28,6 +28,8 @@ NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 
+NeoBundle 'scrooloose/nerdtree'
+
 " Required:
 call neobundle#end()
 
