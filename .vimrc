@@ -30,6 +30,12 @@ NeoBundle 'chriskempson/vim-tomorrow-theme'
 
 NeoBundle 'scrooloose/nerdtree'
 
+" コメントON/OFFを手軽に実行
+NeoBundle 'tomtom/tcomment_vim'
+
+" Ruby向けにendを自動挿入してくれる
+NeoBundle 'tpope/vim-endwise'
+
 " Required:
 call neobundle#end()
 
@@ -56,3 +62,12 @@ endif
 
 set number
 set clipboard+=unnamed
+
+"バックスペースで改行とかも消せる"
+set backspace=indent,eol,start
+
+"=======================================================
+" tcomment_vim / comment out shortcut 
+"------------------------------------------------------
+"noremap <c-/><c-/>  :TComment<CR>
+
