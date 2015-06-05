@@ -36,6 +36,9 @@ NeoBundle 'tomtom/tcomment_vim'
 " Ruby向けにendを自動挿入してくれる
 NeoBundle 'tpope/vim-endwise'
 
+" 囲むやつ
+NeoBundle 'tpope/vim-surround'
+
 " Required:
 call neobundle#end()
 
@@ -62,6 +65,7 @@ endif
 
 set number
 set clipboard+=unnamed
+set tabstop=2
 
 "バックスペースで改行とかも消せる"
 set backspace=indent,eol,start
