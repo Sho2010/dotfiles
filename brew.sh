@@ -15,7 +15,9 @@ brew install openssl
 brew install mysql
 brew install ant
 brew install bash-completion
-
+brew install readline
+brew install rbenv
+brew install ccache
 
 brew cask install skype
 brew cask install dropbox
