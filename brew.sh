@@ -26,6 +26,8 @@ brew cask install virtualbox
 brew cask install vagrant
 brew cask install boot2docker
 brew cask install slack
+brew cask install limechat
+
 
 #remove outdated versions
 brew cleanup
