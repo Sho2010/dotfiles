@@ -1,0 +1,13 @@
+[core]
+	excludesfile = ~/.gitignore.global
+	editor = vim
+[user]
+	name = sho naito
+	email = sho20100@gmail.com
+[alias] 
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+[include]
+    path = ~/.gitconfig.local
