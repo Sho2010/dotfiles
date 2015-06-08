@@ -69,6 +69,8 @@ set tabstop=2
 
 "バックスペースで改行とかも消せる"
 set backspace=indent,eol,start
+set ignorecase  
+set smartcase  
 
 "=======================================================
 " tcomment_vim / comment out shortcut 
