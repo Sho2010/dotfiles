@@ -72,6 +72,18 @@ set backspace=indent,eol,start
 set ignorecase  
 set smartcase  
 
+"backup,swap fileいらない 
+set nowritebackup
+set nobackup
+set noswapfile
+
+"検索関係
+set ignorecase	" 大文字小文字を区別しない
+"set smartcase 	" 検索文字に大文字がある場合は大文字小文字を区別
+set incsearch 	" インクリメンタルサーチ
+set hlsearch  	
+set wrapscan            " 検索時にファイルの最後まで行ったら最初に戻る
+
 "=======================================================
 " tcomment_vim / comment out shortcut 
 "------------------------------------------------------
