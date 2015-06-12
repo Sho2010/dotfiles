@@ -66,6 +66,8 @@ endif
 set number
 set clipboard+=unnamed
 set tabstop=2
+set autoindent
+set expandtab
 
 "バックスペースで改行とかも消せる"
 set backspace=indent,eol,start
