@@ -9,5 +9,6 @@
     ci = commit
     st = status
     br = branch
+    diff = diff --color
 [include]
     path = ~/.gitconfig.local
