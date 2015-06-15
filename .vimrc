@@ -39,6 +39,10 @@ NeoBundle 'tpope/vim-endwise'
 " 囲むやつ
 NeoBundle 'tpope/vim-surround'
 
+
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
+
 " Required:
 call neobundle#end()
 
