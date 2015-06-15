@@ -18,6 +18,8 @@ brew install bash-completion
 brew install readline
 brew install rbenv
 brew install ccache
+brew install tmux
+brew install bash_completion
 
 brew cask install skype
 brew cask install dropbox
