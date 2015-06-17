@@ -5,5 +5,5 @@ export PS1='[\W]$(__git_ps1)\[\033[00m\]\$ '
 #
 export HISTSIZE=20000
 export HISTFILESIZE=20000
-export HISTIGNORE=ls:ll:la:pwd
+export HISTIGNORE=ls:ll:la:pwd:gs:gb:history
 
