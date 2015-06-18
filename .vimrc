@@ -52,6 +52,10 @@ NeoBundle 'Shougo/vimproc'
 "   \ },
 " \ }
 
+"マニュアルを参照したりする
+NeoBundle 'thinca/vim-ref'
+
+NeoBundle 'thinca/vim-quickrun'
 
 " Required:
 call neobundle#end()
