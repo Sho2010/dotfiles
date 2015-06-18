@@ -41,7 +41,17 @@ NeoBundle 'tpope/vim-surround'
 
 
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimproc'
+" NeoBundle 'Shougo/vimproc', {
+"   \ 'build' : {
+"     \ 'windows' : 'make -f make_mingw32.mak',
+"     \ 'cygwin' : 'make -f make_cygwin.mak',
+"     \ 'mac' : 'make -f make_mac.mak',
+"     \ 'unix' : 'make -f make_unix.mak',
+"   \ },
+" \ }
+
 
 " Required:
 call neobundle#end()
@@ -85,13 +95,26 @@ set noswapfile
 
 "検索関係
 set ignorecase	" 大文字小文字を区別しない
-"set smartcase 	" 検索文字に大文字がある場合は大文字小文字を区別
+set smartcase 	" 検索文字に大文字がある場合は大文字小文字を区別
 set incsearch 	" インクリメンタルサーチ
 set hlsearch  	
 set wrapscan            " 検索時にファイルの最後まで行ったら最初に戻る
+
+"補完
+imap <C-Space> <C-x><C-o>
+imap <C-@> <C-Space>
 
 "=======================================================
 " tcomment_vim / comment out shortcut 
 "------------------------------------------------------
 "noremap <c-/><c-/>  :TComment<CR>
+
+
+"=======================================================
+" unite
+"------------------------------------------------------
+nnoremap [unite] <Nop>
+nmap <Space>f [unite]
+nmap <C-u> [unite]
+nnoremap <silent> [unite]c   :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
 
