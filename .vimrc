@@ -51,6 +51,7 @@ NeoBundle 'Shougo/vimproc'
 "     \ 'unix' : 'make -f make_unix.mak',
 "   \ },
 " \ }
+NeoBundle 'Shougo/neocomplcache'
 
 "マニュアルを参照したりする
 NeoBundle 'thinca/vim-ref'
@@ -115,10 +116,8 @@ imap <C-@> <C-Space>
 
 
 "=======================================================
-" unite
+" load plugin vimrcs 
 "------------------------------------------------------
-nnoremap [unite] <Nop>
-nmap <Space>f [unite]
-nmap <C-u> [unite]
-nnoremap <silent> [unite]c   :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+set runtimepath+=~/.vim/
+runtime! vimrcs/*.vim
 
