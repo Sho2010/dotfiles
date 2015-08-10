@@ -58,6 +58,9 @@ NeoBundle 'thinca/vim-ref'
 
 NeoBundle 'thinca/vim-quickrun'
 
+" header <> cpp 行き来するやつ
+NeoBundle 'kana/vim-altr'
+
 " Required:
 call neobundle#end()
 
