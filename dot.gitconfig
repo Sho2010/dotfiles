@@ -9,6 +9,11 @@
     ci = commit
     st = status
     br = branch
-    diff = diff --color
+[color]
+    diff = always
 [include]
     path = ~/.gitconfig.local
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
