@@ -1,6 +1,6 @@
 # git
 GIT_PS1_SHOWDIRTYSTATE=true
-export PS1='[\W]$(__git_ps1)\[\033[00m\]\$ '
+export PS1='[\W]\[\033[00m\]\$ '
 
 #
 export HISTSIZE=20000
