@@ -21,6 +21,8 @@ brew install ccache
 brew install tmux
 brew install reattach-to-user-namespace
 brew install bash_completion
+brew install peco
+brew install direnv
 
 brew cask install skype
 brew cask install dropbox
