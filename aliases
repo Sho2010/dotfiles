@@ -83,6 +83,10 @@ function latest-ssh() {
   `historyssh | awk 'END {print}'` $@
 }
 
+function peco-ssh() {
+  `historyssh | peco` $@
+}
+
 function print_known_hosts (){
   if [ -f $HOME/.ssh/known_hosts ]; then
     cat ~/.ssh/known_hosts | tr ',' ' ' | cut -d' ' -f1
