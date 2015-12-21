@@ -76,7 +76,7 @@ function end-review() {
 
 
 function historyssh() {
-  history | grep " ssh " | awk '!colname[$3]++{print($2,$3)}'
+  history | grep " ssh " | awk '!colname[$3]++{print($2,$3)}' | sort | uniq
 }
 
 function latest-ssh() {
