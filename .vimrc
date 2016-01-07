@@ -58,6 +58,9 @@ NeoBundle 'thinca/vim-ref'
 
 NeoBundle 'thinca/vim-quickrun'
 
+" header <> cpp 行き来するやつ
+NeoBundle 'kana/vim-altr'
+
 " Required:
 call neobundle#end()
 
@@ -104,6 +107,8 @@ set smartcase 	" 検索文字に大文字がある場合は大文字小文字を
 set incsearch 	" インクリメンタルサーチ
 set hlsearch  	
 set wrapscan            " 検索時にファイルの最後まで行ったら最初に戻る
+
+autocmd! FileType cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 
 "補完
 imap <C-Space> <C-x><C-o>

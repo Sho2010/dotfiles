@@ -38,6 +38,9 @@ alias src='cd ~/src'
 
 alias reload_bashrc='. ~/.bashrc'
 
+#GCP & Kuberentes
+alias k8s=kubectl
+
 function review() {
   branch=$1
   if [[ -z $REVIEW_INTEGRATION_BRANCH ]]
@@ -73,10 +76,21 @@ function end-review() {
 
 
 function historyssh() {
-  history | grep " ssh " | awk '!colname[$3]++{print($2,$3)}'
+  history | grep " ssh " | awk '!colname[$3]++{print($2,$3)}' | sort | uniq
 }
 
 function latest-ssh() {
   `historyssh | awk 'END {print}'` $@
 }
+
+function peco-ssh() {
+  `historyssh | peco` $@
+}
+
+function print_known_hosts (){
+  if [ -f $HOME/.ssh/known_hosts ]; then
+    cat ~/.ssh/known_hosts | tr ',' ' ' | cut -d' ' -f1
+  fi
+}
+_cache_hosts=($( print_known_hosts ))
 
