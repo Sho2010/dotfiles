@@ -61,6 +61,10 @@ NeoBundle 'thinca/vim-quickrun'
 " header <> cpp 行き来するやつ
 NeoBundle 'kana/vim-altr'
 
+" lint tool
+NeoBundle "osyo-manga/shabadou.vim"
+NeoBundle "osyo-manga/vim-watchdogs"
+
 " Required:
 call neobundle#end()
 
@@ -88,6 +92,8 @@ endif
 set number
 set clipboard+=unnamed
 set tabstop=2
+set shiftwidth=2
+set softtabstop=2 
 set autoindent
 set expandtab
 
