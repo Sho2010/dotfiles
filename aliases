@@ -6,6 +6,7 @@ alias betest="bundle exec rake test"
 alias ru="ruby"
 alias t="thor"
 alias d="docker"
+alias dcom="docker-compose"
 
 # git
 alias g='git'
