@@ -65,6 +65,9 @@ NeoBundle 'kana/vim-altr'
 NeoBundle "osyo-manga/shabadou.vim"
 NeoBundle "osyo-manga/vim-watchdogs"
 
+
+NeoBundle 'ekalinin/Dockerfile.vim'
+
 " Required:
 call neobundle#end()
 
