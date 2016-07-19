@@ -1,8 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/Sho2010/.oh-my-zsh
 
-. ~/dotfiles/config
-. ~/dotfiles/aliases
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -80,3 +78,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+. ~/dotfiles/config
+. ~/dotfiles/aliases
+. ~/dotfiles/dot.zsh-aliases
+

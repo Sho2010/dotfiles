@@ -75,12 +75,22 @@ function end-review() {
   git reset --hard ${REVIEW_INTEGRATION_BRANCH}
 }
 
-function peco-k8pods() {
+function pdc-pid() {
+  docker ps | peco | awk '{print $1}'
+}
+
+function pdc-logs() {
+  target=`pdc-pid`
+  docker logs ${target}
+}
+
+# Kubernetes
+function pk8-pods() {
   kubectl get pod | peco | awk '{print $1}'
 }
 
-function peco-k8logs() {
-  target=`peco-k8pods`
+function pk8-logs() {
+  target=`pk8-pods`
 
   if [ "$1" = "-f" ];then
     kubectl logs $1 ${target} $2
@@ -89,6 +99,17 @@ function peco-k8logs() {
   fi
 }
 
+function pk8-ch-cluster() {
+  gcloud container clusters list | peco | awk '{print "gcloud container clusters get-credentials $0 --zone $1"}'
+}
+
+# Google Cloud Platform
+function pgcp-ch-proj() {
+  proj=`gcloud projects list | peco | awk '{print $1}'`
+  gcloud config set project ${proj}
+}
+
+# ssh
 function historyssh() {
   history | grep " ssh " | awk '!colname[$3]++{print($2,$3)}' | sort | uniq
 }
@@ -97,8 +118,21 @@ function latest-ssh() {
   `historyssh | awk 'END {print}'` $@
 }
 
-function peco-ssh() {
+function p-ssh() {
   `historyssh | peco` $@
+}
+
+function docker-build-default() {
+  if [ -z "$DOCKER_TAG" ];then
+    echo "DOCKER_TAG enviroment  not defined."
+  else
+    docker build -t ${DOCKER_TAG} .
+  fi
+}
+alias db='docker-build-default'
+
+function pexec() {
+  `ls | peco`
 }
 
 function peco-history() {
