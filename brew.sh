@@ -20,7 +20,6 @@ brew install rbenv
 brew install ccache
 brew install tmux
 brew install reattach-to-user-namespace
-brew install bash_completion
 brew install peco
 brew install direnv
 
