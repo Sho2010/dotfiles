@@ -120,10 +120,10 @@ function p-ssh() {
 }
 
 function docker-build-default() {
-  if [ -z "$DOCKER_TAG" ];then
-    echo "DOCKER_TAG enviroment  not defined."
+  if [ -z "$DOCKER_BASE" ];then
+    echo "DOCKER_BASE enviroment  not defined."
   else
-    docker build -t ${DOCKER_TAG} .
+    docker build -t ${DOCKER_BASE}:${TAG:-'latest'} .
   fi
 }
 alias db='docker-build-default'
