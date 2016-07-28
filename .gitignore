@@ -3,4 +3,5 @@
 # OSX
 .DS_Store
 ._*
+dot.vim/bundle/
 
