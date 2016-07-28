@@ -1,3 +1,4 @@
+# ruby,rails
 alias b="bundle"
 alias be="bundle exec"
 alias bespec="bundle exec rspec"
@@ -29,10 +30,6 @@ linux*)
   alias la='ls -la --color'
   ;;
 esac
-
-# ruby,rails
-alias be='bundle exec'
-alias bespec='bundle exec spec'
 
 #cd
 alias src='cd ~/src'
