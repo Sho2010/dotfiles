@@ -37,7 +37,7 @@ alias src='cd ~/src'
 alias reload_bashrc='. ~/.bashrc'
 
 #GCP & Kuberentes
-alias k8s=kubectl
+alias k=kubectl
 
 function review() {
   branch=$1
