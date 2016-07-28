@@ -36,8 +36,13 @@ alias src='cd ~/src'
 
 alias reload_bashrc='. ~/.bashrc'
 
+# AWS
+alias a='aws'
+
 #GCP & Kuberentes
-alias k=kubectl
+alias k='kubectl'
+alias kg='kubectl get'
+alias gc='gcloud'
 
 function review() {
   branch=$1
