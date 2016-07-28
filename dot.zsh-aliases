@@ -15,6 +15,6 @@ function extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
-alias -s {txt,md,rb,java,cs,py,json,yml,yaml,c,cpp}='vim'
+alias -s {txt,md,java,cs,py,json,yml,yaml,c,cpp}='vim'
 alias -g G="| grep"
 
