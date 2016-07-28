@@ -1,0 +1,7 @@
+snippet     jenkinsfile
+  node('<`1:#:TARGET`>') {
+    checkout scm
+    stage "hello jenkinsfile"
+    <`2:#:TARGET`>
+  }
+
