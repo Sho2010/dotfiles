@@ -71,6 +71,8 @@ NeoBundle 'ekalinin/Dockerfile.vim'
 " for rubocop
 NeoBundle 'scrooloose/syntastic'
 
+NeoBundle 'fatih/vim-go'
+
 " Required:
 call neobundle#end()
 
@@ -125,6 +127,11 @@ autocmd! FileType cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 "補完
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
+
+"  ʕ◔ϖ◔ʔ
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim
+endif
 
 "=======================================================
 " tcomment_vim / comment out shortcut 
