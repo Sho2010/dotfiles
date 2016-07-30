@@ -70,6 +70,29 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# 補完設定
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+# シェルのプロセスごとに履歴を共有
+setopt share_history
+
+# 余分なスペースを削除してヒストリに記録する
+setopt hist_reduce_blanks
+
+# ヒストリにhistoryコマンドを記録しない
+setopt hist_no_store
+
+# ヒストリを呼び出してから実行する間に一旦編集できる状態になる
+# setopt hist_verify
+
+# 直前と同じコマンドラインはヒストリに追加しない
+setopt hist_ignore_dups
+
+# 重複したヒストリは追加しない
+setopt hist_ignore_all_dups
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -81,4 +104,4 @@ source $ZSH/oh-my-zsh.sh
 . ~/dotfiles/config
 . ~/dotfiles/aliases
 . ~/dotfiles/dot.zsh-aliases
-
+. ~/.zshrc.local
