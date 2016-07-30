@@ -6,8 +6,8 @@ brew update
 brew tap homebrew/versions
 brew tap homebrew/binary
 brew tap caskroom/versions
+brew tap caskroom/cask
 
-brew install caskroom/cask/brew-cask
 brew install git
 brew install wget
 brew install curl
@@ -23,14 +23,14 @@ brew install reattach-to-user-namespace
 brew install peco
 brew install direnv
 
-brew cask install skype
-brew cask install dropbox
-brew cask install skitch
-brew cask install virtualbox
-brew cask install vagrant
-brew cask install slack
-brew cask install limechat
-
+brew install caskroom/cask/skype
+brew install caskroom/cask/dropbox
+brew install caskroom/cask/skitch
+brew install caskroom/cask/virtualbox
+brew install caskroom/cask/vagrant
+brew install caskroom/cask/slack
+brew install caskroom/cask/limechat
+brew install caskroom/cask/licecap
 
 #remove outdated versions
 brew cleanup
