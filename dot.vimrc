@@ -68,6 +68,9 @@ NeoBundle "osyo-manga/vim-watchdogs"
 
 NeoBundle 'ekalinin/Dockerfile.vim'
 
+" for rubocop
+NeoBundle 'scrooloose/syntastic'
+
 " Required:
 call neobundle#end()
 
