@@ -31,7 +31,7 @@ brew install caskroom/cask/vagrant
 brew install caskroom/cask/slack
 brew install caskroom/cask/limechat
 brew install caskroom/cask/licecap
+brew install caskroom/cask/sequel-pro
 
 #remove outdated versions
 brew cleanup
-brew cask cleanup
