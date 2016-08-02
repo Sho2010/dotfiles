@@ -22,6 +22,7 @@ brew install tmux
 brew install reattach-to-user-namespace
 brew install peco
 brew install direnv
+brew install redis
 
 brew install caskroom/cask/skype
 brew install caskroom/cask/dropbox
