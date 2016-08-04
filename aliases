@@ -43,6 +43,7 @@ alias a='aws'
 alias k='kubectl'
 alias kg='kubectl get'
 alias gc='gcloud'
+alias c='gcloud'
 
 function review() {
   branch=$1
