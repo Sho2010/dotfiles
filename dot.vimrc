@@ -104,16 +104,16 @@ set number
 set clipboard+=unnamed
 set tabstop=2
 set shiftwidth=2
-set softtabstop=2 
+set softtabstop=2
 set autoindent
 set expandtab
 
 "バックスペースで改行とかも消せる"
 set backspace=indent,eol,start
-set ignorecase  
-set smartcase  
+set ignorecase
+set smartcase
 
-"backup,swap fileいらない 
+"backup,swap fileいらない
 set nowritebackup
 set nobackup
 set noswapfile
@@ -122,7 +122,7 @@ set noswapfile
 set ignorecase	" 大文字小文字を区別しない
 set smartcase 	" 検索文字に大文字がある場合は大文字小文字を区別
 set incsearch 	" インクリメンタルサーチ
-set hlsearch  	
+set hlsearch
 set wrapscan            " 検索時にファイルの最後まで行ったら最初に戻る
 
 autocmd! FileType cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
@@ -137,13 +137,13 @@ if $GOROOT != ''
 endif
 
 "=======================================================
-" tcomment_vim / comment out shortcut 
+" tcomment_vim / comment out shortcut
 "------------------------------------------------------
 "noremap <c-/><c-/>  :TComment<CR>
 
 
 "=======================================================
-" load plugin vimrcs 
+" load plugin vimrcs
 "------------------------------------------------------
 set runtimepath+=~/.vim/
 runtime! vimrcs/*.vim
