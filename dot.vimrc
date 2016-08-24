@@ -65,13 +65,16 @@ NeoBundle 'kana/vim-altr'
 NeoBundle "osyo-manga/shabadou.vim"
 NeoBundle "osyo-manga/vim-watchdogs"
 
-
 NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'fatih/vim-go'
 
 " for rubocop
 NeoBundle 'scrooloose/syntastic'
 
-NeoBundle 'fatih/vim-go'
+
+" 行末の半角スペースを可視化
+NeoBundle 'bronson/vim-trailing-whitespace'
 
 " Required:
 call neobundle#end()
