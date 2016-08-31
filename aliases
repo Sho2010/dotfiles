@@ -43,6 +43,7 @@ alias a='aws'
 #GCP & Kuberentes
 alias k='kubectl'
 alias kg='kubectl get'
+alias kd='kubectl describe'
 alias gc='gcloud'
 alias c='gcloud'
 
