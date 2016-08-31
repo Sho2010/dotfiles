@@ -4,11 +4,12 @@
 [user]
 	name = sho naito
 	email = sho20100@gmail.com
-[alias] 
+[alias]
     co = checkout
     ci = commit
     st = status
     br = branch
+    unstage = reset HEAD --
 [color]
     diff = always
 [include]
@@ -17,3 +18,11 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+[pager]
+  log  = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
+  show = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
+  diff = (diff-highlight 2>/dev/null || cat) | ${PAGER:-less}
+[interactive]
+  diffFilter = (diff-highlight 2>/dev/null || cat)
+[diff]
+  compactionHeuristic = true
