@@ -127,14 +127,54 @@ function p-ssh() {
   `historyssh | peco` $@
 }
 
+
+function get-env-dockertag() {
+  if [ -z "$DOCKER_BASE" ];then
+    echo "DOCKER_BASE enviroment not defined." >&2
+    exit 1
+  fi
+
+  tag=${TAG:-'latest'}
+  tag=${1:-$tag}
+  echo ${DOCKER_BASE}:${tag}
+}
+
+function docker-run-default() {
+  tag=`get-env-dockertag $@`
+  docker run -it $tag /bin/sh
+}
+
+function docker-push-default() {
+  tag=`get-env-dockertag $@`
+  docker push -t $tag
+}
+
+function gcp-docker-push-default() {
+  tag=`get-env-dockertag $@`
+  echo "gcloud docker push ${tag}"
+  gcloud docker -- push $tag
+}
+alias dp='docker-push-default'
+alias dpg='gcp-docker-push-default'
+
 function docker-build-default() {
   if [ -z "$DOCKER_BASE" ];then
-    echo "DOCKER_BASE enviroment  not defined."
-  else
-    docker build -t ${DOCKER_BASE}:${TAG:-'latest'} .
+    echo "DOCKER_BASE enviroment not defined."
   fi
+
+  tag=${TAG:-'latest'}
+  tag=${1:-$tag}
+
+  echo "Docker Build ${DOCKER_BASE}:${tag}"
+  docker build -t ${DOCKER_BASE}:${tag} .
 }
 alias db='docker-build-default'
+
+function docker-print-tag() {
+  tag=${TAG:-'latest'}
+  echo "${DOCKER_BASE}:${tag}"
+}
+alias dpt='docker-print-tag'
 
 function pexec() {
   `ls | peco`
