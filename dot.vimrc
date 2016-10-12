@@ -125,6 +125,9 @@ set incsearch 	" インクリメンタルサーチ
 set hlsearch
 set wrapscan            " 検索時にファイルの最後まで行ったら最初に戻る
 
+" 折り返しの改行をよろしくやってくれる
+set breakindent
+
 autocmd! FileType cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
 
 "補完
