@@ -26,3 +26,5 @@
   diffFilter = (diff-highlight 2>/dev/null || cat)
 [diff]
   compactionHeuristic = true
+[fetch]
+	prune = true
