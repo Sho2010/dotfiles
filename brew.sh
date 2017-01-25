@@ -33,6 +33,7 @@ brew install caskroom/cask/slack
 brew install caskroom/cask/limechat
 brew install caskroom/cask/licecap
 brew install caskroom/cask/sequel-pro
+brew install caskroom/cask/discord
 
 #remove outdated versions
 brew cleanup
