@@ -47,6 +47,9 @@ alias kd='kubectl describe'
 alias gc='gcloud'
 alias c='gcloud'
 
+alias h='hub'
+alias v='vim'
+
 function review() {
   branch=$1
   if [[ -z $REVIEW_INTEGRATION_BRANCH ]]
@@ -104,9 +107,10 @@ function pk8-logs() {
   fi
 }
 
-function pk8-ch-cluster() {
-  gcloud container clusters list | peco | awk '{print "gcloud container clusters get-credentials $0 --zone $1"}'
+function k8watch() {
+  watch -n 1 kubectl get $1
 }
+
 
 # Google Cloud Platform
 function pgcp-ch-proj() {
@@ -202,4 +206,7 @@ function print_known_hosts (){
   fi
 }
 _cache_hosts=($( print_known_hosts ))
+
+
+alias rails-ctags='ctags --langmap=RUBY:.rb --exclude="*.js"  --exclude=".git*" -R .'
 
