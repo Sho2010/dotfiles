@@ -49,6 +49,7 @@ alias c='gcloud'
 
 alias h='hub'
 alias v='vim'
+alias fb='firebase'
 
 function review() {
   branch=$1
@@ -182,6 +183,10 @@ alias dpt='docker-print-tag'
 
 function pexec() {
   `ls | peco`
+}
+
+function ggedit() {
+  vim -p `git grep -l $1 | peco`
 }
 
 function peco-history() {
