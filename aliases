@@ -49,6 +49,12 @@ alias c='gcloud'
 
 alias h='hub'
 alias v='vim'
+#
+# misc
+alias ghost='gh-ost'
+
+# elixir
+alias e='elixir'
 
 function review() {
   branch=$1
