@@ -23,6 +23,7 @@ brew install reattach-to-user-namespace
 brew install peco
 brew install direnv
 brew install redis
+brew install p7zip
 
 brew install caskroom/cask/skype
 brew install caskroom/cask/dropbox
