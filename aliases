@@ -120,7 +120,7 @@ function k8watch() {
 
 
 # Google Cloud Platform
-function pgcp-ch-proj() {
+function switch-gcp-project() {
   proj=`gcloud projects list | peco | awk '{print $1}'`
   gcloud config set project ${proj}
 }
