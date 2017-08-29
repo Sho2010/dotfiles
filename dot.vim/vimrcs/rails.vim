@@ -10,6 +10,9 @@ nmap [rails]c :Econtroller<Space>
 nmap [rails]s :Espec<Space>
 nmap [rails]t :Eunittest<Space>
 nmap [rails]u :Eunittest<Space>
+nmap [rails]e :Eenvironment<Space>
+nmap [rails]i :Einitializer<Space>
+nmap [rails]ss :Eschema<Space>
 
 "nmap [rails] :Econtroller<Space>
 "nmap [rails] :Eenvironment<Space>
