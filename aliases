@@ -6,8 +6,26 @@ alias betest="bundle exec rake test"
 
 alias ru="ruby"
 alias t="thor"
+
+# docker
 alias d="docker"
 alias dcom="docker-compose"
+alias dcomp="docker-compose -f docker-compose.yaml.prod"
+
+function dcomexec() {
+  docker-compose exec app $1
+}
+
+function dcomsh() {
+  docker-compose exec app sh
+}
+
+function dcombash() {
+  docker-compose exec app bash
+}
+
+# python
+alias p="python"
 
 # git
 alias g='git'
