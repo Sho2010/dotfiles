@@ -1,93 +1,61 @@
-"NeoBundle Scripts-----------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+if &compatible
+  set nocompatible
 endif
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle'))
+" dein auto install
+let s:dein_repo_dir   = expand('~/.dein/repos/github.com/Shougo/dein.vim')
+let s:dein_plugin_dir = expand('~/.dein/plugins')
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
 
-" Add or remove your Bundles here:
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
+" set runtimepath+=s:dein_repo_dir
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
 
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+if dein#load_state(s:dein_plugin_dir)
+  call dein#begin(s:dein_plugin_dir)
+  call dein#add(s:dein_repo_dir)
 
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/neocomplcache')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('Shougo/neocomplete.vim')
 
-NeoBundle 'scrooloose/nerdtree'
+  call dein#add('chriskempson/vim-tomorrow-theme')
+  call dein#add('ekalinin/Dockerfile.vim')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('bronson/vim-trailing-whitespace')
 
-" コメントON/OFFを手軽に実行
-NeoBundle 'tomtom/tcomment_vim'
+  " color theme
+  call dein#add('w0ng/vim-hybrid')
+  call dein#add('chriskempson/vim-tomorrow-theme')
 
-" Ruby向けにendを自動挿入してくれる
-NeoBundle 'tpope/vim-endwise'
+  " lang plugins
+  call dein#add('moll/vim-node')    "node.js
+  call dein#add('fatih/vim-go')
+  call dein#add('tpope/vim-rails')
+  call dein#add('tpope/vim-endwise') " Ruby向けにendを自動挿入してくれる
 
-" 囲むやつ
-NeoBundle 'tpope/vim-surround'
+  " 囲むやつ
+  call dein#add('tpope/vim-surround')
 
+  " コメントON/OFFを手軽に実行
+  call dein#add('tomtom/tcomment_vim')
 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vimproc'
-" NeoBundle 'Shougo/vimproc', {
-"   \ 'build' : {
-"     \ 'windows' : 'make -f make_mingw32.mak',
-"     \ 'cygwin' : 'make -f make_cygwin.mak',
-"     \ 'mac' : 'make -f make_mac.mak',
-"     \ 'unix' : 'make -f make_unix.mak',
-"   \ },
-" \ }
-NeoBundle 'Shougo/neocomplcache'
+  " non blocking lint tool
+  call dein#add('w0rp/ale')
+  call dein#end()
 
-"マニュアルを参照したりする
-NeoBundle 'thinca/vim-ref'
+  call dein#save_state()
+endif
 
-NeoBundle 'thinca/vim-quickrun'
-
-" header <> cpp 行き来するやつ
-NeoBundle 'kana/vim-altr'
-
-" lint tool
-NeoBundle "osyo-manga/shabadou.vim"
-NeoBundle "osyo-manga/vim-watchdogs"
-
-NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'fatih/vim-go'
-
-" for rubocop
-NeoBundle 'scrooloose/syntastic'
-
-
-" 行末の半角スペースを可視化
-NeoBundle 'bronson/vim-trailing-whitespace'
-
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
-
-
+" plugins auto install
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
 
 "=======================================================
 " colorscheme
@@ -117,6 +85,7 @@ set smartcase
 set nowritebackup
 set nobackup
 set noswapfile
+set wildignorecase
 
 "検索関係
 set ignorecase	" 大文字小文字を区別しない
@@ -125,13 +94,15 @@ set incsearch 	" インクリメンタルサーチ
 set hlsearch
 set wrapscan            " 検索時にファイルの最後まで行ったら最初に戻る
 
+" ftplugin enable
+filetype plugin on
+
 " 折り返しの改行をよろしくやってくれる
 set breakindent
 
-autocmd! FileType cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2 noexpandtab
-
 "補完
 imap <C-Space> <C-x><C-o>
+imap <C-b> <C-x><C-o>
 imap <C-@> <C-Space>
 
 "  ʕ◔ϖ◔ʔ
