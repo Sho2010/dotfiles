@@ -10,7 +10,7 @@ alias t="thor"
 # docker
 alias d="docker"
 alias dcom="docker-compose"
-alias dcomp="docker-compose -f docker-compose.yaml.prod"
+alias dcomp="docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml"
 
 function dcomexec() {
   docker-compose exec app $1
