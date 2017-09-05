@@ -3,7 +3,7 @@
 " unite
 "------------------------------------------------------
 nnoremap [unite] <Nop>
-nmap ,u [unite]
+nmap <Space>u [unite]
 nnoremap <silent> [unite]c   :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 " バッファ一覧
