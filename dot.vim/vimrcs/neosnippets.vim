@@ -1,4 +1,4 @@
-let g:neosnippet#snippets_directory='~/dotfiles/dot.vim/vimrcs/snippets/'
+let g:neosnippet#snippets_directory='~/.vim/snippets/'
 "
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
