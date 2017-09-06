@@ -21,6 +21,7 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/neocomplcache')
   call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/neocomplete.vim')
 

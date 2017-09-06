@@ -1,4 +1,3 @@
-
 "=======================================================
 " unite
 "------------------------------------------------------
@@ -16,3 +15,15 @@ nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 " 常用セット
 nnoremap <silent> [unite]u :<C-u>Unite buffer file_mru<CR>
+" grep
+nnoremap <silent> [unite]g :<C-u>Unite grep:. -no-empty -buffer-name=search-buffer<CR>
+" git grep
+nnoremap <silent> [unite]gg :<C-u>Unite grep/git:. -no-empty -buffer-name=search-buffer<CR>
+" git grep
+nnoremap <silent> [unite]f :<C-u>Unite find:. -no-empty<CR>
+
+" smart case
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+
