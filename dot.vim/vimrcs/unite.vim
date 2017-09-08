@@ -26,4 +26,5 @@ nnoremap <silent> [unite]f :<C-u>Unite find:. -no-empty<CR>
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-
+" start in insert mode
+let g:unite_enable_start_insert = 1
