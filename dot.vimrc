@@ -101,6 +101,11 @@ filetype plugin on
 " 折り返しの改行をよろしくやってくれる
 set breakindent
 
+" command modeのtab補完時に候補を表示
+set wildmode=full
+set wildmenu
+
+
 "補完
 imap <C-Space> <C-x><C-o>
 imap <C-b> <C-x><C-o>
