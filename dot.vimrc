@@ -48,6 +48,9 @@ if dein#load_state(s:dein_plugin_dir)
 
   " non blocking lint tool
   call dein#add('w0rp/ale')
+
+  " coloring ansi code
+  call dein#add('vim-scripts/AnsiEsc.vim')
   call dein#end()
 
   call dein#save_state()
