@@ -11,9 +11,3 @@ linux*)
   ;;
 esac
 
-#vimproc make
-if [ ! -z "$VIMPROC_MAKE" ] ; then
-  cd $HOME/.vim/bundle/vimproc
-  make -f ${VIMPROC_MAKE}
-  cd -
-fi
