@@ -1,0 +1,16 @@
+snippet     unittest
+  require "test_helper"
+
+  class ${1:TagetClass}Test < ActiveSupport::TestCase
+    ${2}
+  end
+
+snippet     pry
+abbr        pry
+alias       pry
+  binding.pry
+
+snippet     pry-require
+  require 'pry'
+  require 'pry-byebug'
+  binding.pry
