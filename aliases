@@ -11,6 +11,11 @@ alias t="thor"
 alias d="docker"
 alias dcom="docker-compose"
 alias dcomp="docker-compose -f docker-compose.yml -f docker-compose.prod.yml"
+alias dcomtest="docker-compose run --rm app test"
+
+function dcombe() {
+  docker-compose exec app bundle exec $@
+}
 
 function dcomexec() {
   docker-compose exec app $@
