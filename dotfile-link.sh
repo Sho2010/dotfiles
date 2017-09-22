@@ -7,3 +7,4 @@ ln -s ~/dotfiles/dot.gitignore.global ~/.gitignore.global
 
 ln -s ~/dotfiles/dot.vimrc ~/.vimrc
 ln -s ~/dotfiles/dot.vim ~/.vim
+ln -s ~/dotfiles/dot.pryrc ~/.pryrc
