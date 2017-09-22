@@ -14,3 +14,14 @@ snippet     pry-require
   require 'pry'
   require 'pry-byebug'
   binding.pry
+
+snippet     test
+  test "${1:the truth}" do
+    ${2}
+  end
+
+snippet assert_raise
+  assert_raise ${1:StarndardError} do
+    ${2}
+  end
+
