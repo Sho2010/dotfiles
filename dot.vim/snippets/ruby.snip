@@ -1,8 +1,7 @@
 snippet     unittest
   require "test_helper"
 
-  class ${1:TagetClass}Test < ActiveSupport::TestCase
-    ${2}
+  class ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`} < ActiveSupport::TestCase
   end
 
 snippet     pry
