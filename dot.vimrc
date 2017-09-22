@@ -51,8 +51,12 @@ if dein#load_state(s:dein_plugin_dir)
 
   " coloring ansi code
   call dein#add('vim-scripts/AnsiEsc.vim')
-  call dein#end()
 
+  " test runner
+  call dein#add('janko-m/vim-test')
+
+
+  call dein#end()
   call dein#save_state()
 endif
 
