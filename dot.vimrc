@@ -17,13 +17,16 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#begin(s:dein_plugin_dir)
   call dein#add(s:dein_repo_dir)
 
-  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/context_filetype.vim')
   call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/neocomplcache')
+  call dein#add('Shougo/neosnippet', {
+      \   'depends' : ["neosnippet-snippets"]
+     \})
+
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/neomru.vim')
-  call dein#add('Shougo/neocomplete.vim')
 
   call dein#add('chriskempson/vim-tomorrow-theme')
   call dein#add('ekalinin/Dockerfile.vim')
