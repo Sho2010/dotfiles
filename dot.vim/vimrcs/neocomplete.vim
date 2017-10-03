@@ -7,9 +7,10 @@ let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#syntax#min_keyword_length = 2
 
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#enable_auto_select = 1
 
 " Enable heavy features.
 " Use camel case completion.
@@ -41,10 +42,11 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplete#smart_close_popup() . "\<CR>"
+  " return neocomplete#smart_close_popup() . "\<CR>"
   " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
+
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -66,8 +68,10 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 "let g:neocomplete_enable_insert_char_pre = 1
 
 " AutoComplPop like behavior.
-let g:neocomplete_enable_auto_select = 1
-imap <expr><CR> (pumvisible() ? "\<C-y>":"")."\<Plug>(neosnippet_expand_or_jump)"
+" let g:neocomplete_enable_auto_select = 1
+" let g:neocomplete_enable_complete_select = 1
+"
+" imap <expr><CR> (pumvisible() ? "\<C-y>":"")."\<Plug>(neosnippet_expand_or_jump)"
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
