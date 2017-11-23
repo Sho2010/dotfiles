@@ -39,3 +39,6 @@ abbr        attr_accessor
 options     head
   attr_accessor :${1:hoge}
 
+snippet whitelist
+abbr    rails console whitelist for docker
+  config.web_console.whitelisted_ips = "0.0.0.0/0"
