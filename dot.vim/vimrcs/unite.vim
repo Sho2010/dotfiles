@@ -21,6 +21,8 @@ nnoremap <silent> [unite]g :<C-u>Unite grep:. -no-empty -buffer-name=search-buff
 nnoremap <silent> [unite]gg :<C-u>Unite grep/git:. -no-empty -buffer-name=search-buffer<CR>
 " git grep
 nnoremap <silent> [unite]f :<C-u>Unite find:. -no-empty<CR>
+" unite resume 
+nnoremap <silent> [unite]h :<C-u>Unite resume<CR>
 
 " smart case
 let g:unite_enable_ignore_case = 1
