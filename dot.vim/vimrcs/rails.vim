@@ -14,6 +14,9 @@ nmap [rails]e :Eenvironment<Space>
 nmap [rails]i :Einitializer<Space>
 nmap [rails]ss :Eschema<Space>
 
+nmap [rails]r :R<CR>
+nmap [rails]a :A<CR>
+
 "nmap [rails] :Econtroller<Space>
 "nmap [rails] :Eenvironment<Space>
 "nmap [rails] :Efixtures<Space>
