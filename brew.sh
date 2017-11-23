@@ -25,7 +25,6 @@ brew install direnv
 brew install redis
 brew install p7zip
 
-brew install caskroom/cask/skype
 brew install caskroom/cask/dropbox
 brew install caskroom/cask/skitch
 brew install caskroom/cask/virtualbox
