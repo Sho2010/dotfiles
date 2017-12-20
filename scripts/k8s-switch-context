@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
 require 'yaml'
-require "open3"
+require 'open3'
 
-yaml = YAML.load_file File.join(Dir.home, ".kube/config")
-names = yaml['contexts'].map{|context| context['name']}
-o, s = Open3.capture2("peco", stdin_data: names.join("\n"))
+yaml = YAML.load_file File.join(Dir.home, '.kube/config')
+names = yaml['contexts'].map { |context| context['name'] }
+o, _ = Open3.capture2('peco', stdin_data: names.join("\n"))
 
 puts `kubectl config use-context #{o.strip}`
