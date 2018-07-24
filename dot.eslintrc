@@ -1,0 +1,25 @@
+{
+  "extends": ["eslint:recommended"],
+  "plugins": [],
+  "env": {
+    "browser" : true,
+    "node" : true,
+    "es6" : true
+  },
+  "globals": {
+    "$": false,
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "module": true
+  },
+  "rules": {
+    "no-console": 1,
+    "no-debugger": 1,
+    "no-alert": 1,
+    "quotes": [2, "single"],
+    "semi": [2, "always"],
+    "no-var": 2,
+    "dot-notation": 0
+  }
+}
