@@ -4,3 +4,10 @@ set hlsearch
 set ignorecase
 set smartcase
 set clipboard=unnamed
+
+set surround
+
+nnoremap <Space>wt :action ActivateTerminalToolWindow<CR>
+nnoremap <Space>we :action EditorEscape<CR>
+nnoremap <C-e> :action EditorEscape<CR>
+
