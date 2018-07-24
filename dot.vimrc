@@ -27,6 +27,7 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#add('Shougo/unite.vim')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/neomru.vim')
+  call dein#add('Shougo/neoyank.vim')
 
   call dein#add('chriskempson/vim-tomorrow-theme')
   call dein#add('ekalinin/Dockerfile.vim')
@@ -42,6 +43,7 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#add('fatih/vim-go')
   call dein#add('tpope/vim-rails')
   call dein#add('tpope/vim-endwise') " Ruby向けにendを自動挿入してくれる
+  call dein#add('hashivim/vim-terraform')
 
   " 囲むやつ
   call dein#add('tpope/vim-surround')
