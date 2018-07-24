@@ -110,4 +110,5 @@ export GO15VENDOREXPERIMENT=1
 . ~/dotfiles/config
 . ~/dotfiles/aliases
 . ~/dotfiles/dot.zsh-aliases
+. ~/dotfiles/net_tools_deprecated.sh
 . ~/.zshrc.local
