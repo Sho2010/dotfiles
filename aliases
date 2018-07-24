@@ -5,7 +5,7 @@ alias bespec="bundle exec rspec"
 alias betest="bundle exec rake test"
 
 alias ru="ruby"
-alias t="thor"
+alias t="terraform"
 
 # docker
 alias d="docker"
@@ -70,6 +70,7 @@ alias reload_bashrc='. ~/.bashrc'
 
 # AWS
 alias a='aws'
+alias amazon='aws'
 
 #GCP & Kuberentes
 alias k='kubectl'
