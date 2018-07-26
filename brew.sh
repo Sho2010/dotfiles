@@ -24,6 +24,7 @@ brew install peco
 brew install direnv
 brew install redis
 brew install p7zip
+brew install jsonlint
 
 brew install caskroom/cask/dropbox
 brew install caskroom/cask/skitch
