@@ -24,7 +24,7 @@ nameif () {
 }
 netstat () {
   net_tools_deprecated_message
-  echo 'Use `ss`, `ip route` (for netstat -r), `ip -s link` (for netstat -i), `ip maddr` (for netstat -g)'
+  echo 'Use `ss`, `ss -nat`(for netstat -nat view listen port)`,  `ip route` (for netstat -r), `ip -s link` (for netstat -i), `ip maddr` (for netstat -g)'
 }
 route () {
   net_tools_deprecated_message
