@@ -25,6 +25,7 @@ brew install direnv
 brew install redis
 brew install p7zip
 brew install jsonlint
+brew install yarn
 
 brew install caskroom/cask/dropbox
 brew install caskroom/cask/skitch
@@ -35,6 +36,10 @@ brew install caskroom/cask/limechat
 brew install caskroom/cask/licecap
 brew install caskroom/cask/sequel-pro
 brew install caskroom/cask/discord
+
+# js lint tools
+yarn global add prettier
+yarn global add eslint
 
 #remove outdated versions
 brew cleanup
