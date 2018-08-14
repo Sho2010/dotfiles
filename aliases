@@ -74,6 +74,8 @@ alias amazon='aws'
 
 #GCP & Kuberentes
 alias k='kubectl'
+alias kb='kustomize build'
+alias kc='kubectx'
 alias kg='kubectl get'
 alias kd='kubectl describe'
 alias gc='gcloud'
