@@ -18,6 +18,9 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz,7z}=extract
 
 alias -s {txt,md,java,cs,py,json,yml,yaml,c,cpp}='vim'
 alias -g G="| grep -i"
+alias -g L="| less"
+
+alias -g P='$(kubectl get pods | peco | awk "{print \$1}")'
 
 function pk8-ch-cluster() {
   cluster=`gcloud container clusters list | peco | awk '{print $1" --zone "$2}'`

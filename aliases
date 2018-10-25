@@ -82,8 +82,19 @@ alias kd='kubectl describe'
 alias kg='kubectl get'
 alias kns='kubens'
 
+alias sw-context='switch-k8s-context'
+alias sw-ns='switch-k8s-namespace'
+
 alias h='hub'
 alias v='vim'
+
+function switch-k8s-namespace() {
+  kubens `kubens | peco`
+}
+
+function switch-k8s-context() {
+  kubectx `kubectx | peco`
+}
 
 #
 # misc
