@@ -11,3 +11,5 @@ nnoremap <Space>wt :action ActivateTerminalToolWindow<CR>
 nnoremap <Space>we :action EditorEscape<CR>
 nnoremap <C-e> :action EditorEscape<CR>
 
+nnoremap == :action ReformatCode<CR>
+
