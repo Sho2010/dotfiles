@@ -75,6 +75,8 @@ alias amazon='aws'
 #GCP & Kuberentes
 alias c='gcloud'
 alias gc='gcloud'
+
+
 alias k='kubectl'
 alias kb='kustomize build'
 alias kc='kubectx'
@@ -87,6 +89,11 @@ alias sw-ns='switch-k8s-namespace'
 
 alias h='hub'
 alias v='vim'
+
+
+function gssh() {
+  $(gcloud compute instances list | peco | awk '{print "gcloud compute ssh --zone " $2 " " $1}')
+}
 
 function switch-k8s-namespace() {
   kubens `kubens | peco`
