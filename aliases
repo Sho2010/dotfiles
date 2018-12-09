@@ -84,6 +84,13 @@ alias kd='kubectl describe'
 alias kg='kubectl get'
 alias kns='kubens'
 
+alias kgg='kubectl get gateway'
+alias kgvs='kubectl get virtualservice'
+alias kgd='kubectl get destinationrule'
+alias kdg='kubectl describe gateway'
+alias kdvs='kubectl describe virtualservice'
+alias kdd='kubectl describe destinationrule'
+
 alias sw-context='switch-k8s-context'
 alias sw-ns='switch-k8s-namespace'
 
