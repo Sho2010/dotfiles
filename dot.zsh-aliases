@@ -20,6 +20,7 @@ alias -s {txt,md,java,cs,py,json,yml,yaml,c,cpp}='vim'
 alias -g G="| grep -i"
 alias -g L="| less"
 alias -g F="find ./ "
+alias -g PB="| pbcopy"
 
 alias -g P='$(kubectl get pods | peco | awk "{print \$1}")'
 

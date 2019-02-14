@@ -1,0 +1,8 @@
+snippet for in
+  for file in $(ls -1); do
+    echo $file;
+  done
+
+snippet     script dir
+abbr        script
+  SCRIPT_DIR=(cd $(dirname \$0);pwd)

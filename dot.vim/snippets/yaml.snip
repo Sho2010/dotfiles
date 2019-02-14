@@ -1,3 +1,52 @@
 snippet debug
 abbr    k8s debug tail command
   command: ["/usr/bin/tail", "-f", "/dev/null"]
+
+snippet     deployment
+abbr        k8s deployment manifest tempalte
+options     head
+  apiVersion: extensions/v1beta1
+  kind: Deployment
+		metadata:
+		name: ${1:application}
+		labels:
+			component: "$1"
+  spec:
+		replicas: 1
+		template:
+			metadata:
+				labels:
+					component: "$1"
+				spec:
+					containers:
+					- name: $1
+						image: asia.gcr.io/PROJECT/$1
+						imagePullPolicy: IfNotPresent
+					envFrom:
+					- configMapRef:
+							name: common-config
+					- secretRef:
+							name: common-secret
+					resources:
+						limits:
+							memory: 512Mi
+						requests:
+							cpu: 100m
+							memory: 256Mi
+
+snippet     service
+alias       clusterip
+abbr        k8s clusterip  manifest tempalte
+options     head
+	apiVersion: v1
+	kind: Service
+	metadata:
+		name: $1
+	spec:
+		ports:
+			- name: http
+				port: ${2:80}
+				targetPort: $2
+		selector:
+			app: $1
+
