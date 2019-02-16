@@ -8,29 +8,29 @@ brew tap homebrew/binary
 brew tap caskroom/versions
 brew tap caskroom/cask
 
-brew install git
-brew install wget
-brew install curl
-brew install openssl
-brew install mysql
 brew install ant
 brew install bash-completion
-brew install readline
-brew install rbenv
-brew install ccache
-brew install tmux
-brew install reattach-to-user-namespace
-brew install peco
+brew install curl
 brew install direnv
-brew install redis
-brew install p7zip
+brew install git
 brew install jsonlint
+brew install openssl
+brew install p7zip
+brew install peco
+brew install rbenv
+brew install readline
+brew install reattach-to-user-namespace
+brew install tmux
 brew install yarn
+brew install jq
+brew install lua
+brew install vim --with-python3 --with-lua
+
+brew install mysql
+brew install redis
 
 brew install caskroom/cask/dropbox
 brew install caskroom/cask/skitch
-brew install caskroom/cask/virtualbox
-brew install caskroom/cask/vagrant
 brew install caskroom/cask/slack
 brew install caskroom/cask/limechat
 brew install caskroom/cask/licecap
