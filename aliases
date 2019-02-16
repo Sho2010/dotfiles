@@ -84,19 +84,22 @@ alias kd='kubectl describe'
 alias kg='kubectl get'
 alias kns='kubens'
 
-alias kgg='kubectl get gateway'
-alias kgvs='kubectl get virtualservice'
-alias kgd='kubectl get destinationrule'
-alias kdg='kubectl describe gateway'
-alias kdvs='kubectl describe virtualservice'
-alias kdd='kubectl describe destinationrule'
+# istio
+alias kgv="kubectl get virtualservice"
+alias kgd="kubectl get desitinationrule"
+alias kgg="kubectl get gateway"
+
+alias krv="kubectl describe virtualservice"
+alias krd="kubectl describe desitinationrule"
+alias krg="kubectl describe gateway"
 
 alias sw-context='switch-k8s-context'
 alias sw-ns='switch-k8s-namespace'
 
 alias h='hub'
 alias v='vim'
-
+alias gw='ghkw'
+alias gwr='ghkw --language=ruby'
 
 function gssh() {
   $(gcloud compute instances list | peco | awk '{print "gcloud compute ssh --zone " $2 " " $1}')
@@ -254,6 +257,12 @@ function pexec() {
 function ggedit() {
   vim -p `git grep -l $1 | peco`
 }
+
+# slideshareにPDFをうｐした時に日本語が表示されない時に使うやつ
+function convert_slide_share() {
+  LANG=C LC_ALL=C sed -i '' s'|/Registry (Adobe) /Ordering (Japan1) /Supplement [0-9]|/Registry(Adobe) /Ordering(Identity) /Supplement 0|g' $1
+}
+
 
 function peco-history() {
     local tac
