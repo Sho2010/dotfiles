@@ -1,0 +1,45 @@
+snippet     kustomize
+abbr        kustomization file header
+options     head
+	apiVersion: v1beta1
+	kind: Kustomization
+
+	# Adds namespace to all resources.
+	namespace: my-namespace
+	# namePrefix: sho2010-
+
+	# commonLabels:
+	# 	project: awesome-pj
+
+	bases:
+	- ../../base
+
+	resources:
+	# - api_deployment
+
+	patchesStrategicMerge:
+	# - resource_patch.yaml
+
+	# configMapGenerator:
+	# - name: myJavaServerProps
+	# 	files:
+	# 	- application.properties
+	# - name: myJavaServerEnvVars
+	# 	literals:
+	# 	- TZ=Asia/Tokyo
+
+	secretGenerator:
+	- name: tls-certs
+		namespace: apps
+		files:
+			- tls.crt=secret/tls.cert
+			- tls.key=secret/tls.key
+		type: "kubernetes.io/tls"
+
+	- name: env_file_secret
+		ENV: env.txt
+		type: Opaque
+
+	images:
+		- name: nginx
+			newTag: 1.8.0
