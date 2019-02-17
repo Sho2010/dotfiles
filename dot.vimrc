@@ -17,7 +17,12 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#begin(s:dein_plugin_dir)
   call dein#add(s:dein_repo_dir)
 
-  call dein#add('Shougo/neocomplete.vim')
+  " call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   call dein#add('Shougo/context_filetype.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/neosnippet', {
@@ -25,11 +30,9 @@ if dein#load_state(s:dein_plugin_dir)
      \})
 
   call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/neoyank.vim')
 
-  call dein#add('chriskempson/vim-tomorrow-theme')
   call dein#add('ekalinin/Dockerfile.vim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('bronson/vim-trailing-whitespace')
@@ -59,7 +62,6 @@ if dein#load_state(s:dein_plugin_dir)
 
   " test runner
   call dein#add('janko-m/vim-test')
-
 
   call dein#end()
   call dein#save_state()
@@ -119,9 +121,7 @@ set wildmenu
 
 
 "補完
-imap <C-Space> <C-x><C-o>
-imap <C-b> <C-x><C-o>
-imap <C-@> <C-Space>
+imap <C-@> <C-x><C-o>
 
 "  ʕ◔ϖ◔ʔ
 if $GOROOT != ''

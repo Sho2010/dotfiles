@@ -1,4 +1,5 @@
 snippet debug
+alias   command
 abbr    k8s debug tail command
   command: ["/usr/bin/tail", "-f", "/dev/null"]
 
@@ -41,7 +42,7 @@ options     head
 	apiVersion: v1
 	kind: Service
 	metadata:
-		name: $1
+		name: ${1}
 	spec:
 		ports:
 			- name: http
