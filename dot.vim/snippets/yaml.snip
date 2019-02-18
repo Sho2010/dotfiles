@@ -145,3 +145,22 @@ options     head
 						servicePort: ${3:80}
 		tls:
 			- secretName: tls-secret
+
+snippet     readessProve
+alias       livenessProbe
+abbr        k8s pod readessProve/livenessProbe
+options     head
+	readinessProbe:
+		httpGet:
+			path: /dummy
+			port: 80
+		initialDelaySeconds: 30
+		periodSeconds: 5
+		timeoutSeconds: 2
+	livenessProbe:
+		httpGet:
+			path: /dummy
+			port: 80
+		initialDelaySeconds: 30
+		periodSeconds: 5
+		timeoutSeconds: 2
