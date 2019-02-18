@@ -42,6 +42,7 @@ alias p="python"
 
 # git
 alias g='git'
+alias gca='git commit --amend -C HEAD'
 alias gs='git status'
 alias gb='git branch'
 alias gd='git diff'
