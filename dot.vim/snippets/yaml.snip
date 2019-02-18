@@ -51,3 +51,97 @@ options     head
 		selector:
 			app: $1
 
+
+snippet     patch_resource
+alias       resource_patch
+abbr        resource patch for kustomize
+options     head
+  ##############################
+  # target
+  ##############################
+  apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+  	name: ${1:app}
+  spec:
+  	template:
+  		spec:
+  			containers:
+  				- name: $1
+  				resources:
+  					limits:
+  						memory: 64Mi
+  					requests:
+  						cpu: 50m
+  						memory: 64Mi
+
+snippet     resources
+abbr        pod resourecs
+options     head
+  	resources:
+  		limits:
+  			memory: 64Mi
+  		requests:
+  			cpu: 50m
+  			memory: 64Mi
+
+snippet     maxsurge
+alias       strategy
+abbr        k8s RollingUpdate strategy
+options     head
+  	strategy:
+  		rollingUpdate:
+  			maxSurge: ${1:1}
+  			maxUnavailable: ${2:0}
+  		type: RollingUpdate
+
+snippet     ingress-simply
+abbr        k8s simply ingress template
+options     head
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+  	name: ${1:simply-ingress}
+  spec:
+  	backend:
+  		serviceName: ${2:target-nodeport-service}
+  		servicePort: ${3:80}
+
+snippet     ingress-path-based
+abbr        path based routing ingress template
+options     head
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+		name: api
+		# IPを予約する場合 $ gcloud compute addresses create $FW-RULE-NAME --global
+		# annotations:
+		# kubernetes.io/ingress.global-static-ip-name: $FW-RULE-NAME
+  spec:
+		rules:
+		- http:
+				paths:
+				- backend:
+						serviceName: ${1:target-nodeport-service}
+						servicePort: ${2:80}
+
+snippet     ingress-tls
+abbr        domain based routing with tls ingress template
+options     head
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+		name: ${1:ingress-name}
+		# IPを予約する場合 $ gcloud compute addresses create $FW-RULE-NAME --global
+		# annotations:
+		# kubernetes.io/ingress.global-static-ip-name: $FW-RULE-NAME
+  spec:
+		rules:
+		- host: example.com
+			http:
+				paths:
+				- backend:
+						serviceName: ${2:target-nodeport-service}
+						servicePort: ${3:80}
+		tls:
+			- secretName: tls-secret
