@@ -65,7 +65,7 @@ linux*)
 esac
 
 #cd
-alias src='cd ~/src'
+alias S='cd ~/src'
 
 alias reload_bashrc='. ~/.bashrc'
 
