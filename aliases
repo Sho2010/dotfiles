@@ -107,11 +107,19 @@ function gssh() {
 }
 
 function switch-k8s-namespace() {
-  kubens `kubens | peco`
+  if [ -z $1 ]; then
+    kubens `kubens | peco`
+    return 0
+  fi
+  kubens $1
 }
 
 function switch-k8s-context() {
-  kubectx `kubectx | peco`
+  if [ -z $1 ]; then
+    kubectx `kubectx | peco`
+    return 0
+  fi
+  kubectx $1
 }
 
 #
