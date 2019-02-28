@@ -186,6 +186,35 @@ function pk8-logs() {
   fi
 }
 
+function k8_rollout_history() {
+  if [ -z "$1" ];then
+    deployment=$(kubectl get deployment | peco | awk "{print \$1}")
+  else
+    deployment=$1
+  fi
+
+  if [ -z "$2" ];then
+    rev=$(kubectl rollout history deployment $deployment | peco | awk "{print \$1}")
+  else
+    rev=$2
+  fi
+
+  kubectl rollout history deployment $deployment --revision $rev
+}
+
+function k8_rollout_latest() {
+  if [ -z "$1" ];then
+    deployment=$(kubectl get deployment | peco | awk "{print \$1}")
+  else
+    deployment=$1 || return 1
+  fi
+
+  latest=$(kubectl rollout history deployment $deployment | tail -n2 | head -n1 | awk "{print \$1}")
+
+  echo "kubectl rollout history deployment $deployment --revision $latest"
+  kubectl rollout history deployment $deployment --revision $latest
+}
+
 function k8watch() {
   watch -n 1 kubectl get $1
 }
