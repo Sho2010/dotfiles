@@ -164,3 +164,27 @@ options     head
 		initialDelaySeconds: 30
 		periodSeconds: 5
 		timeoutSeconds: 2
+
+
+snippet     initContainerPatch
+abbr        initContainers template
+options     head
+  # Note
+  # DB setup待つためのpatch
+  # DB setupの最後の段階で master_dumpsにrecordを入れるため
+  # ここにrecordが入っていたら初期化が終了したと判断する
+  apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+  	name: api
+  spec:
+   template:
+  		spec:
+  			initContainers:
+  			- name: init-db
+  				image: mysql:5.7
+  				command: ['sh', '-c', 'until timeout 1 test $(mysql -h master-db -p${API_DB_PASSWORD} -D develpment_db  -N -s -e "select count(*) from master_dumps;" ) -eq 1; do echo waiting for dbshare; sleep 2; done;']
+  				envFrom:
+  				- secretRef:
+  						name: example-secret
+
