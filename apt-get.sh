@@ -13,7 +13,7 @@ sudo apt-get install -y \
   nkf \
   openssl \
   tmux \
-  vim \
+  vim-gtk \
   wget \
   xsel \
   zsh \
