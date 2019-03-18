@@ -50,7 +50,7 @@ alias gdt='git difftool'
 alias gf='git fetch'
 alias gg='git grep'
 
-# ls
+# OSTYPE settings ls, pbcopy...
 case "${OSTYPE}" in
 darwin*)
   alias ls='ls -G'
@@ -59,8 +59,11 @@ darwin*)
   ;;
 linux*)
   alias ls='ls --color'
-  alias ll='ls -l --color'
+  alias ll='ls -la --color'
   alias la='ls -la --color'
+  alias pbcopy='xsel --clipboard --input'
+  alias pbpaste='xsel --clipboard --output'
+  alias open='xdg-open'
   ;;
 esac
 
