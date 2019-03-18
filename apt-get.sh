@@ -1,22 +1,20 @@
 #!/bin/sh
 
 sudo apt-get install -y \
-  vim \
-  nkf \
-  wget \
-  irb \
-  libopenssl-ruby \
-  libreadline-ruby \
   build-essential \
-  openssl \
-  libreadline5 \
-  libreadline-dev \
   curl \
+  git-core \
+  libreadline-dev \
+  libreadline5 \
   libssl-dev \
   libxml2-dev \
   libxslt-dev \
-  git-core \
-  zsh \
   mysql-client \
+  nkf \
+  openssl \
   tmux \
+  vim \
+  wget \
+  xsel \
+  zsh \
 ;
