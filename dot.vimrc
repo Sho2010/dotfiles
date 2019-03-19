@@ -84,7 +84,6 @@ else
 endif
 
 set number
-set clipboard+=unnamed
 set clipboard=unnamedplus
 set tabstop=2
 set shiftwidth=2
@@ -120,6 +119,7 @@ set breakindent
 set wildmode=full
 set wildmenu
 
+hi MatchParen cterm=bold ctermbg=none ctermfg=blue
 
 "補完
 imap <C-@> <C-x><C-o>
