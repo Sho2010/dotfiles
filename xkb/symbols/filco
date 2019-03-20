@@ -1,0 +1,18 @@
+// keycode list /usr/share/X11/xkb/keycodes/evdev
+xkb_symbols "swap" {
+  replace key <AC10> { [ colon, semicolon ] };
+};
+
+//ctrl, alt, superなどのキーはmodifier_mapで再定義しないとダメ
+xkb_symbols "win_disable" {
+  replace key <RALT> { [ Control_R, Control_R ] }; //この書き方じゃないと alt + ctrlになる
+  modifier_map Control { <RALT> };
+
+  replace key <LWIN> { [ Alt_L ] };
+  modifier_map Mod1  { <LWIN> };
+};
+
+xkb_symbols "eisu" {
+  replace key <MENU> { [ Hiragana    ] }; //APP  key at Hiragana
+  replace key <LALT> { [ Eisu_toggle ] }; //LALT key at eisu
+};
