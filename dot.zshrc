@@ -93,10 +93,15 @@ setopt hist_ignore_dups
 # 重複したヒストリは追加しない
 setopt hist_ignore_all_dups
 
+# GHQ_ROOT
+export GHQ_ROOT=~/src
+
+# Go
 export GOPATH=$HOME/go
 PATH="$GOPATH/bin:$PATH"
 export GO15VENDOREXPERIMENT=1
 
+# PROMPT
 SUSHI=$'\U1F363 '
 HUM=$'\U1F439  '
 SKULL=$'\U1F480  '
