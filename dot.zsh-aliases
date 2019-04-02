@@ -24,8 +24,44 @@ alias -g PB="| pbcopy"
 
 alias -g P='$(kubectl get pods | peco | awk "{print \$1}")'
 
-function pk8-ch-cluster() {
-  cluster=`gcloud container clusters list | peco | awk '{print $1" --zone "$2}'`
-  `echo gcloud container clusters get-credentials ${cluster}`
+function peco-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
 }
+
+function kubectl-get-pod() {
+  echo kubectl get pod
+  kubectl get pod
+}
+
+function kubectl-get-svc() {
+  echo kubectl get svc
+  kubectl get svc
+}
+
+function kubectl-get-ep() {
+  echo kubectl get ep
+  kubectl get ep
+}
+
+# zle widgets
+zle -N kubectl-get-pod
+zle -N kubectl-get-svc
+zle -N peco-history
+
+## k8s
+bindkey '^k^p' kubectl-get-pod
+bindkey '^k^s' kubectl-get-svc
+bindkey '^k^e' kubectl-get-ep
+
+bindkey '^r' peco-history
 

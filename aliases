@@ -315,23 +315,6 @@ function convert_slide_share() {
   LANG=C LC_ALL=C sed -i '' s'|/Registry (Adobe) /Ordering (Japan1) /Supplement [0-9]|/Registry(Adobe) /Ordering(Identity) /Supplement 0|g' $1
 }
 
-
-function peco-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-history
-bindkey '^r' peco-history
-
 function print_known_hosts (){
   if [ -f $HOME/.ssh/known_hosts ]; then
     cat ~/.ssh/known_hosts | tr ',' ' ' | cut -d' ' -f1
