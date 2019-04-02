@@ -91,13 +91,15 @@ alias kg='kubectl get'
 alias kns='kubens'
 
 # istio
+alias i="istioctl"
+alias ig="istioctl get"
 alias kgv="kubectl get virtualservice"
 alias kgd="kubectl get desitinationrule"
 alias kgg="kubectl get gateway"
 
-alias krv="kubectl describe virtualservice"
-alias krd="kubectl describe desitinationrule"
-alias krg="kubectl describe gateway"
+alias kdv="kubectl describe VirtualService"
+alias kdd="kubectl describe DestinationRule"
+alias kdg="kubectl describe gateway"
 
 alias sw-context='switch-k8s-context'
 alias sw-ns='switch-k8s-namespace'
@@ -230,6 +232,13 @@ function switch-gcp-project() {
   proj=`gcloud projects list | peco | awk '{print $1}'`
   gcloud config set project ${proj}
 }
+
+# switch AWS project
+function sw-aws-profile() {
+  echo current: $(export | grep AWS_PROFILE)
+  export AWS_PROFILE=$1
+}
+
 
 # ssh
 function historyssh() {
