@@ -51,6 +51,11 @@ alias gd='git diff'
 alias gdt='git difftool'
 alias gf='git fetch'
 alias gg='git grep'
+alias gcd='ghq-peco'
+
+function ghq-peco() {
+  cd $(ghq list -p | peco --query "$1")
+}
 
 # OSTYPE settings ls, pbcopy...
 case "${OSTYPE}" in
