@@ -302,10 +302,6 @@ function docker-print-tag() {
 }
 alias dpt='docker-print-tag'
 
-function pexec() {
-  `ls | peco`
-}
-
 function ggedit() {
   vim -p `git grep -l $1 | peco`
 }
@@ -315,13 +311,20 @@ function convert_slide_share() {
   LANG=C LC_ALL=C sed -i '' s'|/Registry (Adobe) /Ordering (Japan1) /Supplement [0-9]|/Registry(Adobe) /Ordering(Identity) /Supplement 0|g' $1
 }
 
+
+function open_localhost() {
+  open "http://localhost:${1:-3000}"
+}
+alias op=open
+alias opl=open_localhost
+alias openl=open_localhost
+
 function print_known_hosts (){
   if [ -f $HOME/.ssh/known_hosts ]; then
     cat ~/.ssh/known_hosts | tr ',' ' ' | cut -d' ' -f1
   fi
 }
 _cache_hosts=($( print_known_hosts ))
-
 
 alias rails-ctags='ctags --langmap=RUBY:.rb --exclude="*.js"  --exclude=".git*" -R .'
 
