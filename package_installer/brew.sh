@@ -15,6 +15,7 @@ brew install peco
 brew install rbenv
 brew install readline
 brew install tmux
+brew install tree
 brew install yarn
 brew install jq
 brew install lua
