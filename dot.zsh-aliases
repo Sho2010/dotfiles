@@ -48,11 +48,6 @@ function kubectl-get-svc() {
   kubectl get svc
 }
 
-function kubectl-get-ep() {
-  echo kubectl get ep
-  kubectl get ep
-}
-
 # zle widgets
 zle -N kubectl-get-pod
 zle -N kubectl-get-svc
@@ -61,7 +56,6 @@ zle -N peco-history
 ## k8s
 bindkey '^k^p' kubectl-get-pod
 bindkey '^k^s' kubectl-get-svc
-bindkey '^k^e' kubectl-get-ep
 
 bindkey '^r' peco-history
 
