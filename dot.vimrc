@@ -83,8 +83,9 @@ else
   colorscheme hybrid
 endif
 
+set encoding=utf-8
 set number
-set clipboard=unnamedplus
+set clipboard=unnamed
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
