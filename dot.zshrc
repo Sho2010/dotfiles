@@ -49,13 +49,13 @@ ZSH_THEME="robbyrussell"
 plugins=(git ruby osx bundler brew rails emoji-clock)
 # User configuration
 
-export PATH="/Users/Sho2010/.rbenv/shims:/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Users/Sho2010/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/Users/Sho2010/.rbenv/shims:/Users/Sho2010/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=ja_JP.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -106,9 +106,8 @@ SUSHI=$'\U1F363 '
 HUM=$'\U1F439  '
 SKULL=$'\U1F480  '
 
-# PROMPT="%(?.${SUSHI} ${PROMPT}.${SKULL} ${PROMPT})"
-PROMPT="${PROMPT} ${SUSHI} "
 
+PROMPT="${PROMPT} ${SUSHI} "
 if [ "${PRODUCTION}" = "true" ] ; then
   PROMPT="${PROMPT}${SKULL} "
 fi
@@ -126,3 +125,9 @@ fi
 . ~/dotfiles/dot.zsh-aliases
 . ~/dotfiles/net_tools_deprecated.sh
 . ~/.zshrc.local
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/sho.naito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sho.naito/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/sho.naito/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sho.naito/google-cloud-sdk/completion.zsh.inc'; fi
