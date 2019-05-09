@@ -21,6 +21,7 @@ brew install readline
 brew install tig
 brew install tmux
 brew install tree
+brew install watch
 brew install yarn
 
 # k8s
