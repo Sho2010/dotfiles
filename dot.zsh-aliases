@@ -48,14 +48,28 @@ function kubectl-get-svc() {
   kubectl get svc
 }
 
+function kubectl-switch-namespace() {
+  echo switch namespace
+  switch-k8s-namespace
+}
+
+function kubectl-switch-context() {
+  echo switch context
+  switch-k8s-context
+}
+
 # zle widgets
 zle -N kubectl-get-pod
 zle -N kubectl-get-svc
+zle -N kubectl-switch-namespace
+zle -N kubectl-switch-context
 zle -N peco-history
 
 ## k8s
 bindkey '^k^p' kubectl-get-pod
 bindkey '^k^s' kubectl-get-svc
+bindkey '^k^n' kubectl-switch-namespace
+bindkey '^k^c' kubectl-switch-context
 
 bindkey '^r' peco-history
 
