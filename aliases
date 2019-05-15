@@ -3,6 +3,8 @@ alias b="bundle"
 alias be="bundle exec"
 alias bespec="bundle exec rspec"
 alias betest="bundle exec rake test"
+alias railss="bundle exec rails s -b 0.0.0.0"
+alias railsc="bundle exec rails c"
 
 alias ru="ruby"
 alias t="terraform"
@@ -87,13 +89,16 @@ alias amazon='aws'
 alias c='gcloud'
 alias gc='gcloud'
 
-
 alias k='kubectl'
 alias kb='kustomize build'
 alias kc='kubectx'
 alias kd='kubectl describe'
 alias kg='kubectl get'
 alias kns='kubens'
+
+# telepresence
+alias tele=telepresence
+alias tele_rails='telepresence --new-deployment tele-rails --expose 3000:3000   --run bundle exec rails s -b 0.0.0.0'
 
 # istio
 alias i="istioctl"
