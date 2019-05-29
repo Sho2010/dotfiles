@@ -52,7 +52,7 @@ alias gb='git branch'
 alias gd='git diff'
 alias gdt='git difftool'
 alias gf='git fetch'
-alias gg='git grep'
+alias gg='git grep -i'
 alias gcd='ghq-peco'
 
 function ghq-peco() {
@@ -90,6 +90,7 @@ alias c='gcloud'
 alias gc='gcloud'
 
 alias k='kubectl'
+alias kapi='kubectl api-resources'
 alias kb='kustomize build'
 alias kc='kubectx'
 alias kd='kubectl describe'
@@ -98,7 +99,7 @@ alias kns='kubens'
 
 # telepresence
 alias tele=telepresence
-alias tele_rails='telepresence --new-deployment tele-rails --expose 3000:3000   --run bundle exec rails s -b 0.0.0.0'
+alias tele_rails='telepresence --new-deployment tele-rails --expose 3000:3000 --run bundle exec rails s -b 0.0.0.0'
 
 # istio
 alias i="istioctl"
@@ -339,3 +340,14 @@ _cache_hosts=($( print_known_hosts ))
 
 alias rails-ctags='ctags --langmap=RUBY:.rb --exclude="*.js"  --exclude=".git*" -R .'
 
+function encrypt-file-for-self() {
+  if [ -f $1 ]; then
+    gpg --recipient sho20100@gmail.com --encrypt $1
+  else
+    echo 'target file not exists'
+  fi
+}
+
+function decrypt-file-for-self() {
+  gpg --decrypt $1
+}
