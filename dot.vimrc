@@ -86,6 +86,11 @@ endif
 set encoding=utf-8
 set number
 set clipboard=unnamed
+
+if has('unix')
+  set clipboard=unnamedplus
+endif
+
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
