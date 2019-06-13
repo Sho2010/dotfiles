@@ -10,7 +10,9 @@
     ci = commit
     st = status
     br = branch
+    p = push
     unstage = reset HEAD --
+    current-branch = rev-parse --abbrev-ref HEAD
 [color]
     diff = always
 [include]
