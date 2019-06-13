@@ -18,6 +18,7 @@ brew install p7zip
 brew install peco
 brew install rbenv
 brew install readline
+brew install terraform
 brew install tig
 brew install tmux
 brew install tree
@@ -47,6 +48,10 @@ darwin*)
   brew install caskroom/cask/sequel-pro
   brew install caskroom/cask/discord
   brew install caskroom/cask/charles
+
+  # yubikey tools
+  brew install yubico-piv-tool # piv CLI
+  brew install ykman           # manage CLI e.g. GPG key management
   ;;
 linux*)
   ;;
