@@ -9,6 +9,7 @@ nmap [rails]v :Eview<Space>
 nmap [rails]c :Econtroller<Space>
 nmap [rails]s :Espec<Space>
 nmap [rails]t :Eunittest<Space>
+nmap [rails]tt :Eunittest<Space><Enter>
 nmap [rails]u :Eunittest<Space>
 nmap [rails]e :Eenvironment<Space>
 nmap [rails]i :Einitializer<Space>
