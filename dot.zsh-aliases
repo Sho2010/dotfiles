@@ -21,6 +21,7 @@ alias -g G="| grep -i"
 alias -g L="| less"
 alias -g F="find ./ "
 alias -g PB="| pbcopy"
+alias -g H=" -h"
 
 alias -g P='$(kubectl get pods | peco | awk "{print \$1}")'
 
