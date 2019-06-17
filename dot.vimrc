@@ -87,9 +87,14 @@ set encoding=utf-8
 set number
 set clipboard=unnamed
 
-if has('unix')
+if has("mac")
+  "
+  " macはunix=trueなので先に判定してやる
+  "
+elseif has("unix")
   set clipboard=unnamedplus
 endif
+
 
 set tabstop=2
 set shiftwidth=2
