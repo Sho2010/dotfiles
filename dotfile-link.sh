@@ -13,3 +13,4 @@ ln -s ~/dotfiles/dot.vim ~/.vim
 ln -s ~/dotfiles/dot.pryrc ~/.pryrc
 ln -s ~/dotfiles/dot.eslintrc ~/.eslintrc
 ln -s ~/dotfiles/dot.ideavimrc ~/.ideavimrc
+ln -s ~/dotfiles/dot.tigrc ~/.tigrc
