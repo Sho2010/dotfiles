@@ -15,6 +15,9 @@ alias dcom="docker-compose"
 alias dcomp="docker-compose -f docker-compose.yml -f docker-compose.prod.yml"
 alias dcomtest="docker-compose run --rm app test"
 
+# go
+alias gohome="cd $GOPATH"
+
 bindkey '^p' up-line-or-beginning-search
 
 function dcombe() {
