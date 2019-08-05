@@ -1,8 +1,43 @@
 snippet for in
+alias forin
+options indent
   for file in $(ls -1); do
-    echo $file;
+  	echo $file;
   done
 
-snippet     script dir
-abbr        script
+snippet script_dir
+abbr    script
   SCRIPT_DIR=$(cd $(dirname \$0);pwd)
+
+snippet awk
+abbr    awk template
+   ${1:ls -l} | awk '{ print $1 }'
+
+snippet awk_with_filter
+abbr    awk with filter template
+  ls -l | awk '/txt/ { print $1 }'
+
+
+snippet awk_printf
+abbr    awk printf format
+  ls -l | awk '{ printf "template: %s\\n", \$1 }'
+
+snippet file_each
+abbr    each flie line
+alias   while_file
+options indent
+	while read line
+	do
+		echo \$line
+	done < ${1:example.txt}
+
+snippet devnull
+abbr    Run silent
+  ${1} > /dev/null 2>&1
+
+snippet arg_check
+abbr    argument check template
+	if [ -z \$1 ]; then
+	  echo 'Require argument'
+	fi
+
