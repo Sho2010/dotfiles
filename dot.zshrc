@@ -46,7 +46,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby osx bundler brew rails emoji-clock)
+plugins=(git ruby osx bundler brew rails emoji-clock zsh-completions)
+# fpath=(/usr/local/share/zsh-completions $fpath)
 # User configuration
 
 export PATH="/Users/Sho2010/.rbenv/shims:/Users/Sho2010/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -111,6 +112,8 @@ PROMPT="${PROMPT} ${SUSHI} "
 if [ "${PRODUCTION}" = "true" ] ; then
   PROMPT="${PROMPT}${SKULL} "
 fi
+
+autoload -U compinit && compinit
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
