@@ -41,3 +41,12 @@ abbr    argument check template
 	  echo 'Require argument'
 	fi
 
+snippet pipe_status_bash
+alias   pipe_status
+abbr    pipe status for bash
+  "${PIPESTATUS[@]}"
+
+snippet pipe_status_zsh
+abbr    pipe status for zsh
+  ${pipestatus[@]}
+
