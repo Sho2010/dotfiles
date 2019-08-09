@@ -11,11 +11,11 @@ abbr    script
 
 snippet awk
 abbr    awk template
-   ${1:ls -l} | awk '{ print $1 }'
+   ${1:ls -l} | awk '{ print \$1 }'
 
 snippet awk_with_filter
 abbr    awk with filter template
-  ls -l | awk '/txt/ { print $1 }'
+  ls -l | awk '/txt/ { print \$1 }'
 
 
 snippet awk_printf
