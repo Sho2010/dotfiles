@@ -17,6 +17,8 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#begin(s:dein_plugin_dir)
   call dein#add(s:dein_repo_dir)
 
+  call dein#load_toml('~/.config/dein/go_lazy.toml'  , {'lazy': 1})
+
   " call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
@@ -43,7 +45,6 @@ if dein#load_state(s:dein_plugin_dir)
 
   " lang plugins
   call dein#add('moll/vim-node')    "node.js
-  call dein#add('fatih/vim-go')
   call dein#add('tpope/vim-rails')
   call dein#add('tpope/vim-endwise') " Ruby向けにendを自動挿入してくれる
   call dein#add('hashivim/vim-terraform')
