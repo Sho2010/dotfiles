@@ -18,6 +18,8 @@ alias dcomtest="docker-compose run --rm app test"
 # go
 alias gohome="cd $GOPATH"
 
+alias sed='gsed'
+
 bindkey '^p' up-line-or-beginning-search
 
 function dcombe() {
@@ -57,9 +59,14 @@ alias gdt='git difftool'
 alias gf='git fetch'
 alias gg='git grep -i'
 alias gcd='ghq-peco'
+alias hcd='history-cd-peco'
 
 function ghq-peco() {
   cd $(ghq list -p | peco --query "$1")
+}
+
+function history-cd-peco() {
+  cd $(history | grep cd | awk '{ print $3 }' | sort | uniq | peco --query "$1")
 }
 
 # OSTYPE settings ls, pbcopy...
@@ -144,7 +151,7 @@ function switch-k8s-context() {
   kubectx $1
 }
 
-#
+
 # misc
 alias ghost='gh-ost'
 
