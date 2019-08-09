@@ -1,0 +1,21 @@
+[[plugins]]
+repo = 'moll/vim-node'
+on_ft = 'javascript'
+
+# ES6 syntax highlight
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = 'javascript'
+
+# Ruby向けにendを自動挿入してくれる
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = 'terraform'
+
+[[plugins]]
+repo = 'ekalinin/Dockerfile.vim'
+on_ft = 'Dockerfile'

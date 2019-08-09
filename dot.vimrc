@@ -17,6 +17,7 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#begin(s:dein_plugin_dir)
   call dein#add(s:dein_repo_dir)
 
+  call dein#load_toml('~/.config/dein/lazy.toml',      {'lazy': 1})
   call dein#load_toml('~/.config/dein/go_lazy.toml'  , {'lazy': 1})
 
   " call dein#add('Shougo/neocomplete.vim')
@@ -35,7 +36,6 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/neoyank.vim')
 
-  call dein#add('ekalinin/Dockerfile.vim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('bronson/vim-trailing-whitespace')
 
@@ -44,10 +44,7 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#add('chriskempson/vim-tomorrow-theme')
 
   " lang plugins
-  call dein#add('moll/vim-node')    "node.js
   call dein#add('tpope/vim-rails')
-  call dein#add('tpope/vim-endwise') " Ruby向けにendを自動挿入してくれる
-  call dein#add('hashivim/vim-terraform')
 
   " 囲むやつ
   call dein#add('tpope/vim-surround')
