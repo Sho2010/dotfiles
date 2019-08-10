@@ -1,5 +1,39 @@
-# [[plugins]] # カラースキーマ
-# repo = 'w0ng/vim-hybrid'
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+    let g:deoplete#enable_at_startup = 1
+    source ~/.vim/vimrcs/deoplete.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord']
+on_func  = ['denite#']
+depends = ['neomru.vim']
+hook_add = '''
+    source ~/.vim/vimrcs/denite.vim
+'''
+
+[[plugins]] # denite file_mru source require this
+repo = 'Shougo/neomru.vim'
+
+[[plugins]] # high performance yank
+repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+hook_add = '''
+    source ~/.vim/vimrcs/neosnippets.vim
+'''
+
+[[plugins]] # カラースキーマ
+repo = 'w0ng/vim-hybrid'
 # hook_add = '''
 #   set background=dark
 #   " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
@@ -8,8 +42,8 @@
 # '''
 #
 # # Color scheme
-# [[plugins]]
-# repo = 'chriskempson/vim-tomorrow-theme'
+[[plugins]]
+repo = 'chriskempson/vim-tomorrow-theme'
 # hook_add = '''
 #   set background=dark
 #   " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
@@ -41,3 +75,6 @@ repo = 'scrooloose/nerdtree'
 
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
