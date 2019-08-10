@@ -8,6 +8,7 @@ brew install bash-completion
 brew install curl
 brew install direnv
 brew install git
+brew install gnu-sed
 brew install go
 brew install hub
 brew install jq
