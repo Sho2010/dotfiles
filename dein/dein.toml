@@ -1,0 +1,43 @@
+# [[plugins]] # カラースキーマ
+# repo = 'w0ng/vim-hybrid'
+# hook_add = '''
+#   set background=dark
+#   " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
+#   " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
+#   " au MyAutoCmd VimEnter * nested colorscheme hybrid
+# '''
+#
+# # Color scheme
+# [[plugins]]
+# repo = 'chriskempson/vim-tomorrow-theme'
+# hook_add = '''
+#   set background=dark
+#   " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
+#   " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
+#   " au MyAutoCmd VimEnter * nested colorscheme Tomorrow-Night
+# '''
+
+[[plugins]] # toml syntax
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]] # 囲むやつ
+repo = 'tpope/vim-surround'
+
+[[plugins]] # omni test runner
+repo = 'janko-m/vim-test'
+
+[[plugins]] # coloring ansi code
+repo = 'vim-scripts/AnsiEsc.vim'
+
+[[plugins]] # non blocking lint tool
+repo = 'w0rp/ale'
+
+[[plugins]] # コメントON/OFFを手軽に実行
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
