@@ -13,9 +13,9 @@ let g:deoplete#max_list = 100
 
 " Sample configuration for dictionary source with multiple
 " dictionary files.
-" setlocal dictionary+=~/.vim/dict/ruby.dict
-" setlocal dictionary+=~/.vim/dict/kustomize.dict
-"
+setlocal dictionary+=~/.vim/dict/ruby.dict
+setlocal dictionary+=~/.vim/dict/kustomize.dict
+
 " Remove this if you'd like to use fuzzy search
 call deoplete#custom#source('dictionary', 'matchers', ['matcher_head'])
 "
