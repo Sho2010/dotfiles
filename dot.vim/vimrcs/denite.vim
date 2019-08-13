@@ -19,7 +19,10 @@ function! s:denite_filter_my_setting() abort
   nnoremap <silent><buffer><expr> q       denite#do_map('quit')
 endfunction
 
-" call denite#custom#source('file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+
+" file_mru はあいまい検索しない
+call denite#custom#source('file_mru', 'matchers', ['matcher/substring'])
+
 noremap [denite]u :<C-u>Denite buffer file_mru<CR>
 noremap [denite]c :<C-u>Denite command_history <CR>
 
