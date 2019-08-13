@@ -10,8 +10,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-on_cmd   = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord']
-on_func  = ['denite#']
 depends = ['neomru.vim']
 hook_add = '''
     source ~/.vim/vimrcs/denite.vim
