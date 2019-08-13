@@ -15,7 +15,11 @@ on_ft = 'ruby'
 [[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = 'terraform'
+hook_add = '''
+    source ~/.vim/vimrcs/terraform.vim
+'''
 
 [[plugins]]
 repo = 'ekalinin/Dockerfile.vim'
 on_ft = 'Dockerfile'
+
