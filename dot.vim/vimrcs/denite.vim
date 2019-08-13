@@ -24,7 +24,9 @@ endfunction
 call denite#custom#source('file_mru', 'matchers', ['matcher/substring'])
 
 noremap [denite]u :<C-u>Denite buffer file_mru<CR>
-noremap [denite]c :<C-u>Denite command_history <CR>
+noremap [denite]c :<C-u>Denite command_history<CR>
+noremap [denite]y :<C-u>Denite neoyank<CR>
+noremap [denite]r :<C-u>Denite register<CR>
 
 let s:denite_options = {
       \ 'prompt' : '>',
