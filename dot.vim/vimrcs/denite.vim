@@ -23,3 +23,14 @@ endfunction
 noremap [denite]u :<C-u>Denite buffer file_mru<CR>
 noremap [denite]c :<C-u>Denite command_history <CR>
 
+let s:denite_options = {
+      \ 'prompt' : '>',
+      \ 'split': 'floating',
+      \ 'start-filter': v:true,
+      \ 'auto-resize': v:true,
+      \ 'source-names': 'short',
+      \ 'direction': 'botright',
+      \ 'highlight_filter_background': 'CursorLine',
+      \ 'highlight_matched_char': 'Type',
+      \ }
+call denite#custom#option('default', s:denite_options)
