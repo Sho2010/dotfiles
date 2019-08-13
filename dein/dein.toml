@@ -47,15 +47,24 @@ repo = 'tpope/vim-surround'
 
 [[plugins]] # omni test runner
 repo = 'janko-m/vim-test'
+hook_add = '''
+    source ~/.vim/vimrcs/vim-test.vim
+'''
 
 [[plugins]] # coloring ansi code
 repo = 'vim-scripts/AnsiEsc.vim'
 
 [[plugins]] # non blocking lint tool
 repo = 'w0rp/ale'
+hook_add = '''
+    source ~/.vim/vimrcs/ale.vim
+'''
 
 [[plugins]] # コメントON/OFFを手軽に実行
 repo = 'tomtom/tcomment_vim'
+hook_add = '''
+    source ~/.vim/vimrcs/tcomment.vim
+'''
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
