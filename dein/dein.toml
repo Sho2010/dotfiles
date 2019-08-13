@@ -30,24 +30,13 @@ hook_add = '''
     source ~/.vim/vimrcs/neosnippets.vim
 '''
 
-[[plugins]] # カラースキーマ
+# Color scheme
+[[plugins]]
 repo = 'w0ng/vim-hybrid'
-# hook_add = '''
-#   set background=dark
-#   " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
-#   " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
-#   " au MyAutoCmd VimEnter * nested colorscheme hybrid
-# '''
-#
-# # Color scheme
+
+# Color scheme
 [[plugins]]
 repo = 'chriskempson/vim-tomorrow-theme'
-# hook_add = '''
-#   set background=dark
-#   " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
-#   " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
-#   " au MyAutoCmd VimEnter * nested colorscheme Tomorrow-Night
-# '''
 
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
