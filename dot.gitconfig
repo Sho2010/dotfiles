@@ -1,6 +1,6 @@
 [core]
 	excludesfile = ~/.gitignore.global
-	editor = vim
+	editor = nvim
 	commentchar = auto
 [user]
 	name = sho naito

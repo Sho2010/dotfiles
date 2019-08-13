@@ -1,3 +1,4 @@
+alias vim=nvim
 # ruby,rails
 alias b="bundle"
 alias be="bundle exec"
