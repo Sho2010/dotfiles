@@ -17,7 +17,7 @@ let &runtimepath = s:dein_repo_dir .",". &runtimepath
 if dein#load_state(s:dein_plugin_dir)
   call dein#begin(s:dein_plugin_dir)
 
-  call dein#load_toml('~/.config/dein/dein.toml')
+  call dein#load_toml('~/.config/dein/dein.toml',      {'lazy': 0})
   call dein#load_toml('~/.config/dein/lazy.toml',      {'lazy': 1})
   call dein#load_toml('~/.config/dein/go_lazy.toml'  , {'lazy': 1})
 
