@@ -9,6 +9,10 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'deoplete-plugins/deoplete-dictionary'
+depends = ['Shougo/deoplete.nvim']
+
+[[plugins]]
 repo = 'Shougo/denite.nvim'
 depends = ['neomru.vim']
 hook_add = '''
@@ -74,3 +78,9 @@ repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+hook_add = '''
+    source ~/.vim/vimrcs/rails.vim
+'''
