@@ -1,7 +1,12 @@
 nnoremap [denite] <Nop>
 nmap <Space>u [denite]
 
-" nnoremap <silent> [unite]c   :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+noremap [denite]u :<C-u>Denite buffer file_mru<CR>
+noremap [denite]u :<C-u>Denite file_mru<CR>
+noremap [denite]c :<C-u>Denite command_history<CR>
+noremap [denite]y :<C-u>Denite neoyank<CR>
+noremap [denite]r :<C-u>Denite register<CR>
+noremap [denite]f :<C-u>Denite file/rec<CR>
 
 au FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
@@ -17,16 +22,14 @@ au FileType denite-filter call s:denite_filter_my_setting()
 function! s:denite_filter_my_setting() abort
   nnoremap <silent><buffer><expr> i       denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> q       denite#do_map('quit')
+  call deoplete#custom#buffer_option('auto_complete', v:false)
 endfunction
 
 
 " file_mru はあいまい検索しない
 call denite#custom#source('file_mru', 'matchers', ['matcher/substring'])
 
-noremap [denite]u :<C-u>Denite buffer file_mru<CR>
-noremap [denite]c :<C-u>Denite command_history<CR>
-noremap [denite]y :<C-u>Denite neoyank<CR>
-noremap [denite]r :<C-u>Denite register<CR>
+:call denite#custom#option('default', 'start-filter', 'v:true')
 
 let s:denite_options = {
       \ 'prompt' : '>',
