@@ -48,11 +48,16 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git ruby osx bundler brew rails emoji-clock zsh-completions)
 # fpath=(/usr/local/share/zsh-completions $fpath)
+
 # User configuration
 
+# Go
 export PATH="/Users/Sho2010/.rbenv/shims:/Users/Sho2010/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
+export GO15VENDOREXPERIMENT=1
 
+# export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -97,10 +102,6 @@ setopt hist_ignore_all_dups
 # GHQ_ROOT
 export GHQ_ROOT=~/src
 
-# Go
-export GOPATH=$HOME/go
-PATH="$GOPATH/bin:$PATH"
-export GO15VENDOREXPERIMENT=1
 
 # PROMPT
 SUSHI=$'\U1F363 '
@@ -134,3 +135,4 @@ if [ -f '/Users/sho.naito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sho.n
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/sho.naito/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sho.naito/google-cloud-sdk/completion.zsh.inc'; fi
+
