@@ -11,10 +11,12 @@ let g:deoplete#max_list = 100
 " let g:deoplete#sources = {}
 " let g:deoplete#sources._=['omni', 'buffer', 'member', 'tag', 'ultisnips', 'file']
 
+let g:deoplete#complete_method = "omnifunc"
+let g:deoplete#auto_complete_delay = 0
+
 " Sample configuration for dictionary source with multiple
 " dictionary files.
-setlocal dictionary+=~/.vim/dict/ruby.dict
-setlocal dictionary+=~/.vim/dict/kustomize.dict
+setlocal dictionary+=~/.vim/dict/common.dict
 
 " Remove this if you'd like to use fuzzy search
 call deoplete#custom#source('dictionary', 'matchers', ['matcher_head'])
