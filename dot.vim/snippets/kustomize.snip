@@ -43,3 +43,19 @@ options     head
 	images:
 		- name: nginx
 			newTag: 1.8.0
+
+snippet     configMapGenerator
+abbr        kustomization file header
+alias       configmap
+	configMapGenerator:
+	- name: my-config-map
+		literals:
+		- TZ=Asia/Tokyo
+
+snippet     configMapGeneratorFromFile
+abbr        kustomization file header
+alias       configmapFromFile
+	configMapGenerator:
+	- name: my-config-map
+		files:
+		- application.properties
