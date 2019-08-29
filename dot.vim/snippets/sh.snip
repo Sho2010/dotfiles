@@ -1,9 +1,27 @@
-snippet for in
+snippet for-in
 alias forin
 options indent
-  for file in $(ls -1); do
-  	echo $file;
-  done
+	for file in $(ls -1); do
+		echo $file;
+	done
+
+snippet for-in-line
+alias   forin-line
+abbr    forin lines
+options indent
+	IFS=$'\n'
+	for line in $(cat hoge.txt); do
+		echo $file;
+	done
+
+snippet for-in-read-file
+alias   forin-read
+abbr    forin fileline
+options indent
+	cat hoge.txt | while read line
+	do
+		echo $line
+	done
 
 snippet script_dir
 abbr    script
@@ -49,4 +67,37 @@ abbr    pipe status for bash
 snippet pipe_status_zsh
 abbr    pipe status for zsh
   ${pipestatus[@]}
+
+snippet     grep-and-sed
+abbr        search sed before append line
+alias       sed-and-grep
+	linenum=$(grep -n "${1:search_str}" $file | cut -f1 -d:)
+	gsed "${linenum}a\append_string" $file
+
+
+snippet     sed-append
+abbr        sed append line
+	# e.g. 2行目の後ろに追加
+	gsed "${1:2}a\ ${2:append_string}" $target_file
+
+snippet     sed-insert
+abbr        sed insert line (before address line)
+	# e.g. 2行目の前に追加
+	gsed "${1:2}i\ ${2:append_string}" $target_file
+
+snippet     sed-replace
+abbr        replace all target string
+	gsed -e "s/${1:target}/${2:replace}/g"
+
+snippet     sed-regex-append
+abbr        replace all target string(hold hit string)
+	gsed -e "s/${1:target}/${2:& append}/g"
+
+snippet     heredoc-variable-allocation
+abbr        variable allocation from heredoc
+	cat << EOF >> $heredoc_string
+	
+	heredoc contents
+	
+	EOF
 
