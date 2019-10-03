@@ -1,7 +1,12 @@
 snippet debug
 alias   command
 abbr    k8s debug tail command
-  command: ["/usr/bin/tail", "-f", "/dev/null"]
+	command: ["/usr/bin/tail", "-f", "/dev/null"]
+
+snippet istio-injection-annotation
+alias   annotation-istio
+abbr    istio sidecar injection option
+					idecar.istio.io/inject: "false"
 
 snippet     deployment
 abbr        k8s deployment manifest tempalte

@@ -59,3 +59,13 @@ alias       configmapFromFile
 	- name: my-config-map
 		files:
 		- application.properties
+
+snippet     istio-annotation
+abbr        annotation for envoy injection option
+	sidecar.istio.io/inject: "false"
+
+
+# template:
+#   metadata:
+#     annotations:
+#       sidecar.istio.io/inject: "false"
