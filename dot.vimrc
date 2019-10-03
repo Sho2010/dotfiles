@@ -143,9 +143,18 @@ endif
 "------------------------------------------------------
 "noremap <c-/><c-/>  :TComment<CR>
 
+"" quickfix: 編集許可と折り返し表示無効
+function! OpenModifiableQF()
+        cw
+        set modifiable
+        set nowrap
+endfunction
+
+au QuickfixCmdPost vimgrep call OpenModifiableQF()
 
 "=======================================================
 " load plugin vimrcs
 "------------------------------------------------------
-runtime! vimrcs/*.vim
-
+if !has('nvim')
+  runtime! vimrcs/*.vim
+endif
