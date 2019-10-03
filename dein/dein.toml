@@ -22,6 +22,10 @@ hook_add = '''
 [[plugins]] # denite file_mru source require this
 repo = 'Shougo/neomru.vim'
 
+[[plugins]]
+repo = 'himanoa/denite-git-grep'
+depends = ['Shougo/denite.nvim']
+
 [[plugins]] # high performance yank
 repo = 'Shougo/neoyank.vim'
 
@@ -72,6 +76,9 @@ hook_add = '''
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
+hook_add = '''
+    source ~/.vim/vimrcs/nerdtree.vim
+'''
 
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'

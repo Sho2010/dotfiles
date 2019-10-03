@@ -7,6 +7,7 @@ noremap [denite]c :<C-u>Denite command_history<CR>
 noremap [denite]y :<C-u>Denite neoyank<CR>
 noremap [denite]r :<C-u>Denite register<CR>
 noremap [denite]f :<C-u>Denite file/rec<CR>
+noremap [denite]g :<C-u>Denite git-grep:
 
 au FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
