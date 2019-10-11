@@ -97,6 +97,11 @@ snippet     sed-replace
 abbr        replace all target string
 	gsed -e "s/${1:target}/${2:replace}/g"
 
+snippet     sed-replace-and-ref
+abbr        replace all target string
+	# e.g. ENV['key'] > key
+	gsed -e "s/ENV\[\(.\+\)\]/\1/g"
+
 snippet     sed-regex-append
 abbr        replace all target string(hold hit string)
 	gsed -e "s/${1:target}/${2:& append}/g"
