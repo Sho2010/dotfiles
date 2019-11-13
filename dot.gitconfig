@@ -6,10 +6,11 @@
 	name = sho naito
 	email = sho20100@gmail.com
 [alias]
-    co = checkout
+    co = !cowsay 'checkoutでbranch移動 老害おめ' && echo "`git switch --create branch`"
     ci = commit
     st = status
     br = branch
+    sw = switch
     p = push
     unstage = reset HEAD --
     current-branch = rev-parse --abbrev-ref HEAD
