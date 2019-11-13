@@ -61,6 +61,7 @@ alias gf='git fetch'
 alias gg='git grep -i'
 alias gcd='ghq-peco'
 alias hcd='history-cd-peco'
+alias gpo='git fetch ; git pull origin'
 
 function ghq-peco() {
   cd $(ghq list -p | peco --query "$1")
@@ -106,6 +107,7 @@ alias kb='kustomize build'
 alias kc='kubectx'
 alias kd='kubectl describe'
 alias kg='kubectl get'
+alias kgyaml='kubectl get -oyaml'
 alias kns='kubens'
 
 # telepresence
@@ -249,19 +251,28 @@ function k8watch() {
   watch -n 1 kubectl get $1
 }
 
+function k8s-dig {
+  if [ -z $1 ]; then
+    echo 'Error: require host e.g. mysvc.default.svc.cluster.local'
+  fi
+  kubectl run dig-pod --image=centos:6 --restart=Never -i --rm -- dig $@
+}
+
+function k8s-run-debug-container() {
+  kubectl run debug --image=buildpack-deps --command -- /usr/bin/tail -f /dev/null
+}
+
+function k8s-run-mysql-container() {
+  kubectl run --expose --port 3306 mysql --image=mysql  \
+    --env="MYSQL_ROOT_PASSWORD=root"
+}
+
 
 # Google Cloud Platform
 function switch-gcp-project() {
   proj=`gcloud projects list | peco | awk '{print $1}'`
   gcloud config set project ${proj}
 }
-
-# switch AWS project
-function sw-aws-profile() {
-  echo current: $(export | grep AWS_PROFILE)
-  export AWS_PROFILE=$1
-}
-
 
 # ssh
 function historyssh() {
