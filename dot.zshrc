@@ -99,10 +99,6 @@ setopt hist_ignore_dups
 # 重複したヒストリは追加しない
 setopt hist_ignore_all_dups
 
-# GHQ_ROOT
-export GHQ_ROOT=~/src
-
-
 # PROMPT
 SUSHI=$'\U1F363 '
 HUM=$'\U1F439  '

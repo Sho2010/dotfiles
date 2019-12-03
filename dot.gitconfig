@@ -32,3 +32,6 @@
   compactionHeuristic = true
 [fetch]
 	prune = true
+[ghq]
+  root = /Users/sho.naito/src
+  root = /Users/sho.naito/go/src
