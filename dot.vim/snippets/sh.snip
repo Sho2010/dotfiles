@@ -114,3 +114,11 @@ abbr        variable allocation from heredoc
 
 	EOF
 
+snippet     nginx-syntax
+abbr        nginx syntax check in docker
+  SCRIPT_DIR=$(cd $(dirname $0);pwd)
+  UPSTREAM=$(basename $SCRIPT_DIR)
+
+  docker run -it --rm \
+    --volume ${SCRIPT_DIR}/dockerfiles/ci/nginx/nginx.conf:/etc/nginx/nginx.conf \
+    nginx bash -c "echo 127.0.0.1 $UPSTREAM >> /etc/hosts && nginx -t"
