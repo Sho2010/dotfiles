@@ -2,7 +2,8 @@
 " After this is configured, :ALEFix will try and fix your JS code with ESLint.
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
-\   'ruby': ['rubocop']
+\   'ruby': ['rubocop'],
+\   'go': ['gofmt', 'goimports']
 \}
 
 " let g:ale_fix_on_save = 1
