@@ -1,16 +1,27 @@
 function sw-aws-environment() {
-  read -r -d '' envs <<-'EOF'
-staging
-production
-EOF
-
-  env=$(echo $envs | peco)
-
-  if [ ! -z $env ]; then
-    echo "Set AWS_REGION=$env"
-    export AWS_PROFILE=$env
+  if [ ! -z $1 ]; then
+    echo "Set AWS_PROFILE=$1"
+    export AWS_PROFILE=$1
+    return
   fi
 
+#   read -r -d '' envs <<-'EOF'
+# staging
+# production
+# EOF
+#
+#   env=$(echo $envs | peco)
+
+  env=$(cat ~/.aws/config | grep -e '\[.*' | peco | tr -d [ | tr -d ] )
+
+  if [ ! -z $env ]; then
+    echo "Set AWS_PROFILE=$env"
+    export AWS_PROFILE=$env
+  fi
+}
+
+function sw-aws-profile() {
+  sw-aws-environment $@
 }
 
 function sw-aws-region() {
