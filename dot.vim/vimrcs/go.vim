@@ -3,7 +3,7 @@
 "------------------------------------------------------
 let mapleader = "\<Space>"
 au FileType go nmap [golang] <Nop>
-au FileType go nmap <leader> [golang]
+au FileType go nmap <Leader> [golang]
 
 au FileType go nmap [golang]r <Plug>(go-run)
 au FileType go nmap [golang]b <Plug>(go-build)
@@ -13,6 +13,8 @@ au FileType go nmap [golang]g <Plug>(go-fmt)
 au FileType go nmap [golang]c <Plug>(go-coverage-toggle)
 
 au FileType go nmap [golang]i :<C-u>GoInfo<CR>
+au FileType go nmap [golang]f :<C-u>GoFmt<CR>
+au FileType go nmap [golang]l :<C-u>GoLint<CR>
 
 au FileType go map <C-n> :cnext<CR>
 au FileType go map <C-m> :cprevious<CR>
