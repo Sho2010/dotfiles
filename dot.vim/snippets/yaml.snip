@@ -11,34 +11,35 @@ abbr    istio sidecar injection option
 snippet     deployment
 abbr        k8s deployment manifest tempalte
 options     head
-  apiVersion: extensions/v1beta1
-  kind: Deployment
+	apiVersion: extensions/v1beta1
+	kind: Deployment
 		metadata:
 		name: ${1:application}
 		labels:
-			component: "$1"
-  spec:
+			app: "$1"
+	spec:
 		replicas: 1
 		template:
 			metadata:
 				labels:
-					component: "$1"
-				spec:
-					containers:
-					- name: $1
-						image: asia.gcr.io/PROJECT/$1
-						imagePullPolicy: IfNotPresent
-					envFrom:
-					- configMapRef:
-							name: common-config
-					- secretRef:
-							name: common-secret
-					resources:
-						limits:
-							memory: 512Mi
-						requests:
-							cpu: 100m
-							memory: 256Mi
+					app: "$1"
+			spec:
+				containers:
+				- name: $1
+					image: asia.gcr.io/PROJECT/$1
+					imagePullPolicy: IfNotPresent
+				command: ["/usr/bin/tail", "-f", "/dev/null"]
+				envFrom:
+				- configMapRef:
+						name: common-config
+				- secretRef:
+						name: common-secret
+				resources:
+					limits:
+						memory: 512Mi
+					requests:
+						cpu: 100m
+						memory: 256Mi
 
 snippet     service
 alias       clusterip
@@ -193,3 +194,19 @@ options     head
   				- secretRef:
   						name: example-secret
 
+snippet     single-file-overwrite
+abbr        overrite file from configmap
+	spec:
+		containers:
+			# target full path
+			volumeMounts:
+			- name: conf
+				mountPath: /etc/nginx/nginx.conf
+				subPath: server.xml
+		volumes:
+			- name: conf
+				configMap:
+					name: ${1:config_map_name}
+					items:
+					- key: nginx.conf
+						path: nginx.conf

@@ -42,3 +42,32 @@ options     head
 snippet whitelist
 abbr    rails console whitelist for docker
   config.web_console.whitelisted_ips = "0.0.0.0/0"
+
+snippet     active_record_sample
+abbr        abbr
+  require 'bundler/inline'
+
+  gemfile(quiet: true) do
+    source 'https://rubygems.org'
+
+    gem 'activerecord', '6.0.0'
+    gem 'sqlite3'
+  end
+
+  require 'active_record'
+  require 'logger'
+
+  ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
+  ActiveRecord::Base.default_timezone = :local
+
+  ActiveRecord::Schema.define do
+    create_table :users, force: true do |t|
+      t.time :woke_up_at, default: '07:00:00', null: false
+    end
+  end
+
+  class User < ActiveRecord::Base
+  end
+
+  p User.create!

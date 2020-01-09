@@ -63,6 +63,10 @@ alias gcd='ghq-peco'
 alias hcd='history-cd-peco'
 alias gpo='git fetch ; git pull origin'
 
+function gpeco() {
+  git checkout $(git branch | peco)
+}
+
 function ghq-peco() {
   cd $(ghq list -p | peco --query "$1")
 }
@@ -127,6 +131,7 @@ alias kdg="kubectl describe gateway"
 
 alias sw-context='switch-k8s-context'
 alias sw-ns='switch-k8s-namespace'
+alias sw-kubeconfig='switch-k8s-config'
 
 alias h='hub'
 alias hb='hub browse'
@@ -154,6 +159,13 @@ function switch-k8s-context() {
   kubectx $1
 }
 
+function switch-k8s-config() {
+  config=$(ls -1 ~/.kube/ | peco --prompt "Switch KUBECONFIG. Current: $KUBECONFIG >")
+  if [ ! -z "$config" ]; then
+    export KUBECONFIG="$HOME/.kube/$config"
+  fi
+
+}
 
 # misc
 alias ghost='gh-ost'

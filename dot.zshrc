@@ -124,6 +124,7 @@ autoload -U compinit && compinit
 . ~/dotfiles/aliases
 . ~/dotfiles/dot.zsh-aliases
 . ~/dotfiles/net_tools_deprecated.sh
+. ~/dotfiles/aws.sh
 . ~/.zshrc.local
 
 # The next line updates PATH for the Google Cloud SDK.

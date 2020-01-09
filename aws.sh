@@ -36,6 +36,7 @@ EOF
   if [ ! -z $region ]; then
     echo "Set AWS_REGION=$region"
     export AWS_REGION=$region
+    export AWS_DEFAULT_REGION=$region
   fi
 
 }
