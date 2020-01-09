@@ -3,7 +3,12 @@
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'ruby': ['rubocop'],
-\   'go': ['gofmt', 'goimports']
+\   'go': ['gofmt', 'goimports'],
+\   'json': ['fixjson']
+\}
+
+let g:ale_linters = {
+\   'json': ['jsonlint']
 \}
 
 " let g:ale_fix_on_save = 1
@@ -15,5 +20,6 @@ let g:ale_completion_enabled = 1
 
 " aliases
 :command Fa ALEFix
+:command Fl ALELint
 
 

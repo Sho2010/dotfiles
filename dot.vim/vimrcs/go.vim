@@ -7,28 +7,41 @@ au FileType go nmap <Leader> [golang]
 
 au FileType go nmap [golang]r <Plug>(go-run)
 au FileType go nmap [golang]b <Plug>(go-build)
-au FileType go nmap [golang]t <Plug>(go-test)
-au FileType go nmap [golang]g <Plug>(go-test)
-au FileType go nmap [golang]g <Plug>(go-fmt)
+au FileType go nmap [golang]f <Plug>(go-fmt)
 au FileType go nmap [golang]c <Plug>(go-coverage-toggle)
 
-au FileType go nmap [golang]i :<C-u>GoInfo<CR>
-au FileType go nmap [golang]f :<C-u>GoFmt<CR>
-au FileType go nmap [golang]l :<C-u>GoLint<CR>
+" test
+au FileType go nnoremap [golang]tt :<C-u>GoTest<CR>
+au FileType go nnoremap [golang]tf :<C-u>GoTestFunc<CR>
+au FileType go nnoremap [golang]tc :<C-u>GoTestCompile<CR>
+
+" source <> test file witch
+au FileType go nnoremap [golang]a :<C-u>GoAlternate<CR>
+
+au FileType go nmap [golang]i <Plug>(go-info)
+au FileType go nmap [golang]l <Plug>(go-lint)
 
 au FileType go map <C-n> :cnext<CR>
-au FileType go map <C-m> :cprevious<CR>
-au FileType go nnoremap <leader>a :cclose<CR>
+au FileType go map <C-p> :cprevious<CR>
+au FileType go nnoremap <leader>z :cclose<bar>:lcl<CR>
+" sample
+" au FileType go nmap [golang]l :<C-u>GoLint<CR>
 
 au FileType go set autowrite
+
+au FileType go inoremap <Tab> <C-x><C-o>
 
 " auto import
 let g:go_fmt_command = "goimports"
 
+" カーソル上の識別子の自動ハイライト
+let g:go_auto_sameids = 1
+
 " カーソル上のワードに対して:GoInfo実行
 " let g:go_auto_type_info = 1
 " :GoInfo更新時間 Default->800
-" autocmd FileType go set updatetime=1000
+" autocmd FileType go set updatetime=100
+"
 
 " === Others ===
 " GoInstallBinaries: vim-goに必要なツールのインストール(go get がバックグラウンドで動いて大変時間がかかる)
