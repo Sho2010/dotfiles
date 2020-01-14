@@ -24,11 +24,15 @@ au FileType go nmap [golang]l <Plug>(go-lint)
 au FileType go map <C-n> :cnext<CR>
 au FileType go map <C-p> :cprevious<CR>
 au FileType go nnoremap <leader>z :cclose<bar>:lcl<CR>
+
+" Debugger
+au FileType go nmap [golang]d :<C-u>GoDebugBreakpoint<CR>
+au FileType go map [golang]<F9> :<C-u>GoDebugStart<CR>
+
 " sample
 " au FileType go nmap [golang]l :<C-u>GoLint<CR>
 
 au FileType go set autowrite
-
 au FileType go inoremap <Tab> <C-x><C-o>
 
 " auto import
