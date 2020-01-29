@@ -1,3 +1,5 @@
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+
 "" Put this in vimrc or a plugin file of your own.
 " After this is configured, :ALEFix will try and fix your JS code with ESLint.
 let g:ale_fixers = {
@@ -8,8 +10,17 @@ let g:ale_fixers = {
 \}
 
 let g:ale_linters = {
-\   'json': ['jsonlint']
+\   'json': ['jsonlint'],
+\   'sh': ['shellcheck']
 \}
+
+" call ale#linter#Define('sh', {
+" \   'name': 'shell',
+" \   'output_stream': 'stderr',
+" \   'executable': function('ale_linters#sh#shell#GetExecutable'),
+" \   'command': function('ale_linters#sh#shell#GetCommand'),
+" \   'callback': 'ale_linters#sh#shell#Handle',
+" \})
 
 " let g:ale_fix_on_save = 1
 let g:ale_sign_error = 'E'
