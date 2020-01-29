@@ -26,6 +26,7 @@ au FileType go map <C-p> :cprevious<CR>
 au FileType go nnoremap <leader>z :cclose<bar>:lcl<CR>
 
 " Debugger
+au FileType go nmap [golang]r :<C-u>GoRun<CR>
 au FileType go nmap [golang]d :<C-u>GoDebugBreakpoint<CR>
 au FileType go map [golang]<F9> :<C-u>GoDebugStart<CR>
 
@@ -45,7 +46,11 @@ let g:go_auto_sameids = 1
 " let g:go_auto_type_info = 1
 " :GoInfo更新時間 Default->800
 " autocmd FileType go set updatetime=100
-"
+
+" :GoRun 実行時のwindow設定
+let g:go_term_mode = "split"
+let g:go_term_height = 10
+let g:go_term_width = 10
 
 " === Others ===
 " GoInstallBinaries: vim-goに必要なツールのインストール(go get がバックグラウンドで動いて大変時間がかかる)
