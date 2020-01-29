@@ -31,5 +31,5 @@ route () {
   echo 'Use `ip r`'
 }
 
-alias nslookup='cowsay dig使え'
+alias nslookup='cowsay dig -x 使え'
 
