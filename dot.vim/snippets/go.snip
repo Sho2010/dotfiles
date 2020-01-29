@@ -24,3 +24,9 @@ abbr        test function with table data
 			}
 		}
 	}
+
+snippet     if_with_len
+abbr        string empty check
+	if len(s) == 0 {
+	   return nil, errors.New("missing string")
+	}
