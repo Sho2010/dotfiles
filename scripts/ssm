@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if ! type peco > /dev/null 2>&1 ; then
+  echo 'Require peco. Please install peco'
+  exit 100
+fi
+
+target_server_name=$(peco --prompt "Select server to start-session >" << EOS
+sentry
+datadogprod0001
+datadogstg0001
+fluentd0001
+fluentd0002
+fluentd0003
+fluentd0004
+fluentdstg0001
+fluentdstg0002
+EOS
+)
+
+if [ -z "${target_server_name}" ]; then
+  exit
+fi
+
+instance_id=$(aws ec2 describe-instances --filter "Name=tag:Name,Values=${target_server_name}" --query "Reservations[].Instances[?State.Name == 'running'].InstanceId[]" --output text)
+
+aws ssm start-session --target "$instance_id"
+
