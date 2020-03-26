@@ -108,7 +108,17 @@ abbr        replace all target string(hold hit string)
 
 snippet     heredoc-variable-allocation
 abbr        variable allocation from heredoc
-	cat << EOF >> $heredoc_string
+	read -r -d '' heredoc_variable <<'EOF'
+
+	heredoc contents
+
+	EOF
+
+	echo $heredoc_variable
+
+snippet     heredoc-to-file
+abbr        File write from heredoc
+	cat << EOF >> /tmp/heredoc_file
 
 	heredoc contents
 
@@ -122,3 +132,11 @@ abbr        nginx syntax check in docker
   docker run -it --rm \
     --volume ${SCRIPT_DIR}/dockerfiles/ci/nginx/nginx.conf:/etc/nginx/nginx.conf \
     nginx bash -c "echo 127.0.0.1 $UPSTREAM >> /etc/hosts && nginx -t"
+
+snippet     snake_to_camel
+abbr        snake to camel
+	if [ -z "\$1" ]; then
+		gsed -r 's/(^|_)([a-z])/\U\2/g'
+	else
+		echo "\$1" | sed -r 's/(^|_)([a-z])/\U\2/g'
+	fi
