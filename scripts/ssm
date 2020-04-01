@@ -5,6 +5,7 @@ if ! type peco > /dev/null 2>&1 ; then
   exit 100
 fi
 
+export AWS_PROFILE=production
 target_server_name=$(peco --prompt "Select server to start-session >" << EOS
 sentry
 datadogprod0001
