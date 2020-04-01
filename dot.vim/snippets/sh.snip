@@ -79,9 +79,16 @@ abbr    pipe status for zsh
 snippet     grep-and-sed
 abbr        search sed before append line
 alias       sed-and-grep
+	# search_str を探して 見つかった行に対してappend_stringする
+	# 複数見つかると動かないので注意
 	linenum=$(grep -n "${1:search_str}" $file | cut -f1 -d:)
 	gsed "${linenum}a\append_string" $file
 
+snippet     sed-search-append
+alias       grep-append
+abbr        Append line to after searched word.
+	# PATTERNが見つかった次の行にappend_stringを追加する
+	gsed "/PATTERN/ a\append_string" $file
 
 snippet     sed-append
 abbr        sed append line
