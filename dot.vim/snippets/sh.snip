@@ -140,3 +140,26 @@ abbr        snake to camel
 	else
 		echo "\$1" | sed -r 's/(^|_)([a-z])/\U\2/g'
 	fi
+
+snippet     split
+abbr        csv, tsv split
+	IFS_ORIGINAL="$IFS"
+	IFS=,
+	arr=($str)
+	IFS="$IFS_ORIGINAL"
+
+	for v in "${arr[@]}"; do
+	  echo "[$v]"
+	done
+
+snippet     parse-key-value
+abbr        key-value
+	IFS_ORGIN="$IFS"
+	IFS='='
+	cat key_value.txt | while read KEY VALUE
+	do
+		echo "$KEY $VALUE"
+	done
+	IFS="$IFS_ORGIN"
+
+
