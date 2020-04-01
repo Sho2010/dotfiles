@@ -110,6 +110,9 @@ if [ "${PRODUCTION}" = "true" ] ; then
   PROMPT="${PROMPT}${SKULL} "
 fi
 
+# if [ -e /usr/local/share/zsh-completions ]; then
+#   fpath=(/usr/local/share/zsh-completions $fpath)
+# fi
 autoload -U compinit && compinit
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
