@@ -1,3 +1,4 @@
+
 snippet debug
 alias   command
 abbr    k8s debug tail command
@@ -228,9 +229,33 @@ options     head
 	apiVersion: v1
 	kind: Secret
 	metadata:
-	  name: mysecret
+		name: mysecret
 		namespace: mynamespace
 	type: Opaque
 	data:
 	  username: YWRtaW4=
 	  password: MWYyZDFlMmU2N2Rm
+
+snippet     external-secret
+abbr        kubernetes ExternalSecret manifest template
+	apiVersion: 'kubernetes-client.io/v1'
+	kind: ExternalSecret
+	metadata:
+		name: parameter-store-secret
+		namespace: mynamespace
+	spec:
+		backendType: systemManager
+		# optional: specify role to assume when retrieving the data
+		# roleArn: arn:aws:iam::123456789012:role/test-role
+		data:
+			- key: /path/to/parameter_store/password
+				name: PASSWORD
+
+snippet     envFrom
+abbr        k8s deployment envFrom
+	envFrom:
+	- configMapRef:
+		name: common-config
+	- secretRef:
+		name: top-secret
+
