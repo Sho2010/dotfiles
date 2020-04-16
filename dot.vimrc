@@ -133,6 +133,10 @@ hi MatchParen cterm=bold ctermbg=none ctermfg=blue
 "補完
 imap <C-@> <C-x><C-o>
 
+" use login shell
+set shell=zsh\ -l
+
+
 "  ʕ◔ϖ◔ʔ
 if $GOROOT != ''
   set rtp+=$GOROOT/misc/vim
