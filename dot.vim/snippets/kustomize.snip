@@ -48,7 +48,7 @@ snippet     configMapGenerator
 abbr        kustomization file header
 alias       configmap
 	configMapGenerator:
-	- name: my-config-map
+	- name: my-config
 		literals:
 		- TZ=Asia/Tokyo
 
@@ -56,7 +56,7 @@ snippet     configMapGeneratorFromFile
 abbr        kustomization file header
 alias       configmapFromFile
 	configMapGenerator:
-	- name: my-config-map
+	- name: my-config
 		files:
 		- application.properties
 
