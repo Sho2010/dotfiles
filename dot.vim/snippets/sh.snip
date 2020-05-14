@@ -113,6 +113,11 @@ snippet     sed-regex-append
 abbr        replace all target string(hold hit string)
 	gsed -e "s/${1:target}/${2:& append}/g"
 
+snippet     sed-file-find-replace
+abbr        replace string on the find command result files
+	# backup fileを残す場合は -iにsuffixを指定する
+	find ./ -name '*.txt' -type f -exec gsed -i -e "s/version 2$/version 2.1/g" {} \;
+
 snippet     heredoc-variable-allocation
 abbr        variable allocation from heredoc
 	read -r -d '' heredoc_variable <<'EOF'
@@ -159,6 +164,14 @@ abbr        csv, tsv split
 	  echo "[$v]"
 	done
 
+snippet     split-path
+abbr        path to array
+options     head
+	OIFS=$IFS
+	IFS=/
+	read -r -a PATH_ARRAY <<<"/path/to/file"
+	IFS=$OIFS
+
 snippet     parse-key-value
 abbr        key-value
 	IFS_ORGIN="$IFS"
@@ -169,4 +182,25 @@ abbr        key-value
 	done
 	IFS="$IFS_ORGIN"
 
+snippet     sed-all-samples
+abbr        print sed all samples
+	gsed -e "s/oldtext/newtext/g"         #文字列の変換
+	gsed -e "s/text//"                    #文字列の削除
+	gsed -e "s/^text//"                   #行頭にtextがあった場合削除
+	gsed -e "s/text\$//"                  #行末にtextがあった場合削除
+	gsed -e "s/abc/abcxyz/g"              #abcの後に文字列を追加
+	gsed -e "s/^/text/"                   #行頭に文字列を追加
+	gsed -e "s/\$text/"                   #行末に文字列を追加
+	gsed -e "s/.*/abc/"                   #.*は全ての文字列を表す
+	gsed -e 's/<tab>/<space>/g'           #タブをスペースに変換
+	gsed -e 's/<space><space>*/<space>/g' #複数のスペースを1つのスペースに変換
+	# ホワイトスペースを1つのスペースに変換
+	gsed -e 's/[<space><tab>][<space><tab>]*/<space>/g'
+	gsed -e 's/^[<space><tab>]*//'        #行頭のホワイトスペースを削除
+	gsed -e 's/[<space><tab>]*$//'        #行末のホワイトスペースを削除
+	gsed -e "/text/d"                     #textを含んだ行を削除
+	gsed -e '/^$/d'                       #空白行を削除
+	gsed -e "5,20s/oldtext/newtext/g"     #5行目から20行目を変換
+	gsed -e '1d'                          #1行目を削除
+	gsed -n '1p'                          #1行目を表示
 
