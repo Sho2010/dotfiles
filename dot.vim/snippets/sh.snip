@@ -184,6 +184,7 @@ abbr        key-value
 
 snippet     sed-all-samples
 abbr        print sed all samples
+	# https://qiita.com/hirohiro77/items/7fe2f68781c41777e507
 	gsed -e "s/oldtext/newtext/g"         #文字列の変換
 	gsed -e "s/text//"                    #文字列の削除
 	gsed -e "s/^text//"                   #行頭にtextがあった場合削除
@@ -203,4 +204,4 @@ abbr        print sed all samples
 	gsed -e "5,20s/oldtext/newtext/g"     #5行目から20行目を変換
 	gsed -e '1d'                          #1行目を削除
 	gsed -n '1p'                          #1行目を表示
-
+	gsed'/^#/d' source.txt                #検索して該当行を削除
