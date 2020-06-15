@@ -40,7 +40,7 @@ case "${OSTYPE}" in
 darwin*)
   # only mac
   brew install reattach-to-user-namespace
-  brew install vim
+  brew install nvim
 
   brew install caskroom/cask/dropbox
   brew install caskroom/cask/skitch
