@@ -229,8 +229,8 @@ options     head
 	apiVersion: v1
 	kind: Secret
 	metadata:
-		name: mysecret
-		namespace: mynamespace
+		name: `fnamemodify(expand("%:p:h")."/../../" , ':p:h:t')`-secret
+		namespace: `fnamemodify(expand("%:p:h")."/../../" , ':p:h:t')`
 	type: Opaque
 	data:
 	  username: YWRtaW4=
@@ -242,7 +242,7 @@ abbr        kubernetes ExternalSecret manifest template
 	kind: ExternalSecret
 	metadata:
 		name: parameter-store-secret
-		namespace: mynamespace
+		namespace: `fnamemodify(expand("%:p:h")."/../../" , ':p:h:t')`
 	spec:
 		backendType: systemManager
 		# optional: specify role to assume when retrieving the data
