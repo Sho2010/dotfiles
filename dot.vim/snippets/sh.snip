@@ -205,3 +205,11 @@ abbr        print sed all samples
 	gsed -e '1d'                          #1行目を削除
 	gsed -n '1p'                          #1行目を表示
 	gsed'/^#/d' source.txt                #検索して該当行を削除
+
+snippet     if-command-return-code
+abbr        コマンドの実行結果をチェック
+	if ! ${1:command}
+	then
+	  echo "$1 fail"
+	fi
+
