@@ -214,12 +214,12 @@ abbr        overrite file from configmap
 			volumeMounts:
 			- name: conf
 				mountPath: /etc/nginx/nginx.conf
-				subPath: server.xml
+				subPath: server.xml # if require
 		volumes:
 			- name: conf
 				configMap:
 					name: ${1:config_map_name}
-					items:
+					items: # if require
 					- key: nginx.conf
 						path: nginx.conf
 
