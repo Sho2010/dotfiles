@@ -25,6 +25,7 @@ brew install tmux
 brew install tree
 brew install watch
 brew install yarn
+brew install ghq
 
 # k8s
 brew install kustomize
@@ -36,11 +37,15 @@ brew install kubectx
 brew install stern
 brew install kube-ps1
 
+# for nvim
+brew install nvim
+brew install python@3
+pip3 install neovim
+
 case "${OSTYPE}" in
 darwin*)
   # only mac
   brew install reattach-to-user-namespace
-  brew install nvim
 
   brew install caskroom/cask/dropbox
   brew install caskroom/cask/skitch
