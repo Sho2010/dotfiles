@@ -19,8 +19,6 @@ alias dcomtest="docker-compose run --rm app test"
 # go
 alias gohome="cd $GOPATH"
 
-alias sed='gsed'
-
 bindkey '^p' up-line-or-beginning-search
 
 function dcombe() {
@@ -81,6 +79,7 @@ darwin*)
   alias ls='ls -G'
   alias ll='ls -la'
   alias la="ll"
+  alias sed='gsed'
   ;;
 linux*)
   alias ls='ls --color'
