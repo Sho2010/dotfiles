@@ -26,6 +26,7 @@ brew install tree
 brew install watch
 brew install yarn
 brew install ghq
+brew install shellcheck
 
 # k8s
 brew install kustomize
