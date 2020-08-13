@@ -8,8 +8,16 @@ call deoplete#custom#option('enable_smart_case', 1)
 call deoplete#custom#option('max_list', 100)
 call deoplete#custom#var('file', 'enable_buffer_path', v:true)
 
-let g:deoplete#sources = {}
-let g:deoplete#sources._=['omni', 'buffer', 'member', 'tag', 'ultisnips', 'file']
+call deoplete#custom#option({
+  \ 'smart_case': v:true,
+  \ 'profile': v:true,
+  \ })
+
+" previewを表示しない
+set completeopt-=preview
+
+" let g:deoplete#sources = {}
+" let g:deoplete#sources._=['omni', 'buffer', 'member', 'tag', 'ultisnips', 'file']
 
 let g:deoplete#complete_method = "omnifunc"
 

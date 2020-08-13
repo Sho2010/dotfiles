@@ -19,8 +19,6 @@ alias dcomtest="docker-compose run --rm app test"
 # go
 alias gohome="cd $GOPATH"
 
-alias sed='gsed'
-
 bindkey '^p' up-line-or-beginning-search
 
 function dcombe() {
@@ -67,6 +65,11 @@ function gpeco() {
   git checkout $(git branch | peco)
 }
 
+function manifest-dir-peco() {
+  ${MANIFEST_DIR:-"/home/sho2010/src/github.com/FiNCDeveloper/finc_infra/k8s"}
+  cd $(ls -1 --color=never $MANIFEST_DIR | peco --query "$1")
+}
+
 function ghq-peco() {
   cd $(ghq list -p | peco --query "$1")
 }
@@ -81,6 +84,7 @@ darwin*)
   alias ls='ls -G'
   alias ll='ls -la'
   alias la="ll"
+  alias sed='gsed'
   ;;
 linux*)
   alias ls='ls --color'
@@ -128,6 +132,7 @@ alias kgg="kubectl get gateway"
 alias kdv="kubectl describe VirtualService"
 alias kdd="kubectl describe DestinationRule"
 alias kdg="kubectl describe gateway"
+alias kcd="manifest-dir-peco"
 
 alias sw-context='switch-k8s-context'
 alias sw-ns='switch-k8s-namespace'
