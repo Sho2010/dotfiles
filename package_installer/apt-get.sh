@@ -4,6 +4,7 @@ sudo apt-get install -y \
   build-essential \
   curl \
   git-core \
+  libmysqlclient-dev \
   libreadline-dev \
   libreadline5 \
   libssl-dev \
