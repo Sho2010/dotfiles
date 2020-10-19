@@ -247,3 +247,10 @@ abbr        awk-後方参照
 options     head
 	awk 'match(\$0, /bundle exec rake (.*)/, a){print a[1]}'
 
+snippet     if-command-return-code
+abbr        コマンドの実行結果をチェック
+	if ! ${1:command}
+	then
+	  echo "$1 fail"
+	fi
+

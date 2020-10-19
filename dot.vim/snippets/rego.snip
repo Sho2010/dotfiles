@@ -1,0 +1,41 @@
+snippet     deny
+abbr        deny
+	deny[msg] {
+	  input.metadata.name != "awesome-service"
+	  msg = sprintf("%s", ["Not awesome-service"])
+	}
+
+snippet     deny-with-name
+abbr        deny
+	deny_awesome_service_check[msg] {
+	  not input.metadata.name != "awesome-service"
+	  msg = sprintf("%s", ["Not awesome-service"])
+	}
+
+snippet     warn
+abbr        warn
+	warn[msg] {
+	  input.metadata.name != "awesome-service"
+	  msg = sprintf("%s", ["Not awesome-service"])
+	}
+
+snippet     sprintf
+abbr        sprintf
+	sprintf("%s", ["${1:message}"])
+
+snippet     sprintf-set
+abbr        sprintf
+	containers := input.spec.template.spec.containers[_]
+	sprintf("%v", [containers])
+
+snippet     trace
+	trace("${1:string}")
+
+snippet     trace-sprintf
+	trace(sprintf("%s", [${1:var}]))
+
+snippet     trace-set
+	containers := input.spec.template.spec.containers[_]
+	str := sprintf("%v", [containers])
+
+	trace(str)

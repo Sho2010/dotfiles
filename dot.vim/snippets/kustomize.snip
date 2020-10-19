@@ -48,7 +48,7 @@ snippet     configMapGenerator
 abbr        kustomization file header
 alias       configmap
 	configMapGenerator:
-	- name: my-config
+	- name: `fnamemodify(expand("%:p:h")."/../../" , ':p:h:t')`-config
 		literals:
 		- TZ=Asia/Tokyo
 
