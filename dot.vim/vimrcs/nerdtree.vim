@@ -1,3 +1,5 @@
+nnoremap <Leader>n :NERDTreeFind<Enter>
+
 " aliases
 :command NeCLose NERDTreeClose
 
