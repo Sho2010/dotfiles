@@ -118,6 +118,7 @@ alias kg='kubectl get'
 alias kgyaml='kubectl get -oyaml'
 alias kns='kubens'
 alias ct='conftest'
+alias ctt='conftest test'
 
 # telepresence
 alias tele=telepresence
