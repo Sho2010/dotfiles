@@ -107,6 +107,14 @@
 *~PgDn::
     Return
 
+; memo
+; if ! WindowActive("ahk.exe WindowsTerminal.exe"){
+; }
+
+; memo
+; #If WInNotActive("ahk.exe WindowsTerminal.exe")
+; #IfWInNotActive
+
 ; 上部メニューがアクティブになるのを抑制
 *~LCtrl::Send {Blind}{vk07}
 *~RCtrl::Send {Blind}{vk07}
