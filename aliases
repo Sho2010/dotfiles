@@ -66,8 +66,8 @@ function gpeco() {
 }
 
 function manifest-dir-peco() {
-  ${MANIFEST_DIR:-"/home/sho2010/src/github.com/FiNCDeveloper/finc_infra/k8s"}
-  cd $(ls -1 --color=never $MANIFEST_DIR | peco --query "$1")
+  ${MANIFEST_DIR:-"$HOME/src/github.com/FiNCDeveloper/finc_infra/k8s"}
+  cd $(ls -1 $MANIFEST_DIR | peco --query "$1")
 }
 
 function ghq-peco() {
@@ -118,6 +118,7 @@ alias kg='kubectl get'
 alias kgyaml='kubectl get -oyaml'
 alias kns='kubens'
 alias ct='conftest'
+alias ctt='conftest test'
 
 # telepresence
 alias tele=telepresence

@@ -5,6 +5,14 @@ options indent
 		echo $file;
 	done
 
+snippet     for-in-array
+abbr        for in with array
+	ENVS=(Production Staging)
+	for file in "${ENVS[@]}"; do
+	  echo $file
+	done
+
+
 snippet for-in-line
 alias   forin-line
 abbr    forin lines
@@ -261,4 +269,8 @@ abbr        末尾 n行だけ削る
 snippet     tail+
 abbr        先頭 n行だけ削る
 	tail -n+2
+
+snippet     array
+options     head
+	ARRAY=(abc def ggg)
 
