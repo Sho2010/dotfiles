@@ -1,9 +1,9 @@
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_add = '''
-    source ~/.vim/vimrcs/go.vim
-'''
+# [[plugins]]
+# repo = 'fatih/vim-go'
+# on_ft = 'go'
+# hook_add = '''
+#  source ~/.config/nvim/vimrcs/vim-go.vim
+# '''
 
 # go completion
 [[plugins]]
