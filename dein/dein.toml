@@ -87,3 +87,27 @@ repo = 'bronson/vim-trailing-whitespace'
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
+repo = 'previm/previm'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+###fzf.vim
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+  nnoremap <silent> <Leader>g :<C-u>silent call <SID>find_rip_grep()<CR>
+
+  function! s:find_rip_grep() abort
+      call fzf#vim#grep(
+                  \   'rg --ignore-file ~/.ignore --column --line-number --no-heading --hidden --smart-case .+',
+                  \   1,
+                  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
+                  \   0,
+                  \ )
+  endfunction
+'''
+
+[[plugins]]
+repo = 'liuchengxu/vista.vim'

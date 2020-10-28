@@ -1,76 +1,125 @@
-"=======================================================
-" vim-go
-"------------------------------------------------------
-let mapleader = "\<Space>"
-au FileType go nmap [golang] <Nop>
-au FileType go nmap <Leader> [golang]
+nnoremap <silent> <Leader>g :<C-u>silent call <SID>find_rip_grep()<CR>
 
-au FileType go nmap [golang]r <Plug>(go-run)
-au FileType go nmap [golang]b <Plug>(go-build)
-au FileType go nmap [golang]f <Plug>(go-fmt)
-au FileType go nmap [golang]c <Plug>(go-coverage-toggle)
+function! s:find_rip_grep() abort
+    call fzf#vim#grep(
+                \   'rg --ignore-file ~/.ignore --column --line-number --no-heading --hidden --smart-case .+',
+                \   1,
+                \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
+                \   0,
+                \ )
+endfunction
 
-" test
-au FileType go nnoremap [golang]tt :<C-u>GoTest<CR>
-au FileType go nnoremap [golang]tf :<C-u>GoTestFunc<CR>
-au FileType go nnoremap [golang]tc :<C-u>GoTestCompile<CR>
+" 定義ジャンプ後にコールバックで呼ぶ関数
+function! Language_client_definition_callback(output, ...) abort
+    normal! zz
+    call vista#util#Blink(3, 100)
+endfunction
 
-" source <> test file witch
-au FileType go nnoremap [golang]a :<C-u>GoAlternate<CR>
+" ドキュメントのハイライトをトグルさせるための設定
+let s:ls_is_highlighting_document = v:false
+function! s:ls_toggle_document_highlight() abort
+    if !s:ls_is_highlighting_document
+        call LanguageClient#textDocument_documentHighlight()
+        let s:ls_is_highlighting_document = v:true
+    else
+        call LanguageClient#clearDocumentHighlight()
+        let s:ls_is_highlighting_document = v:false
+    end
+endfunction
 
-au FileType go nmap [golang]i <Plug>(go-info)
-au FileType go nmap [golang]l <Plug>(go-lint)
+" ドキュメントの表示をトグルさせるための設定
+function! s:ls_toggle_document_hover() abort
+    let hover_buf = s:ls_get_hover_buf()
+    if hover_buf == 0
+        call LanguageClient#textDocument_hover()
+    else
+        execute(printf('bwipe! %s', hover_buf))
+    endif
+endfunction
 
-au FileType go map <C-n> :cnext<CR>
-au FileType go map <C-p> :cprevious<CR>
-au FileType go nnoremap <leader>z :cclose<bar>:lcl<CR>
+function! s:ls_get_hover_buf() abort
+    for w in nvim_list_wins()
+        let bufnum = nvim_win_get_buf(w)
+        let bufname = bufname(bufnum)
+        if bufname ==# '__LanguageClient__'
+            return bufnum
+        endif
+    endfor
 
-" Debugger
-au FileType go nmap [golang]r :<C-u>GoRun<CR>
-au FileType go nmap [golang]d :<C-u>GoDebugBreakpoint<CR>
-au FileType go map [golang]<F9> :<C-u>GoDebugStart<CR>
+    return 0
+endfunction
 
-" sample
-" au FileType go nmap [golang]l :<C-u>GoLint<CR>
+command! GoRename           call LanguageClient#textDocument_rename()
+command! GoImports          ! goimports -w %
+command! GoCodeAction       call LanguageClient#textDocument_codeAction()<CR>
 
-au FileType go set autowrite
-au FileType go inoremap <Tab> <C-x><C-o>
-
-" auto import
-let g:go_fmt_command = "goimports"
-
-" カーソル上の識別子の自動ハイライト
-let g:go_auto_sameids = 1
-
-" カーソル上のワードに対して:GoInfo実行
-" let g:go_auto_type_info = 1
-" :GoInfo更新時間 Default->800
-" autocmd FileType go set updatetime=100
-
-" :GoRun 実行時のwindow設定
-let g:go_term_mode = "split"
-let g:go_term_height = 10
-let g:go_term_width = 10
-
-" === Others ===
-" GoInstallBinaries: vim-goに必要なツールのインストール(go get がバックグラウンドで動いて大変時間がかかる)
-" GoUpdateBinaries: GoInstallBinariesで落としたツールのアップデート
-" GoImport: importパスの追加
-" GoImportAs: importパスの追加(パッケージ名変更)
-" GoDrop: importパスの削除
-" GoDef: ctagsジャンプと同じ(ショートカットキー<C-]>)
-" GoDecls: gtagsジャンプと同じ(ファイル内のみ対象) ctrlPやFZFと連携
-" GoDeclsdir: gtagsジャンプと同じ(ディレクトリ内の全ファイル対象)
-" GoReferrers: gtagsジャンプと似たようなもん？GoDeclsと違ってロケーションリストに表示
-" GoDescribe: フィールドの定義、メソッドの組と URL 構造体のフィールドが表示される
-" GoImplements: 型が実装しているインターフェースをロケーションリストに表示
-" GoWhicherrs: モードはエラーの型の値に現れうる可能な定数の組、グローバル変数、そして具象型を報告
-" GoCallees: 関数を呼び出す可能性のあるターゲットを表示
-" GoCallstack: 選択部分を含む関数へのコールグラフの根本からの任意のパスを表示
-" GoChannelPeers: チャンネルの送信先 / 受信先を表示
-" GoRename: GOPATH 以下にある全てのパッケージを検索してその識別子に依存している全ての識別子をリネーム
-" GoFreevars: どれだけ多くの変数に依存しているかを見る
-" GoGenarate: コード生成
-" GoImpl: インターフェースを実装するメソッドスタブの生成
-" GoPlay: コードをGo Playground に公開する(リンクはバッファかクリップボードにコピーされる)
+" FIXME implement interface
+" command! IMP call s:go_fzf_implement_interface()
+" function! s:go_fzf_implement_interface() abort
+"     let source = 'go_list_interfaces'
+"
+"     call fzf#run({
+"                 \   'source': source,
+"                 \   'sink':   function('s:go_implement_interface'),
+"                 \   'down':   '40%'
+"                 \ })
+" endfunction
+"
+" function! s:go_implement_interface(interface) abort
+"     call s:go_execute_impl(a:interface, v:false)
+" endfunction
+"
+" function! s:go_receiver() abort
+"   let receiveType = expand("<cword>")
+"   if receiveType == "type"
+"     normal! w
+"     let receiveType = expand("<cword>")
+"   elseif receiveType == "struct"
+"     normal! ge
+"     let receiveType = expand("<cword>")
+"   endif
+"   return printf("%s *%s", tolower(receiveType)[0], receiveType)
+" endfunction
+"
+" function! s:go_execute_impl(interface, is_std_pkg) abort
+"     let pos = getpos('.')
+"     let recv = s:go_receiver()
+"
+"     " Make sure we put the generated code *after* the struct.
+"     if getline('.') =~# 'struct '
+"         normal! $%
+"     endif
+"
+"     if !a:is_std_pkg
+"         let pkg = system('go mod edit -json | jq -r .Module.Path | tr -d "\n"')
+"         if a:interface =~# '^\.'
+"             let interface = printf('%s%s', pkg, a:interface)
+"         else
+"             let interface = printf('%s/%s', pkg, a:interface)
+"         endif
+"     else
+"         let interface = a:interface
+"     end
+"
+"     try
+"         let dirname = fnameescape(expand('%:p:h'))
+"
+"         " let [result, err] = go#util#Exec(['impl', '-dir', dirname, recv, interface])
+"         let impl =  system('impl -dir ' . dirname . ' ' . recv . ' ' . interface)
+"         let result = substitute(impl, "\n*$", '', '')
+"         " if err
+"         "     call go#util#EchoError(result)
+"         "     return
+"         " endif
+"
+"         if result is# ''
+"             return
+"         end
+"
+"         put =''
+"         silent put =result
+"     finally
+"         call setpos('.', pos)
+"     endtry
+" endfunction
 

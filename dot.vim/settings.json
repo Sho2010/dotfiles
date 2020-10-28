@@ -1,0 +1,16 @@
+{
+  "gopls": {
+    "allExperiments": true,
+    "usePlaceholders": true,
+    "completeUnimported": true,
+
+    "analyses": {
+      "fillreturns": true,
+      "nonewvars": true
+    },
+    "codelens": {
+      "generate": true,
+      "gc_details": true
+    }
+  }
+}
