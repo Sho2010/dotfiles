@@ -11,7 +11,8 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
 \   'json': ['jsonlint'],
-\   'sh': ['shellcheck']
+\   'sh': ['shellcheck'],
+\   'markdown': ['textlint']
 \}
 
 " call ale#linter#Define('sh', {
