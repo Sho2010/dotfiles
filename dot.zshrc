@@ -138,5 +138,5 @@ if [ -f '/Users/sho.naito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sho.n
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/sho.naito/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sho.naito/google-cloud-sdk/completion.zsh.inc'; fi
 
-
+export FZF_DEFAULT_OPTS='--cycle'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
