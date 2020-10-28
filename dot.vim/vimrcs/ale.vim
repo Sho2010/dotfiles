@@ -30,7 +30,7 @@ let g:ale_sign_warning = 'W'
 let g:ale_completion_enabled = 1
 
 " aliases
-:command Fa ALEFix
-:command Fl ALELint
+:command! Fa ALEFix
+:command! Fl ALELint
 
 
