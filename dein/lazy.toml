@@ -7,11 +7,6 @@ on_ft = 'javascript'
 repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
-# Ruby向けにendを自動挿入してくれる
-[[plugins]]
-repo = 'tpope/vim-endwise'
-on_ft = 'ruby'
-
 [[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = 'terraform'

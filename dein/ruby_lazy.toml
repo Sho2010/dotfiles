@@ -1,0 +1,11 @@
+# Ruby向けにendを自動挿入してくれる
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = 'ruby'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+on_ft = 'ruby'
+hook_post_source = '''
+    source ~/.vim/vimrcs/rails.vim
+'''

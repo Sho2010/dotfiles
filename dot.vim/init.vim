@@ -22,6 +22,7 @@ if dein#load_state(s:dein_plugin_dir)
   call dein#load_toml('~/.config/dein/dein.toml',      {'lazy': 0})
   call dein#load_toml('~/.config/dein/lazy.toml',      {'lazy': 1})
   call dein#load_toml('~/.config/dein/go_lazy.toml'  , {'lazy': 1})
+  call dein#load_toml('~/.config/dein/ruby_lazy.toml'  , {'lazy': 1})
 
   call dein#end()
   call dein#save_state()

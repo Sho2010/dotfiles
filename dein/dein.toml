@@ -87,7 +87,3 @@ repo = 'bronson/vim-trailing-whitespace'
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'tpope/vim-rails'
-hook_add = '''
-    source ~/.vim/vimrcs/rails.vim
-'''
