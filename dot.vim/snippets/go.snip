@@ -30,3 +30,24 @@ abbr        string empty check
 	if len(s) == 0 {
 	   return nil, errors.New("missing string")
 	}
+
+snippet     context_with_cancel
+abbr        cancel可能なContextを作成します。
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
+
+	do_something_child(ctx)
+
+snippet     context_with_timeout
+abbr        timeout付きのContextを作成します。
+	ctx, cancel := context.WithTimeout(ctx, 1 * time.Second)
+	defer cancel()
+
+	do_something_child(ctx)
+
+snippet     context_with_deadline
+abbr        deadline(時刻指定)付きのContextを作成します。
+	ctx, cancel := context.WithDeadline(ctx, 1 * time.Now())
+	defer cancel()
+
+	do_something_child(ctx)
