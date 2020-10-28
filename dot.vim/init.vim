@@ -2,6 +2,8 @@ if &compatible
   set nocompatible
 endif
 
+let mapleader = "\<Space>"
+
 " dein auto install
 let s:dein_repo_dir   = expand('~/.dein/repos/github.com/Shougo/dein.vim')
 let s:dein_plugin_dir = expand('~/.dein/plugins')
