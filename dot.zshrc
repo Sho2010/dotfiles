@@ -46,7 +46,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby osx bundler brew rails emoji-clock zsh-completions terraform)
+plugins=(git ruby bundler brew zsh-completions)
 # fpath=(/usr/local/share/zsh-completions $fpath)
 
 # User configuration
@@ -130,9 +130,13 @@ autoload -U compinit && compinit
 . ~/dotfiles/aws.sh
 . ~/.zshrc.local
 
+PATH="$PATH:/usr/local/istio/latest/bin"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/sho.naito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sho.naito/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/sho.naito/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sho.naito/google-cloud-sdk/completion.zsh.inc'; fi
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
