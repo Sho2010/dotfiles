@@ -41,8 +41,8 @@ if has_key(g:LanguageClient_serverCommands, &filetype)
 
     nnoremap <silent> ga        :<C-u>GoCodeAction<CR>
     nnoremap <silent> gf        :<C-u>call LanguageClient#explainErrorAtPoint()<CR>
-    nnoremap <silent> gkr       :<C-u>call LanguageClient#textDocument_references()<CR>
-    nnoremap <silent> gr        :<C-u>call LanguageClient#textDocument_rename()<CR>
+    nnoremap <silent> gr        :<C-u>call LanguageClient#textDocument_references()<CR>
+    nnoremap <silent> grn       :<C-u>call LanguageClient#textDocument_rename()<CR>
     nnoremap <silent> gv        :<C-u>silent Vista finder fzf:lcn<CR>
     nnoremap <silent> gd        :<C-u>call LanguageClient#textDocument_definition({'handle': v:true}, function('Language_client_definition_callback'))<CR>
     nnoremap <silent><C-]>      :<C-u>call LanguageClient#textDocument_definition({'handle': v:true}, function('Language_client_definition_callback'))<CR>
