@@ -1,0 +1,6 @@
+# ripgrep ignore
+# See: https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#automatic-filtering
+
+.git/
+go.sum
+
