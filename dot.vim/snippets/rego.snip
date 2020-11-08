@@ -1,13 +1,14 @@
-snippet     deny
+snippet     violation
+alias       deny
 abbr        deny
-	deny[msg] {
+	violation[msg] {
 	  input.metadata.name != "awesome-service"
 	  msg = sprintf("%s", ["Not awesome-service"])
 	}
 
-snippet     deny-with-name
-abbr        deny
-	deny_awesome_service_check[msg] {
+snippet     violation-with-name
+abbr        deny-with-name
+	violation_awesome_service_check[msg] {
 	  not input.metadata.name != "awesome-service"
 	  msg = sprintf("%s", ["Not awesome-service"])
 	}
@@ -39,3 +40,18 @@ snippet     trace-set
 	str := sprintf("%v", [containers])
 
 	trace(str)
+
+snippet     test
+abbr        test template
+	test_${1:violation_case_name} {
+		yaml = \`
+			kind: Deployment
+			spec:
+				template:
+					spec:
+						containers:
+							- name: some-service
+		\`
+		input := yaml.unmarshal(yaml)
+		$1["expected message"] with input as input
+	}
