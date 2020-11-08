@@ -3,4 +3,5 @@
 
 .git/
 go.sum
+.gitignore
 
