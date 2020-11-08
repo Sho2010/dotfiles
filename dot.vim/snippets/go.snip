@@ -51,3 +51,75 @@ abbr        deadline(時刻指定)付きのContextを作成します。
 	defer cancel()
 
 	do_something_child(ctx)
+
+snippet     signal_trap
+abbr        シグナルを受け取るchannelを作成する。
+		# 必ずbuffer付きでmakeする
+		sig := make(chan os.Signal, 1)
+		signal.Notify(sig,
+			syscall.SIGHUP,
+			syscall.SIGTERM,
+			syscall.SIGQUIT,
+		)
+    defer signal.Stop(sig)
+
+snippet     make_done_channel
+abbr        make channel
+	done := make(chan struct{})
+
+snippet     make_channel
+abbr        make channel
+	ch := make(chan int)
+
+snippet     make_channel_with_buffer
+abbr        make channel with buffer size
+	ch := make(chan int, 1)
+
+snippet     select
+abbr        select
+	for {
+		select {
+			case <- ch:
+			default:
+		}
+	}
+
+snippet     for_channel
+abbr        channel loop
+	jjk
+	for {
+		select {
+		case now := <-t.C:
+			fmt.Println(now.Format(time.RFC3339))
+		case <-ctx.Done():
+			fmt.Println("Stop child")
+			return ctx.Err()
+		}
+	}
+
+snippet     ticker_sample
+abbr        ticker sample
+options     head
+	t := time.NewTicker(1 * time.Second) //1秒周期の ticker
+	defer t.Stop()
+
+	for {
+		select {
+		case now := <-t.C:
+			fmt.Println(now.Format(time.RFC3339))
+		case <-ctx.Done():
+			fmt.Println("Stop child")
+			return ctx.Err()
+		}
+	}
+
+snippet     cast
+abbr        cast interface{} to specific type
+	if i, ok := x.(int); ok{
+		fmt.Println("%d", i)
+	}
+
+snippet     getenv
+abbr        get value from environment variables
+	os.Getenv(${1:ENV_NAME})
+
