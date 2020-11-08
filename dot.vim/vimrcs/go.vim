@@ -9,6 +9,9 @@ function! s:find_rip_grep() abort
                 \ )
 endfunction
 
+" 保存時にgo fmt
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+
 " 定義ジャンプ後にコールバックで呼ぶ関数
 function! Language_client_definition_callback(output, ...) abort
     normal! zz

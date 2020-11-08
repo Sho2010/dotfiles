@@ -34,6 +34,9 @@ let g:LanguageClient_windowLogMessageLevel              = 'Warning'
 " goのときはLSPの影響でちらついでいらつくので常に表示
 let g:ale_sign_column_always                            = 1
 
+" Vista
+let g:vista_fzf_preview = ['right:50%']
+
 if has_key(g:LanguageClient_serverCommands, &filetype)
 
     nnoremap <F2>     K         :call LanguageClient#textDocument_hover()<CR>
