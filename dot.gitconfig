@@ -33,5 +33,9 @@
 [fetch]
 	prune = true
 [ghq]
-  root = /Users/sho.naito/src
-  root = /Users/sho.naito/go/src
+  root = ~/go/src
+  root = ~/src
+[pull]
+  rebase = true
+[url "ssh://git@github.com/FiNCDeveloper/"]
+	insteadOf = https://github.com/FiNCDeveloper/
