@@ -1,5 +1,8 @@
 nnoremap <silent> <Leader>g :<C-u>silent call <SID>find_rip_grep()<CR>
 
+let test#strategy = "dispatch"
+let test#go#runner = 'gotest'
+
 function! s:find_rip_grep() abort
     call fzf#vim#grep(
                 \   'rg --ignore-file ~/.ignore --column --line-number --no-heading --hidden --smart-case .+',

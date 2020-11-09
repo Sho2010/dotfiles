@@ -29,3 +29,8 @@ hook_source = '''
     source ~/.config/nvim/vimrcs/go_alternate.vim
     source ~/.config/nvim/vimrcs/go.vim
 '''
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+on_ft = ['go']
+
