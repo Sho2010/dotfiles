@@ -274,3 +274,9 @@ snippet     array
 options     head
 	ARRAY=(abc def ggg)
 
+snippet     type_exists_command
+abbr        type コマンドを用いて実行可能ファイルがあるか調べます。
+	if ! type ${1:gsed} > /dev/null 2>&1; then
+	  echo 'gsed $1 not found. Please install it'
+	  exit 1
+	fi
