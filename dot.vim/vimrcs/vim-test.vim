@@ -1,5 +1,5 @@
 nnoremap [test] <Nop>
-" nnoremap <Space>t [test]
+nmap <Space>t [test]
 
 nmap [test]t :TestNearest<CR>
 nmap [test]n :TestNearest<CR>
