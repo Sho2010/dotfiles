@@ -7,3 +7,6 @@ nmap [test]f :TestFile<CR>
 nmap [test]s :TestSuite<CR>
 nmap [test]l :TestLast<CR>
 nmap [test]v :TestVisit<CR>
+
+let test#strategy = "dispatch"
+let test#go#runner = 'gotest'

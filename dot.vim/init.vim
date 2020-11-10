@@ -97,3 +97,5 @@ if $GOROOT != ''
   set rtp+=$GOROOT/misc/vim
 endif
 
+" First letter of runner's name must be uppercase
+let test#custom_runners = {'Rego': ['Opa']}
