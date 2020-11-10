@@ -53,12 +53,6 @@ on_ft = 'toml'
 [[plugins]] # 囲むやつ
 repo = 'tpope/vim-surround'
 
-[[plugins]] # omni test runner
-repo = 'janko-m/vim-test'
-hook_add = '''
-    source ~/.vim/vimrcs/vim-test.vim
-'''
-
 [[plugins]] # coloring ansi code
 repo = 'vim-scripts/AnsiEsc.vim'
 

@@ -30,3 +30,11 @@ call deoplete#initialize()
 repo = 'ekalinin/Dockerfile.vim'
 on_ft = 'Dockerfile'
 
+[[plugins]] # omni test runner
+repo = 'janko-m/vim-test'
+on_source = ['autozimu/LanguageClient-neovim']
+
+hook_source = '''
+    source ~/.vim/vimrcs/vim-test.vim
+'''
+
