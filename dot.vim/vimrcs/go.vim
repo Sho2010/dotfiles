@@ -3,6 +3,10 @@ nnoremap <silent> <Leader>g :<C-u>silent call <SID>find_rip_grep()<CR>
 let test#strategy = "dispatch"
 let test#go#runner = 'gotest'
 
+map <C-n> :cnext<CR>
+map <C-p> :cprevious<CR>
+nnoremap <leader>z :cclose<bar>:lcl<CR>
+
 function! s:find_rip_grep() abort
     call fzf#vim#grep(
                 \   'rg --ignore-file ~/.ignore --column --line-number --no-heading --hidden --smart-case .+',
