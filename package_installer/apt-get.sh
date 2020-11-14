@@ -16,6 +16,7 @@ sudo apt-get install -y \
   tmux \
   vim-gtk \
   wget \
+  xclip \
   xsel \
   zsh \
 ;
