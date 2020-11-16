@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# for WSL2
+# wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb dpkg -i packages-microsoft-prod.deb
+
 sudo apt-get install -y \
   build-essential \
   curl \
@@ -22,3 +25,10 @@ sudo apt-get install -y \
 ;
 # for chrome 
 sudo apt-get install libappindicator1 fonts-liberation
+
+# telepresence
+curl -s https://packagecloud.io/install/repositories/datawireio/telepresence/script.deb.sh | sudo bash
+sudo apt install --no-install-recommends telepresence
+
+# opa
+curl -L -o opa https://openpolicyagent.org/downloads/latest/opa_linux_amd64
