@@ -1,5 +1,7 @@
 #!/bin/bash -eu
 
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+
 # Make sure using latest Homebrew
 brew update
 
@@ -30,6 +32,9 @@ brew install shellcheck
 brew install rg
 brew install ag
 brew install fzf
+
+# ついでにgoの開発ツール入れちゃう
+$SCRIPT_DIR/go.sh
 
 # k8s
 brew install kustomize
