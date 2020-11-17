@@ -71,5 +71,9 @@ esac
 yarn global add prettier
 yarn global add eslint
 
+# conftest
+brew tap instrumenta/instrumenta
+brew install conftest
+
 #remove outdated versions
 brew cleanup
