@@ -67,7 +67,7 @@ function gpeco() {
 
 function manifest-dir-peco() {
   ${MANIFEST_DIR:-"$HOME/src/github.com/FiNCDeveloper/finc_infra/k8s"}
-  cd $(ls -1 $MANIFEST_DIR | peco --query "$1")
+  cd $(ls -1 $MANIFEST_DIR | fzf --ansi --query "$1")
 }
 
 function ghq-peco() {
