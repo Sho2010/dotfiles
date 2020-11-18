@@ -32,6 +32,7 @@ brew install shellcheck
 brew install rg
 brew install ag
 brew install fzf
+brew install ctags
 
 # ついでにgoの開発ツール入れちゃう
 $SCRIPT_DIR/go.sh

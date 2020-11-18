@@ -23,7 +23,7 @@ sudo apt-get install -y \
   xsel \
   zsh \
 ;
-# for chrome 
+# for chrome
 sudo apt-get install libappindicator1 fonts-liberation
 
 # telepresence
