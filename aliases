@@ -392,3 +392,16 @@ function encrypt-file-for-self() {
 function decrypt-file-for-self() {
   gpg --decrypt $1
 }
+
+function sw-production() {
+  export KUBECONFIG="$HOME/.kube/production"
+}
+
+function sw-staging() {
+  export KUBECONFIG="$HOME/.kube/staging"
+}
+
+function sw-local() {
+  export KUBECONFIG="$HOME/.kube/local"
+}
+
