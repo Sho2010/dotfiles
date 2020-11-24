@@ -108,6 +108,7 @@ alias amazon='aws'
 #GCP & Kuberentes
 alias c='gcloud'
 alias gc='gcloud'
+alias m='minikube'
 
 alias k='kubectl'
 alias kapi='kubectl api-resources'
