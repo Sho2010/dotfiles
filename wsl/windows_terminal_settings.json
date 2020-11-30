@@ -49,7 +49,7 @@
             "source": "Windows.Terminal.Wsl",
             "fontFace" : "Source Code Pro for Powerline",
             "fontSize": 9,
-            "startingDirectory": "//wsl$/Ubuntu-18.04/home/sho2010",
+            "startingDirectory": "//wsl$/Ubuntu-20.04/home/sho2010",
             "colorScheme": "Tomorrow Night Bright"
         },
         {
