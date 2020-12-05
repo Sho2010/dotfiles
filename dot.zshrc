@@ -104,7 +104,6 @@ SUSHI=$'\U1F363 '
 HUM=$'\U1F439  '
 SKULL=$'\U1F480  '
 
-
 PROMPT="${PROMPT} ${SUSHI} "
 if [ "${PRODUCTION}" = "true" ] ; then
   PROMPT="${PROMPT}${SKULL} "
@@ -129,8 +128,6 @@ autoload -U compinit && compinit
 . ~/dotfiles/net_tools_deprecated.sh
 . ~/dotfiles/aws.sh
 . ~/.zshrc.local
-
-PATH="$PATH:/usr/local/istio/latest/bin"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/sho.naito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sho.naito/google-cloud-sdk/path.zsh.inc'; fi
