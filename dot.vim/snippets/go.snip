@@ -119,7 +119,22 @@ abbr        cast interface{} to specific type
 		fmt.Println("%d", i)
 	}
 
+snippet     cast-switch
+abbr        cast interface{} to specific type by switch
+	switch val := val.(type) {
+	case int:
+		// do something
+	case string:
+		// do something
+	default:
+		fmt.Errorf("[WARN] Can't handle this type of value : %T\n", val)
+	}
+
 snippet     getenv
 abbr        get value from environment variables
 	os.Getenv(${1:ENV_NAME})
 
+snippet     print-time
+abbr        abbr
+	const f = "2006/01/02 15:04:05" // 24h表現、0埋めあり
+	str = fmt.Sprintf("now -> %s", now.Format(f))
