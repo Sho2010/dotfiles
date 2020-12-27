@@ -46,16 +46,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby bundler brew zsh-completions)
+plugins=(git ruby bundler brew)
 # fpath=(/usr/local/share/zsh-completions $fpath)
 
 # User configuration
 
 # Go
 export PATH="/Users/Sho2010/.rbenv/shims:/Users/Sho2010/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export GOPATH=$HOME/go
-export PATH="$GOPATH/bin:$PATH"
-export GO15VENDOREXPERIMENT=1
+export GO111MODULE=auto
+export PATH="$HOME/go/bin:$PATH"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
