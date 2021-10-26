@@ -138,3 +138,9 @@ snippet     print-time
 abbr        abbr
 	const f = "2006/01/02 15:04:05" // 24h表現、0埋めあり
 	str = fmt.Sprintf("now -> %s", now.Format(f))
+
+snippet     iferr_single
+abbr        err := func() ; err != nil
+	if err := doSomething(); err != nil {
+		panic(err)
+	}
