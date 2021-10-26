@@ -280,3 +280,8 @@ abbr        type コマンドを用いて実行可能ファイルがあるか調
 	  echo 'gsed $1 not found. Please install it'
 	  exit 1
 	fi
+
+
+snippet     stderr
+abbr        標準エラーにechoで書く
+	echo HELLO 1>&2
