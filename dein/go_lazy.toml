@@ -5,16 +5,6 @@
 #  source ~/.config/nvim/vimrcs/vim-go.vim
 # '''
 
-# go completion
-[[plugins]]
-repo = 'zchee/deoplete-go'
-build = 'make'
-on_ft = 'go'
-depends = ['deoplete.nvim']
-hook_source = '''
-    let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-'''
-
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 build = 'bash install.sh'
