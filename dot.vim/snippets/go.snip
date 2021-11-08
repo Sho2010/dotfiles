@@ -20,7 +20,7 @@ abbr        test function with table data
 		}
 		for _, tt := range tests {
 			if got := ${1}(tt.input); got != tt.want {
-				t.Fatalf("input:[%s] want = %t, got = %t", tt.input, tt.want, got)
+				t.Fatalf("input:[%s] want = [%t], got = [%t]", tt.input, tt.want, got)
 			}
 		}
 	}
@@ -86,7 +86,6 @@ abbr        select
 
 snippet     for_channel
 abbr        channel loop
-	jjk
 	for {
 		select {
 		case now := <-t.C:
@@ -144,3 +143,22 @@ abbr        err := func() ; err != nil
 	if err := doSomething(); err != nil {
 		panic(err)
 	}
+
+snippet     append
+abbr        err := func() ; err != nil
+	append(slice, "")
+
+snippet     errf
+alias       errorF
+abbr        fmt.Errorf
+	fmt.Errorf("${1}%w", err)
+
+snippet     assign_with_err
+alias       ass
+abbr        ret, err := Something() with if err
+	${1}, err := ${2:doSomething}()
+	if err != nil {
+		fmt.Errorf("${3} %w", err)
+	}
+
+
