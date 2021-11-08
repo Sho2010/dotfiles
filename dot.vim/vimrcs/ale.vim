@@ -11,6 +11,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
 \   'json': ['jsonlint'],
+\   'yaml': ['yq validate'],
 \   'sh': ['shellcheck'],
 \   'markdown': ['textlint']
 \}
