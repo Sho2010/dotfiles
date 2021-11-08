@@ -105,3 +105,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'liuchengxu/vista.vim'
+
+[[plugins]]
+repo = 'github/copilot.vim'
