@@ -42,18 +42,20 @@ if has_key(g:LanguageClient_serverCommands, &filetype)
     nnoremap <F2>     K         :call LanguageClient#textDocument_hover()<CR>
     nnoremap <silent> K         :call LanguageClient#textDocument_hover()<CR>
 
-    nnoremap <silent> ga        :<C-u>GoCodeAction<CR>
-    nnoremap <silent> gf        :<C-u>call LanguageClient#explainErrorAtPoint()<CR>
-    nnoremap <silent> gr        :<C-u>call LanguageClient#textDocument_references()<CR>
-    nnoremap <silent> grn       :<C-u>call LanguageClient#textDocument_rename()<CR>
-    nnoremap <silent> gv        :<C-u>silent Vista finder fzf:lcn<CR>
-    nnoremap <silent> gd        :<C-u>call LanguageClient#textDocument_definition({'handle': v:true}, function('Language_client_definition_callback'))<CR>
-    nnoremap <silent><C-]>      :<C-u>call LanguageClient#textDocument_definition({'handle': v:true}, function('Language_client_definition_callback'))<CR>
+    nnoremap <silent> <Leader>c        :<C-u>GoCodeAction<CR>
+    nnoremap <silent> <Leader>f        :<C-u>call LanguageClient#explainErrorAtPoint()<CR>
+    nnoremap <silent> <Leader>r        :<C-u>call LanguageClient#textDocument_references()<CR>
+    nnoremap <silent> <Leader>rn       :<C-u>call LanguageClient#textDocument_rename()<CR>
+    nnoremap <silent> <Leader>v        :<C-u>silent Vista finder fzf:lcn<CR>
+    nnoremap <silent> <Leader>d        :<C-u>call LanguageClient#textDocument_definition({'handle': v:true}, function('Language_client_definition_callback'))<CR>
+    nnoremap <silent><C-]>             :<C-u>call LanguageClient#textDocument_definition({'handle': v:true}, function('Language_client_definition_callback'))<CR>
+    nnoremap <silent> <Leader>i        :<C-u>call LanguageClient#textDocument_implementation()<CR>
+
+    nnoremap <silent> <Leader>e       :<C-u>call LanguageClient#workspace_executeCommand()<CR>
+    nnoremap <silent> <Leader>l       :<C-u>call LanguageClient#textDocument_codeLens()<CR>
 
     " TODO
     nnoremap <silent> gsi       :<C-u>silent call <SID>ls_toggle_document_highlight()<CR>
-    nnoremap <silent> <Leader>i :<C-u>call <SID>ls_toggle_document_hover()<CR>
-    nnoremap <silent> gi        :<C-u>call LanguageClient#textDocument_implementation()<CR>
     nnoremap <silent> ge        :<C-u>call LanguageClient#explainErrorAtPoint()<CR>
 endif
 
