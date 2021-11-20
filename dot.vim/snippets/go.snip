@@ -161,4 +161,27 @@ abbr        ret, err := Something() with if err
 		fmt.Errorf("${3} %w", err)
 	}
 
+snippet     my_error
+alias       myErr, myError
+abbr        独自エラーを定義します
+	type ${1:MyError} struct {
+		msg string
+		err error
+	}
 
+	var _ error = &$1{}
+
+	func (m $1) Error() string {
+	    return m.msg
+	}
+
+	func (m $1) Unwrap() error {
+	    return m.err
+	}
+
+snippet     buffer
+abbr        read from io.Reader sample
+	r, _ := os.Open(os.Args[1])
+	buf := bytes.Buffer{}
+	buf.ReadFrom(r)
+	buf.WriteTo(os.Stdout)
