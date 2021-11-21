@@ -8,7 +8,7 @@
       "fillreturns": true,
       "nonewvars": true
     },
-    "codelens": {
+    "codelenses": {
       "generate": true,
       "gc_details": true
     }
