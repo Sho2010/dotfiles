@@ -175,9 +175,6 @@ function switch-k8s-config() {
 
 }
 
-# misc
-alias ghost='gh-ost'
-
 # elixir
 alias e='elixir'
 
