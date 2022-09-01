@@ -40,7 +40,6 @@ $SCRIPT_DIR/go.sh
 # k8s
 brew install kustomize
 brew install kubernetes-helm
-go get -u github.com/kubernetes-sigs/aws-iam-authenticator/cmd/aws-iam-authenticator
 
 # optional
 brew install kubectx
@@ -57,13 +56,13 @@ darwin*)
   # only mac
   brew install reattach-to-user-namespace
 
-  brew install caskroom/cask/dropbox
-  brew install caskroom/cask/skitch
-  brew install caskroom/cask/slack
-  brew install caskroom/cask/licecap
-  brew install caskroom/cask/sequel-pro
-  brew install caskroom/cask/discord
-  brew install caskroom/cask/charles
+  brew install homebrew/cask/dropbox
+  brew install homebrew/cask/skitch
+  brew install homebrew/cask/slack
+  brew install homebrew/cask/licecap
+  brew install homebrew/cask/sequel-pro
+  brew install homebrew/cask/discord
+  brew install homebrew/cask/charles
 
   # yubikey tools
   brew install yubico-piv-tool # piv CLI
