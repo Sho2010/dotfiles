@@ -63,6 +63,8 @@ command! GoRename           call LanguageClient#textDocument_rename()
 command! GoImports          ! goimports -w %
 command! GoCodeAction       call LanguageClient#textDocument_codeAction()<CR>
 
+" nnoremap <silent> <Leader>g :<C-u>silent call <SID>find_rip_grep()<CR>
+
 " FIXME implement interface
 " command! IMP call s:go_fzf_implement_interface()
 " function! s:go_fzf_implement_interface() abort
