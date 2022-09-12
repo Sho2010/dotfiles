@@ -1,5 +1,9 @@
 let g:neosnippet#snippets_directory='~/.vim/snippets/'
 
+if has('nvim')
+  let g:neosnippet#snippets_directory='~/.config/nvim/snippets/'
+endif
+
 " ~/.vim/snippets/model.rails.snip
 autocmd BufEnter * if exists("b:rails_root") | NeoSnippetSource ~/.vim/snippets/rails.snip | endif
 " autocmd BufEnter * if exists("b:rails_root") | :NeoCompleteSetFileType ruby.rails | endif
