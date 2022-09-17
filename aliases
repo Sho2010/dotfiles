@@ -19,6 +19,11 @@ alias dcomtest="docker-compose run --rm app test"
 # go
 alias gohome="cd $GOPATH"
 
+# rust
+alias rust="cargo"
+alias rs="cargo"
+alias rsc="rustc"
+
 bindkey '^p' up-line-or-beginning-search
 
 function dcombe() {
