@@ -70,6 +70,14 @@ function gpeco() {
   git checkout $(git branch | peco)
 }
 
+function git-grep-edit() {
+  result=$(git grep -i --color=always "${1}" | fzf --ansi)
+  ${EDITOR} $(echo $result | cut -d: -f1)
+}
+alias ggopen=git-grep-edit
+alias ggedit=git-grep-edit
+alias gge=git-grep-edit
+
 function manifest-dir-peco() {
   ${MANIFEST_DIR:-"$HOME/src/github.com/FiNCDeveloper/finc_infra/k8s"}
   cd $(ls -1 $MANIFEST_DIR | fzf --ansi --query "$1")
@@ -357,10 +365,6 @@ function docker-print-tag() {
   echo "${DOCKER_BASE}:${tag}"
 }
 alias dpt='docker-print-tag'
-
-function ggedit() {
-  vim -p `git grep -l $1 | peco`
-}
 
 # slideshareにPDFをうｐした時に日本語が表示されない時に使うやつ
 function convert_slide_share() {
