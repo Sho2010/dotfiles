@@ -2,6 +2,8 @@
 	excludesfile = ~/.gitignore.global
 	editor = nvim
 	commentchar = auto
+[fetch]
+	showForcedUpdates = true
 [user]
 	name = sho naito
 	email = sho20100@gmail.com
