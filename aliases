@@ -97,6 +97,11 @@ darwin*)
   alias ls='ls -G'
   alias ll='ls -la'
   alias la="ll"
+
+  # Use GNU instead of BSD
+  alias awk='gawk'
+  alias date='gdate'
+  alias readlink='greadlink'
   alias sed='gsed'
   ;;
 linux*)

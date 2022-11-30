@@ -67,6 +67,11 @@ darwin*)
   # yubikey tools
   brew install yubico-piv-tool # piv CLI
   brew install ykman           # manage CLI e.g. GPG key management
+
+  # Use GNU instead of BSD utilities
+  brew install coreutils
+  brew install gnu-sed
+  brew install gawk
   ;;
 linux*)
   ;;
