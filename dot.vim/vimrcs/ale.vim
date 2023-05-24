@@ -6,14 +6,18 @@ let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'ruby': ['rubocop'],
 \   'go': ['gofmt', 'goimports'],
-\   'json': ['fixjson']
+\   'jsonnet': ['jsonnet-lint'],
+\   'json': ['fixjson'],
+\   'terraform': ['terraform'],
 \}
 
 let g:ale_linters = {
 \   'json': ['jsonlint'],
+\   'jsonnet': ['jsonnet-lint'],
 \   'yaml': ['yq validate'],
 \   'sh': ['shellcheck'],
-\   'markdown': ['textlint']
+\   'markdown': ['textlint'],
+\   'terraform': ['terraform', 'tflint', 'tfsec'],
 \}
 
 " call ale#linter#Define('sh', {

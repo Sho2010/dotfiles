@@ -3,3 +3,4 @@ if !exists('g:tcomment_types')
 endif
 let g:tcomment_types['kustomize'] = '# %s'
 let g:tcomment_types['rego'] = '# %s'
+let g:tcomment_types['terraform'] = '# %s'
