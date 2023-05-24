@@ -15,6 +15,7 @@ brew install go
 brew install hub
 brew install jq
 brew install jsonlint
+brew install jsonnet
 brew install lua
 brew install openssl
 brew install p7zip
@@ -22,6 +23,8 @@ brew install peco
 brew install rbenv
 brew install readline
 brew install terraform
+brew install tflint
+brew install tfsec
 brew install tig
 brew install tmux
 brew install tree
