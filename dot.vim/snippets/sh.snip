@@ -285,3 +285,20 @@ abbr        type コマンドを用いて実行可能ファイルがあるか調
 snippet     stderr
 abbr        標準エラーにechoで書く
 	echo HELLO 1>&2
+
+snippet     argument parse
+alias       parse option
+abbr        parse option
+	while [ \$# -gt 0 ]; do
+	case \$1 in
+		-l|--long)
+			L_OPT=1
+			;;
+		*)
+			echo "Unknown argument: $1"
+			exit 1
+			;;
+		esac
+		shift
+	done
+
