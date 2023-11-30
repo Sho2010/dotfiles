@@ -38,3 +38,11 @@ hook_source = '''
     source ~/.vim/vimrcs/vim-test.vim
 '''
 
+[[plugins]]
+repo = 'GutenYe/json5.vim'
+on_ft = 'json5'
+
+[[plugins]]
+repo = 'google/vim-jsonnet'
+on_ft = 'jsonnet'
+
