@@ -74,6 +74,7 @@ darwin*)
   # Use GNU instead of BSD utilities
   brew install coreutils
   brew install gnu-sed
+  brew install findutils
   brew install gawk
   ;;
 linux*)

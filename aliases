@@ -103,6 +103,7 @@ darwin*)
   alias date='gdate'
   alias readlink='greadlink'
   alias sed='gsed'
+  alias xargs='gxargs'
   ;;
 linux*)
   alias ls='ls --color'
