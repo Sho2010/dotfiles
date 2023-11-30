@@ -123,6 +123,8 @@ alias reload_bashrc='. ~/.bashrc'
 # AWS
 alias a='aws'
 alias amazon='aws'
+alias ep='ecspresso'
+alias esp='ecspresso'
 
 #GCP & Kuberentes
 alias c='gcloud'
@@ -163,6 +165,7 @@ alias sw-kubeconfig='switch-k8s-config'
 alias h='hub'
 alias hb='hub browse'
 alias v='vim'
+alias vscode='code'
 alias gw='ghkw'
 alias gwr='ghkw --language=ruby'
 
