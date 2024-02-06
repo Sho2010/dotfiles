@@ -1,5 +1,5 @@
-export HISTSIZE=20000
-export HISTFILESIZE=20000
+export HISTSIZE=10000000
+export HISTFILESIZE=10000000
 export HISTIGNORE=ls:ll:la:pwd:gs:gb:history
 export KUBE_EDITOR=nvim
 
