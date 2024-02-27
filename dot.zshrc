@@ -77,8 +77,8 @@ export LANG=ja_JP.UTF-8
 
 # 補完設定
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=10000000
+SAVEHIST=10000000
 
 # シェルのプロセスごとに履歴を共有
 setopt share_history
