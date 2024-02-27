@@ -63,7 +63,8 @@ darwin*)
   brew install homebrew/cask/skitch
   brew install homebrew/cask/slack
   brew install homebrew/cask/licecap
-  brew install homebrew/cask/sequel-pro
+  brew install homebrew/cask/sequel-ace
+
   brew install homebrew/cask/discord
   brew install homebrew/cask/charles
 
