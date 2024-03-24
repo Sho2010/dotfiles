@@ -53,3 +53,4 @@ require('lazy').setup( "plugins"
 -- {'nvim-lualine/lualine.nvim', event = 'VeryLazy'}, --他の設定でうまく動かなかったものは一律に'VeryLazy'で対処する。（VimEnter相当らい）
 -- {'vim-denops/denops.vim', lazy = false}, --即時読み込んでくれないと不都合なプラグインは逆に遅延を無効化する。（config.default.lazy = falseの場合）
 
+require("keymaps")
