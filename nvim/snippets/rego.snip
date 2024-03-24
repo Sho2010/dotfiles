@@ -1,0 +1,57 @@
+snippet     violation
+alias       deny
+abbr        deny
+	violation[msg] {
+	  input.metadata.name != "awesome-service"
+	  msg = sprintf("%s", ["Not awesome-service"])
+	}
+
+snippet     violation-with-name
+abbr        deny-with-name
+	violation_awesome_service_check[msg] {
+	  not input.metadata.name != "awesome-service"
+	  msg = sprintf("%s", ["Not awesome-service"])
+	}
+
+snippet     warn
+abbr        warn
+	warn[msg] {
+	  input.metadata.name != "awesome-service"
+	  msg = sprintf("%s", ["Not awesome-service"])
+	}
+
+snippet     sprintf
+abbr        sprintf
+	sprintf("%s", ["${1:message}"])
+
+snippet     sprintf-set
+abbr        sprintf
+	containers := input.spec.template.spec.containers[_]
+	sprintf("%v", [containers])
+
+snippet     trace
+	trace("${1:string}")
+
+snippet     trace-sprintf
+	trace(sprintf("%s", [${1:var}]))
+
+snippet     trace-set
+	containers := input.spec.template.spec.containers[_]
+	str := sprintf("%v", [containers])
+
+	trace(str)
+
+snippet     test
+abbr        test template
+	test_${1:violation_case_name} {
+		yaml = \`
+			kind: Deployment
+			spec:
+				template:
+					spec:
+						containers:
+							- name: some-service
+		\`
+		input := yaml.unmarshal(yaml)
+		$1["expected message"] with input as input
+	}

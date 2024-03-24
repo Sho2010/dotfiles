@@ -1,0 +1,305 @@
+snippet for-in
+alias forin
+options indent
+	for file in $(ls -1); do
+		echo $file;
+	done
+
+snippet     for-in-array
+abbr        for in with array
+	ENVS=(Production Staging)
+	for file in "${ENVS[@]}"; do
+	  echo $file
+	done
+
+
+snippet for-in-line
+alias   forin-line
+abbr    forin lines
+options indent
+	IFS=$'\n'
+	for line in $(cat hoge.txt); do
+		echo $file;
+	done
+
+snippet for-in-read-file
+alias   forin-read
+abbr    forin fileline
+options indent
+	cat hoge.txt | while read line
+	do
+		echo $line
+	done
+
+snippet for-in-heredoc
+abbr    for-in with heredoc
+	for line in \`cat <<__EOF__
+	line1
+	line2
+	hoge
+	__EOF__\`
+	do
+	  echo $line
+	done
+
+snippet script_dir
+abbr    script
+  SCRIPT_DIR=$(cd "$(dirname "\$0")" && pwd)
+
+snippet awk
+abbr    awk template
+   ${1:ls -l} | awk '{ print \$1 }'
+
+snippet awk-with-filter
+abbr    awk with filter template
+  ls -l | awk '/txt/ { print \$1 }'
+
+
+snippet awk-printf
+abbr    awk printf format
+  ls -l | awk '{ printf "template: %s\\n", \$1 }'
+
+snippet     awk-sub-process
+abbr        awk multiline template
+	awk '{
+		command = sprintf("docker rmi %s", \$1);
+		buf = system(command);
+		close(command);
+	}'
+
+snippet file_each
+abbr    each flie line
+alias   while_file
+options indent
+	while read line
+	do
+		echo \$line
+	done < ${1:example.txt}
+
+snippet devnull
+abbr    Run silent
+  ${1} > /dev/null 2>&1
+
+snippet arg_check
+abbr    argument check template
+	if [ -z \$1 ]; then
+	  echo 'Require argument'
+	fi
+
+snippet pipe_status_bash
+alias   pipe_status
+abbr    pipe status for bash
+  "${PIPESTATUS[@]}"
+
+snippet pipe_status_zsh
+abbr    pipe status for zsh
+  ${pipestatus[@]}
+
+snippet     grep-and-sed
+abbr        search sed before append line
+alias       sed-and-grep
+	# search_str を探して 見つかった行に対してappend_stringする
+	# 複数見つかると動かないので注意
+	linenum=$(grep -n "${1:search_str}" $file | cut -f1 -d:)
+	gsed "${linenum}a\append_string" $file
+
+snippet     sed-search-append
+alias       grep-append
+abbr        Append line to after searched word.
+	# PATTERNが見つかった次の行にappend_stringを追加する
+	gsed "/PATTERN/ a\append_string" $file
+
+snippet     sed-append
+abbr        sed append line
+	# e.g. 2行目の後ろに追加
+	gsed "${1:2}a\ ${2:append_string}" $target_file
+
+snippet     sed-insert
+abbr        sed insert line (before address line)
+	# e.g. 2行目の前に追加
+	gsed "${1:2}i\ ${2:append_string}" $target_file
+
+snippet     sed-replace
+abbr        replace all target string
+	gsed -e "s/${1:target}/${2:replace}/g"
+
+snippet     sed-replace-and-ref
+abbr        replace all target string
+	# e.g. ENV['key'] > key
+	gsed -e "s/ENV\[\(.\+\)\]/\1/g"
+
+snippet     sed-regex-append
+abbr        replace all target string(hold hit string)
+	gsed -e "s/${1:target}/${2:& append}/g"
+
+snippet     sed-file-find-replace
+abbr        replace string on the find command result files
+	# backup fileを残す場合は -iにsuffixを指定する
+	find ./ -name '*.txt' -type f -exec gsed -i -e "s/version 2$/version 2.1/g" {} \;
+
+snippet     sed-heredoc-append
+abbr        "sed and heredoc variable YAMLを追加したいときとかに便利"
+	# YAMLを追加したいときとかに便利 改行事には\\ 先頭に\でスペースを維持
+	read -r -d '' yaml_parts <<'EOF'
+	\ yaml_key:\ \
+	EOF
+	gsed -e "s/HEREDOC_REPLACE/$yaml_parts/g"
+
+snippet     heredoc-variable-allocation
+abbr        variable allocation from heredoc
+	# 変数を使いたい場合は'EOF'をEOFにする
+	read -r -d '' heredoc_variable <<'EOF'
+
+	heredoc contents
+
+	EOF
+
+	echo $heredoc_variable
+
+snippet     heredoc-to-file
+abbr        File write from heredoc
+	cat << EOF >> /tmp/heredoc_file
+
+	heredoc contents
+
+	EOF
+
+snippet     nginx-syntax
+abbr        nginx syntax check in docker
+  SCRIPT_DIR=$(cd $(dirname $0);pwd)
+  UPSTREAM=$(basename $SCRIPT_DIR)
+
+  docker run -it --rm \
+    --volume ${SCRIPT_DIR}/dockerfiles/ci/nginx/nginx.conf:/etc/nginx/nginx.conf \
+    nginx bash -c "echo 127.0.0.1 $UPSTREAM >> /etc/hosts && nginx -t"
+
+snippet     snake_to_camel
+abbr        snake to camel
+	if [ -z "\$1" ]; then
+		gsed -r 's/(^|_)([a-z])/\U\2/g'
+	else
+		echo "\$1" | sed -r 's/(^|_)([a-z])/\U\2/g'
+	fi
+
+snippet     split
+abbr        csv, tsv split
+	IFS_ORIGINAL="$IFS"
+	IFS=","
+	str="hoge,fuga,piyo"
+
+	for v in `echo "$str"`; do
+	  echo "[$v]"
+	done
+	IFS="$IFS_ORIGINAL"
+
+snippet     split-path
+abbr        path to array
+options     head
+	OIFS=$IFS
+	IFS=/
+	read -r -a PATH_ARRAY <<<"/path/to/file"
+	IFS=$OIFS
+
+snippet     parse-key-value
+abbr        key-value
+	IFS_ORGIN="$IFS"
+	IFS='='
+	cat key_value.txt | while read KEY VALUE
+	do
+		echo "$KEY $VALUE"
+	done
+	IFS="$IFS_ORGIN"
+
+snippet     sed-all-samples
+abbr        print sed all samples
+	# https://qiita.com/hirohiro77/items/7fe2f68781c41777e507
+	gsed -e "s/oldtext/newtext/g"         #文字列の変換
+	gsed -e "s/text//"                    #文字列の削除
+	gsed -e "s/^text//"                   #行頭にtextがあった場合削除
+	gsed -e "s/text\$//"                  #行末にtextがあった場合削除
+	gsed -e "s/abc/abcxyz/g"              #abcの後に文字列を追加
+	gsed -e "s/^/text/"                   #行頭に文字列を追加
+	gsed -e "s/\$text/"                   #行末に文字列を追加
+	gsed -e "s/.*/abc/"                   #.*は全ての文字列を表す
+	gsed -e 's/<tab>/<space>/g'           #タブをスペースに変換
+	gsed -e 's/<space><space>*/<space>/g' #複数のスペースを1つのスペースに変換
+	# ホワイトスペースを1つのスペースに変換
+	gsed -e 's/[<space><tab>][<space><tab>]*/<space>/g'
+	gsed -e 's/^[<space><tab>]*//'        #行頭のホワイトスペースを削除
+	gsed -e 's/[<space><tab>]*$//'        #行末のホワイトスペースを削除
+	gsed -e "/text/d"                     #textを含んだ行を削除
+	gsed -e '/^$/d'                       #空白行を削除
+	gsed -e "5,20s/oldtext/newtext/g"     #5行目から20行目を変換
+	gsed -e '1d'                          #1行目を削除
+	gsed -n '1p'                          #1行目を表示
+	gsed'/^#/d' source.txt                #検索して該当行を削除
+
+snippet     grep-all-samples
+abbr        print grep cheatsheet
+	grep '\[0-9]' source.txt                           # '[0-9]'の文字列を検索
+	grep -E '(\[0-9]){2}' source.txt                   # '[0-9]'が2回続く文字列を検索
+	grep '[Ll]inux' source.txt                         # 「Linux」または「linux」が含む行を検索する
+	grep '\<[Ll]inux\>' source.txt                     #  独立した「Linux」または「linux」が含む行を検索する、RedhatLinuxとかは含まない
+	grep '[1-9][0-9][0-9][A-Z][0-9]' source.txt        # 先頭に0を含まず123A7のようなパターンに一致
+	grep '^[0-9]' source.txt                           # 数字を含まない行を検索する
+	grep '.....' source.txt                            # 5文字以上の行だけ探す
+	grep '\<W...s\>$' source.txt                       # 先頭がW、末尾がsの文字列を探す
+	grep '.' source.txt                                # 空行を除外
+	grep '^\<EX\>\{1,3\}' source.txt                   # EXという文字が1～3回出る行
+	grep '\<[A-Z]\{\6,15\}\>' source.txt               # 大文字アルファベットが6～15文字含む行
+	grep '\<[A-Za-z]\{\6,15\}\>' source.txt            # 大文字小文字アルファベットが6～15文字含む行
+	grep '\<[^0-9A-Za-z]\{\6,15\}\>' source.txt        # 大文字小文字アルファベットと数字以外の文字が6～15文字含む行
+	grep '[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}' source.txt # 電話番号000-000-0000を含む行
+
+snippet     awk-backward-match
+abbr        awk-後方参照
+options     head
+	awk 'match(\$0, /bundle exec rake (.*)/, a){print a[1]}'
+
+snippet     if-command-return-code
+abbr        コマンドの実行結果をチェック
+	if ! ${1:command}
+	then
+	  echo "$1 fail"
+	fi
+
+snippet     head+
+abbr        末尾 n行だけ削る
+	head -n+2
+
+snippet     tail+
+abbr        先頭 n行だけ削る
+	tail -n+2
+
+snippet     array
+options     head
+	ARRAY=(abc def ggg)
+
+snippet     type_exists_command
+abbr        type コマンドを用いて実行可能ファイルがあるか調べます。
+	if ! type ${1:gsed} > /dev/null 2>&1; then
+	  echo 'gsed $1 not found. Please install it'
+	  exit 1
+	fi
+
+
+snippet     stderr
+abbr        標準エラーにechoで書く
+	echo HELLO 1>&2
+
+snippet     argument parse
+alias       parse option
+abbr        parse option
+	while [ \$# -gt 0 ]; do
+	case \$1 in
+		-l|--long)
+			L_OPT=1
+			;;
+		*)
+			echo "Unknown argument: $1"
+			exit 1
+			;;
+		esac
+		shift
+	done
+

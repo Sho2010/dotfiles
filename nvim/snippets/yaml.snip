@@ -1,0 +1,261 @@
+
+snippet debug
+alias   command
+abbr    k8s debug tail command
+	command: ["/usr/bin/tail", "-f", "/dev/null"]
+
+snippet istio-injection-annotation
+alias   annotation-istio
+abbr    istio sidecar injection option
+					idecar.istio.io/inject: "false"
+
+snippet     deployment
+abbr        k8s deployment manifest tempalte
+options     head
+	apiVersion: apps/v1
+	kind: Deployment
+	metadata:
+		name: ${1:application}
+		labels:
+			app.kubernetes.io/name: name
+			app.kubernetes.io/version: 1.0
+			app.kubernetes.io/component: rails
+			app.kubernetes.io/part-of: serviceName
+			app.kubernetes.io/managed-by: kustomize
+	spec:
+		replicas: 1
+		selector:
+			matchLabels:
+				app: "$1"
+		template:
+			metadata:
+				labels:
+					app: "$1"
+			spec:
+				serviceAccountName: default
+				containers:
+				- name: $1
+					image: asia.gcr.io/PROJECT/$1
+					imagePullPolicy: IfNotPresent
+					command: ["/usr/bin/tail", "-f", "/dev/null"]
+				envFrom:
+				- configMapRef:
+						name: common-config
+				- secretRef:
+						name: common-secret
+				resources:
+					limits:
+						memory: 512Mi
+					requests:
+						cpu: 100m
+						memory: 256Mi
+
+snippet     service
+alias       clusterip
+abbr        k8s clusterip  manifest tempalte
+options     head
+	apiVersion: v1
+	kind: Service
+	metadata:
+		name: ${1}
+		labels:
+			app.kubernetes.io/name: name
+			app.kubernetes.io/managed-by kustomize
+	spec:
+		ports:
+			- name: http
+				port: ${2:80}
+				targetPort: $2
+		selector:
+			app: $1
+
+
+snippet     patch_resource
+alias       resource_patch
+abbr        resource patch for kustomize
+options     head
+  ##############################
+  # target
+  ##############################
+  apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+  	name: ${1:app}
+  spec:
+  	template:
+  		spec:
+  			containers:
+  				- name: $1
+  				resources:
+  					limits:
+  						memory: 64Mi
+  					requests:
+  						cpu: 50m
+  						memory: 64Mi
+
+snippet     resources
+abbr        pod resourecs
+options     head
+  	resources:
+  		limits:
+  			memory: 64Mi
+  		requests:
+  			cpu: 50m
+  			memory: 64Mi
+
+snippet     maxsurge
+alias       strategy
+abbr        k8s RollingUpdate strategy
+options     head
+  	strategy:
+  		rollingUpdate:
+  			maxSurge: ${1:1}
+  			maxUnavailable: ${2:0}
+  		type: RollingUpdate
+
+snippet     ingress-simply
+abbr        k8s simply ingress template
+options     head
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+  	name: ${1:simply-ingress}
+  spec:
+  	backend:
+  		serviceName: ${2:target-nodeport-service}
+  		servicePort: ${3:80}
+
+snippet     ingress-path-based
+abbr        path based routing ingress template
+options     head
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+		name: api
+		# IPを予約する場合 $ gcloud compute addresses create $FW-RULE-NAME --global
+		# annotations:
+		# kubernetes.io/ingress.global-static-ip-name: $FW-RULE-NAME
+  spec:
+		rules:
+		- http:
+				paths:
+				- backend:
+						serviceName: ${1:target-nodeport-service}
+						servicePort: ${2:80}
+
+snippet     ingress-tls
+abbr        domain based routing with tls ingress template
+options     head
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+		name: ${1:ingress-name}
+		# IPを予約する場合 $ gcloud compute addresses create $FW-RULE-NAME --global
+		# annotations:
+		# kubernetes.io/ingress.global-static-ip-name: $FW-RULE-NAME
+  spec:
+		rules:
+		- host: example.com
+			http:
+				paths:
+				- backend:
+						serviceName: ${2:target-nodeport-service}
+						servicePort: ${3:80}
+		tls:
+			- secretName: tls-secret
+
+snippet     readessProve
+alias       livenessProbe
+abbr        k8s pod readessProve/livenessProbe
+options     head
+	readinessProbe:
+		httpGet:
+			path: /dummy
+			port: 80
+		initialDelaySeconds: 30
+		periodSeconds: 5
+		timeoutSeconds: 2
+	livenessProbe:
+		httpGet:
+			path: /dummy
+			port: 80
+		initialDelaySeconds: 30
+		periodSeconds: 5
+		timeoutSeconds: 2
+
+
+snippet     initContainerPatch
+abbr        initContainers template
+options     head
+  # Note
+  # DB setup待つためのpatch
+  # DB setupの最後の段階で master_dumpsにrecordを入れるため
+  # ここにrecordが入っていたら初期化が終了したと判断する
+  apiVersion: extensions/v1beta1
+  kind: Deployment
+  metadata:
+  	name: api
+  spec:
+   template:
+  		spec:
+  			initContainers:
+  			- name: init-db
+  				image: mysql:5.7
+  				command: ['sh', '-c', 'until timeout 1 test $(mysql -h master-db -p${API_DB_PASSWORD} -D develpment_db  -N -s -e "select count(*) from master_dumps;" ) -eq 1; do echo waiting for dbshare; sleep 2; done;']
+  				envFrom:
+  				- secretRef:
+  						name: example-secret
+
+snippet     single-file-overwrite
+abbr        overrite file from configmap
+	spec:
+		containers:
+			# target full path
+			volumeMounts:
+			- name: conf
+				mountPath: /etc/nginx/nginx.conf
+				subPath: server.xml # if require
+		volumes:
+			- name: conf
+				configMap:
+					name: ${1:config_map_name}
+					items: # if require
+					- key: nginx.conf
+						path: nginx.conf
+
+snippet     secret
+abbr        kubernetes secret manifest tempalte
+options     head
+	apiVersion: v1
+	kind: Secret
+	metadata:
+		name: `fnamemodify(expand("%:p:h")."/../../" , ':p:h:t')`-secret
+		namespace: `fnamemodify(expand("%:p:h")."/../../" , ':p:h:t')`
+	type: Opaque
+	data:
+	  username: YWRtaW4=
+	  password: MWYyZDFlMmU2N2Rm
+
+snippet     external-secret
+abbr        kubernetes ExternalSecret manifest template
+	apiVersion: 'kubernetes-client.io/v1'
+	kind: ExternalSecret
+	metadata:
+		name: parameter-store-secret
+		namespace: `fnamemodify(expand("%:p:h")."/../../" , ':p:h:t')`
+	spec:
+		backendType: systemManager
+		# optional: specify role to assume when retrieving the data
+		# roleArn: arn:aws:iam::123456789012:role/test-role
+		data:
+			- key: /path/to/parameter_store/password
+				name: PASSWORD
+
+snippet     envFrom
+abbr        k8s deployment envFrom
+	envFrom:
+	- configMapRef:
+			name: common-config
+	- secretRef:
+			name: top-secret
+

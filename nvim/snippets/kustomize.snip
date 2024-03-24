@@ -1,0 +1,71 @@
+snippet     kustomize
+abbr        kustomization file header
+options     head
+	apiVersion: kustomize.config.k8s.io/v1beta1
+	kind: Kustomization
+
+	# Adds namespace to all resources.
+	namespace: my-namespace
+	# namePrefix: sho2010-
+
+	# commonLabels:
+	# 	project: awesome-pj
+
+	bases:
+	- ../../base
+
+	resources:
+	# - api_deployment
+
+	patchesStrategicMerge:
+	# - resource_patch.yaml
+
+	# configMapGenerator:
+	# - name: myJavaServerProps
+	# 	files:
+	# 	- application.properties
+	# - name: myJavaServerEnvVars
+	# 	literals:
+	# 	- TZ=Asia/Tokyo
+
+	secretGenerator:
+	- name: tls-certs
+		namespace: apps
+		files:
+			- tls.crt=secret/tls.cert
+			- tls.key=secret/tls.key
+		type: "kubernetes.io/tls"
+
+	- name: env_file_secret
+		ENV: env.txt
+		type: Opaque
+
+	images:
+		- name: nginx
+			newTag: 1.8.0
+
+snippet     configMapGenerator
+abbr        kustomization file header
+alias       configmap
+	configMapGenerator:
+	- name: `fnamemodify(expand("%:p:h")."/../../" , ':p:h:t')`-config
+		literals:
+		- TZ=Asia/Tokyo
+
+snippet     configMapGeneratorFromFile
+abbr        kustomization file header
+alias       configmapFromFile
+	configMapGenerator:
+	- name: my-config
+		files:
+		- application.properties
+
+snippet     istio-annotation
+abbr        annotation for envoy injection option
+	sidecar.istio.io/inject: "false"
+
+
+# template:
+#   metadata:
+#     annotations:
+#       sidecar.istio.io/inject: "false"

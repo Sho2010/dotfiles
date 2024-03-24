@@ -1,0 +1,187 @@
+snippet     test_func
+abbr        go test template
+	func TestMethod(t *testing.T) {
+		result := Hoge()
+		if result != "hoge" {
+			t.Errorf("expecting bar, got %s", result)
+		}
+	}
+
+snippet     test_with_table
+abbr        test function with table data
+	func Test${1:HogeMethod}(t *testing.T) {
+		tests := []struct {
+			input string
+			want  bool
+		}{
+			{"abc", true},
+			{"", false},
+			{"nil", false},
+		}
+		for _, tt := range tests {
+			if got := ${1}(tt.input); got != tt.want {
+				t.Fatalf("input:[%s] want = [%t], got = [%t]", tt.input, tt.want, got)
+			}
+		}
+	}
+
+snippet     if_with_len
+abbr        string empty check
+	if len(s) == 0 {
+	   return nil, errors.New("missing string")
+	}
+
+snippet     context_with_cancel
+abbr        cancel可能なContextを作成します。
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
+
+	do_something_child(ctx)
+
+snippet     context_with_timeout
+abbr        timeout付きのContextを作成します。
+	ctx, cancel := context.WithTimeout(ctx, 1 * time.Second)
+	defer cancel()
+
+	do_something_child(ctx)
+
+snippet     context_with_deadline
+abbr        deadline(時刻指定)付きのContextを作成します。
+	ctx, cancel := context.WithDeadline(ctx, 1 * time.Now())
+	defer cancel()
+
+	do_something_child(ctx)
+
+snippet     signal_trap
+abbr        シグナルを受け取るchannelを作成する。
+		# 必ずbuffer付きでmakeする
+		sig := make(chan os.Signal, 1)
+		signal.Notify(sig,
+			syscall.SIGHUP,
+			syscall.SIGTERM,
+			syscall.SIGQUIT,
+		)
+    defer signal.Stop(sig)
+
+snippet     make_done_channel
+abbr        make channel
+	done := make(chan struct{})
+
+snippet     make_channel
+abbr        make channel
+	ch := make(chan int)
+
+snippet     make_channel_with_buffer
+abbr        make channel with buffer size
+	ch := make(chan int, 1)
+
+snippet     select
+abbr        select
+	for {
+		select {
+			case <- ch:
+			default:
+		}
+	}
+
+snippet     for_channel
+abbr        channel loop
+	for {
+		select {
+		case now := <-t.C:
+			fmt.Println(now.Format(time.RFC3339))
+		case <-ctx.Done():
+			fmt.Println("Stop child")
+			return ctx.Err()
+		}
+	}
+
+snippet     ticker_sample
+abbr        ticker sample
+options     head
+	t := time.NewTicker(1 * time.Second) //1秒周期の ticker
+	defer t.Stop()
+
+	for {
+		select {
+		case now := <-t.C:
+			fmt.Println(now.Format(time.RFC3339))
+		case <-ctx.Done():
+			fmt.Println("Stop child")
+			return ctx.Err()
+		}
+	}
+
+snippet     cast
+abbr        cast interface{} to specific type
+	if i, ok := x.(int); ok{
+		fmt.Println("%d", i)
+	}
+
+snippet     cast-switch
+abbr        cast interface{} to specific type by switch
+	switch val := val.(type) {
+	case int:
+		// do something
+	case string:
+		// do something
+	default:
+		fmt.Errorf("[WARN] Can't handle this type of value : %T\n", val)
+	}
+
+snippet     getenv
+abbr        get value from environment variables
+	os.Getenv(${1:ENV_NAME})
+
+snippet     print-time
+abbr        abbr
+	const f = "2006/01/02 15:04:05" // 24h表現、0埋めあり
+	str = fmt.Sprintf("now -> %s", now.Format(f))
+
+snippet     iferr_single
+abbr        err := func() ; err != nil
+	if err := doSomething(); err != nil {
+		panic(err)
+	}
+
+snippet     append
+abbr        err := func() ; err != nil
+	append(slice, "")
+
+snippet     errf
+alias       errorF
+abbr        fmt.Errorf
+	fmt.Errorf("${1}%w", err)
+
+snippet     assign_with_err
+alias       ass
+abbr        ret, err := Something() with if err
+	${1}, err := ${2:doSomething}()
+	if err != nil {
+		fmt.Errorf("${3} %w", err)
+	}
+
+snippet     my_error
+alias       myErr, myError
+abbr        独自エラーを定義します
+	type ${1:MyError} struct {
+		msg string
+		err error
+	}
+
+	var _ error = &$1{}
+
+	func (m $1) Error() string {
+	    return m.msg
+	}
+
+	func (m $1) Unwrap() error {
+	    return m.err
+	}
+
+snippet     buffer
+abbr        read from io.Reader sample
+	r, _ := os.Open(os.Args[1])
+	buf := bytes.Buffer{}
+	buf.ReadFrom(r)
+	buf.WriteTo(os.Stdout)

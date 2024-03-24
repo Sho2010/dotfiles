@@ -1,0 +1,22 @@
+snippet     source
+abbr        source rubygems.org
+options     head
+  source "https://rubygems.org"
+
+snippet     source-gcp
+abbr        source rubygems.org
+options     head
+  source https://${1:YOUR_PROJECT}.appspot.com
+
+  source https://${1}.appspot.com/private do
+    gem “${2:private_gem}”
+  end
+
+snippet     source-debug-template
+abbr        Debug template
+options     head
+	source :rubygems
+	gem 'pry'
+	gem 'pry-byebug'
+	gem '${1}'
+

@@ -1,0 +1,73 @@
+snippet     unittest
+  require "test_helper"
+
+  class ${1:`substitute(expand('%:t:r:r:r'), '\v%(^(.)|_(.))', '\u\1\u\2', 'g')`} < ActiveSupport::TestCase
+  end
+
+snippet     pry
+abbr        pry
+alias       pry
+  binding.pry
+
+snippet     pry-require
+  require 'pry'
+  require 'pry-byebug'
+  binding.pry
+
+snippet     test
+  test "${1:the truth}" do
+    ${2}
+  end
+
+snippet assert_raise
+  assert_raise ${1:StarndardError} do
+    ${2}
+  end
+
+snippet     attr
+abbr        attr_reader
+options     head
+  attr_reader :${1:hoge}
+
+snippet     attw
+abbr        attr_writer
+options     head
+  attr_writer :${1:hoge}
+
+snippet     att
+abbr        attr_accessor
+options     head
+  attr_accessor :${1:hoge}
+
+snippet whitelist
+abbr    rails console whitelist for docker
+  config.web_console.whitelisted_ips = "0.0.0.0/0"
+
+snippet     active_record_sample
+abbr        abbr
+  require 'bundler/inline'
+
+  gemfile(quiet: true) do
+    source 'https://rubygems.org'
+
+    gem 'activerecord', '6.0.0'
+    gem 'sqlite3'
+  end
+
+  require 'active_record'
+  require 'logger'
+
+  ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
+  ActiveRecord::Base.default_timezone = :local
+
+  ActiveRecord::Schema.define do
+    create_table :users, force: true do |t|
+      t.time :woke_up_at, default: '07:00:00', null: false
+    end
+  end
+
+  class User < ActiveRecord::Base
+  end
+
+  p User.create!

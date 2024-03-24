@@ -1,0 +1,16 @@
+snippet     go-build
+abbr        go Dockerfile template
+options     head
+	FROM golang:1.14-buster as builder
+
+	WORKDIR /go/src/github.com/sho2010/${1:app-name}
+	COPY . /go/src/github.com/sho2010/$1
+
+	RUN go get && GO111MODULE=on CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /$1 -v
+	---
+
+	FROM golang:1.14-buster
+	COPY --from=builder /$1 /usr/local/bin/$1
+
+	EXPOSE 5050
+	ENTRYPOINT ["/usr/local/bin/$1"]
