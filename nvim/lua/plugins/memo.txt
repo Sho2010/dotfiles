@@ -1,0 +1,27 @@
+  -- color schemes
+  "w0ng/vim-hybrid",
+  "chriskempson/vim-tomorrow-theme",
+
+  -- syntaxs
+  "cespare/vim-toml", -- toml
+
+  -- LSP
+
+  -- utilities
+  "tpope/vim-surround", -- 囲むやつ
+  "bronson/vim-trailing-whitespace", -- 行末の空白を表示
+  "github/copilot.vim", -- GitHub Copilot
+  'vim-scripts/AnsiEsc.vim', -- coloring ansi code
+  -- repo = 'Shougo/context_filetype.vim'
+
+}
+
+-- vscode-neovimでのみ使うプラグインを列挙
+local vscode_plugins = {
+}
+
+-- Neovimでのみ使うプラグインを列挙
+local neovim_plugins = {
+  'liuchengxu/vista.vim',
+}
+

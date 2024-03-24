@@ -1,0 +1,21 @@
+{
+  "AnsiEsc.vim": { "branch": "master", "commit": "d2bb7878622e4c16203acf1c92a0f4bc7ac58003" },
+  "Dockerfile.vim": { "branch": "master", "commit": "2a31e6bcea5977209c05c728c4253d82fd873c82" },
+  "ale": { "branch": "master", "commit": "6c10a519f1460179cf8f8e329d8eb3186247be2b" },
+  "copilot.vim": { "branch": "release", "commit": "9484e35cf222e9360e05450622a884f95c662c4c" },
+  "json5.vim": { "branch": "master", "commit": "29af1618015157caf2ac68813ec37cbf8982a049" },
+  "lazy.nvim": { "branch": "main", "commit": "af6afefbb46ab29a8a1db69536b04290a9403876" },
+  "nerdtree": { "branch": "master", "commit": "f3a4d8eaa8ac10305e3d53851c976756ea9dc8e8" },
+  "nvim-autopairs": { "branch": "master", "commit": "dbfc1c34bed415906395db8303c71039b3a3ffb4" },
+  "previm": { "branch": "master", "commit": "86d4dc0d28e7fdc0685a7a6e37eb3811dcff93a1" },
+  "tcomment_vim": { "branch": "master", "commit": "90eaf759099bcd47aa0471f974109d7fd78e4eea" },
+  "vim-hybrid": { "branch": "master", "commit": "cc58baabeabc7b83768e25b852bf89c34756bf90" },
+  "vim-jsonnet": { "branch": "master", "commit": "4ebc6619ddce5d032a985b42a9864154c3d20e4a" },
+  "vim-node": { "branch": "master", "commit": "ede047791792b9530ba1ae73ed86e9671cdd96b8" },
+  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
+  "vim-test": { "branch": "master", "commit": "a49c9cade75e97cace5e3ba545ce82d02f689feb" },
+  "vim-toml": { "branch": "main", "commit": "d36caa6b1cf508a4df1c691f915572fc02143258" },
+  "vim-tomorrow-theme": { "branch": "master", "commit": "46994f3a4d4574ce0d48c26a3bc1e528b8092c93" },
+  "vim-trailing-whitespace": { "branch": "master", "commit": "5540b3faa2288b226a8d9a4e8244558b12c598aa" },
+  "yajs.vim": { "branch": "master", "commit": "2bebc45ce94d02875803c67033b2d294a5375064" }
+}
