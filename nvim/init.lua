@@ -13,37 +13,6 @@ function merge_tables(t1, t2)
     return merged
 end
 
-local is_vscode = vim.g.vscode == 1
-
--- 両方で使うプラグインを列挙
-local common_plugins = {
-  -- color schemes
-  --"w0ng/vim-hybrid",
-  --"chriskempson/vim-tomorrow-theme",
-
-  -- syntaxs
-  --"cespare/vim-toml", -- toml
-
-  -- LSP
-
-  -- utilities
-  --"tpope/vim-surround", -- 囲むやつ
-  --"bronson/vim-trailing-whitespace", -- 行末の空白を表示
-  --"github/copilot.vim", -- GitHub Copilot
-  --'vim-scripts/AnsiEsc.vim', -- coloring ansi code
-  -- repo = 'Shougo/context_filetype.vim'
-
-}
-
--- vscode-neovimでのみ使うプラグインを列挙
-local vscode_plugins = {
-}
-
--- Neovimでのみ使うプラグインを列挙
-local neovim_plugins = {
-  'liuchengxu/vista.vim',
-}
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({

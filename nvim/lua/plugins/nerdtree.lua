@@ -1,6 +1,8 @@
 return {
   'scrooloose/nerdtree',
+  enabled = true,
   cond = not (vim.g.vscode == 1),
+  lazy = false,
   keys = {
     { "<Leader>n", ":NERDTreeFind<Enter>", { silent = true, noremap = true, desc = "" } },
   },

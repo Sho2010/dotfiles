@@ -1,5 +1,6 @@
 return {
   'tomtom/tcomment_vim', -- コメントON/OFFを手軽に実行
+  enabled = true,
   -- configはプラグインの読み込み完了後に実行される処理 
   -- config = function()
     -- YOUR CONDIG

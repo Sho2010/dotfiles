@@ -17,5 +17,6 @@
   "vim-toml": { "branch": "main", "commit": "d36caa6b1cf508a4df1c691f915572fc02143258" },
   "vim-tomorrow-theme": { "branch": "master", "commit": "46994f3a4d4574ce0d48c26a3bc1e528b8092c93" },
   "vim-trailing-whitespace": { "branch": "master", "commit": "5540b3faa2288b226a8d9a4e8244558b12c598aa" },
+  "vista.vim": { "branch": "master", "commit": "f76cecc430003968e6174cae899c2cb2953219b7" },
   "yajs.vim": { "branch": "master", "commit": "2bebc45ce94d02875803c67033b2d294a5375064" }
 }

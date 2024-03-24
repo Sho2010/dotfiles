@@ -1,5 +1,6 @@
 return {
   'janko-m/vim-test',
+  enabled = true,
   cond = not (vim.g.vscode == 1),
   keys = {
     { 'n', '[test]', '<Nop>', { silent = true, noremap = true, desc = "Group leader for test commands" } },
