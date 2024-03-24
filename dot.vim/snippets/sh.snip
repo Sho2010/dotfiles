@@ -44,7 +44,7 @@ abbr    for-in with heredoc
 
 snippet script_dir
 abbr    script
-  SCRIPT_DIR=$(cd $(dirname \$0);pwd)
+  SCRIPT_DIR=$(cd "$(dirname "\$0")" && pwd)
 
 snippet awk
 abbr    awk template
