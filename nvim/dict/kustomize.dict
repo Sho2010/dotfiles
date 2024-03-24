@@ -1,0 +1,14 @@
+apiVersion
+bases
+commonLabels
+configMapGenerator
+files
+images
+kind
+literals
+namePrefix
+namespace
+patchesStrategicMerge
+project
+resources
+secretGenerator
