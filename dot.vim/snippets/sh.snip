@@ -184,13 +184,13 @@ abbr        snake to camel
 snippet     split
 abbr        csv, tsv split
 	IFS_ORIGINAL="$IFS"
-	IFS=,
-	arr=($str)
-	IFS="$IFS_ORIGINAL"
+	IFS=","
+	str="hoge,fuga,piyo"
 
-	for v in "${arr[@]}"; do
+	for v in `echo "$str"`; do
 	  echo "[$v]"
 	done
+	IFS="$IFS_ORIGINAL"
 
 snippet     split-path
 abbr        path to array
