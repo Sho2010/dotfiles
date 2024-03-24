@@ -6,7 +6,6 @@ SCRIPT_DIR=$(cd $(dirname $0);pwd)
 brew update
 
 brew install ant
-brew install bash-completion
 brew install curl
 brew install direnv
 brew install git
@@ -24,7 +23,6 @@ brew install rbenv
 brew install readline
 brew install terraform
 brew install tflint
-brew install tfsec
 brew install tig
 brew install tmux
 brew install tree
@@ -36,6 +34,8 @@ brew install rg
 brew install ag
 brew install fzf
 brew install ctags
+
+brew install aquasecurity/trivy/trivy
 
 # ついでにgoの開発ツール入れちゃう
 $SCRIPT_DIR/go.sh
@@ -52,6 +52,8 @@ brew install kube-ps1
 # for nvim
 brew install nvim
 brew install python@3
+
+# TODO: ここがこけやすいのでなんとかしたい
 pip3 install neovim
 
 case "${OSTYPE}" in
