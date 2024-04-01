@@ -42,7 +42,7 @@ vim.opt.smartcase = true
 -- "backup,swap fileいらない
 vim.opt.writebackup = false
 vim.opt.backup = false
-vim.opt.swapfile = true
+vim.opt.swapfile = false
 vim.opt.hidden = true
 vim.opt.wildignorecase = true
 
