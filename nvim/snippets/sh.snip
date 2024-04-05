@@ -134,8 +134,9 @@ abbr        replace all target string(hold hit string)
 
 snippet     sed-file-find-replace
 abbr        replace string on the find command result files
+	# `.` は エスケープ必須 e.g. v1\.0\.0
 	# backup fileを残す場合は -iにsuffixを指定する
-	find ./ -name '*.txt' -type f -exec gsed -i -e "s/version 2$/version 2.1/g" {} \;
+	find ./ -name '*.txt' -type f -exec gsed -i -e "s/version 2$/version 2\.1/g" {} \;
 
 snippet     sed-heredoc-append
 abbr        "sed and heredoc variable YAMLを追加したいときとかに便利"
