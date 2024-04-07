@@ -1,6 +1,7 @@
+-- このまま使うと検索時の 'n' でNextが使えなくなるのでDisabled
 return {
   'janko-m/vim-test',
-  enabled = true,
+  enabled = false,
   cond = not (vim.g.vscode == 1),
   keys = {
     { 'n', '[test]', '<Nop>', { silent = true, noremap = true, desc = "Group leader for test commands" } },
