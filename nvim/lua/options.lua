@@ -44,7 +44,9 @@ vim.opt.writebackup = false
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.hidden = true
+
 vim.opt.wildignorecase = true
+vim.opt.wildignore = ".git,.svn,*.pyc,*.o,*.out,*.zip,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 
 -- "検索関係
 vim.opt.ignorecase = true  -- " 大文字小文字を区別しない
