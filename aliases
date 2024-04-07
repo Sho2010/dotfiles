@@ -72,6 +72,9 @@ function gpeco() {
 
 function git-grep-edit() {
   result=$(git grep -i --color=always "${1}" | fzf --ansi)
+  if [ -z "$result" ]; then
+    return
+  fi
   ${EDITOR} $(echo $result | cut -d: -f1)
 }
 alias ggopen=git-grep-edit
@@ -164,7 +167,7 @@ alias sw-kubeconfig='switch-k8s-config'
 
 alias h='hub'
 alias hb='hub browse'
-alias v='vim'
+alias v='code'
 alias vscode='code'
 alias gw='ghkw'
 alias gwr='ghkw --language=ruby'
