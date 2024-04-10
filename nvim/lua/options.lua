@@ -62,3 +62,6 @@ vim.cmd("colorscheme hybrid")
 vim.opt.undodir = vim.fn.stdpath("state")
 vim.opt.undofile = true
 
+-- r, rr などの連続キーの待ち時間
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
