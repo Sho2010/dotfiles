@@ -6,7 +6,8 @@ return {
     "lambdalisue/vim-quickrun-neovim-job"
   },
   keys = {
-    { "<Leader>r", ":QuickRun<CR>", { silent = true, noremap = true, desc = "Default quick run" } },
+    { "<Leader>rr", ":QuickRun<CR>", { silent = true, noremap = true, desc = "Default quick run" } },
+    { "<Leader>r", ":QuickRun -args ", { silent = true, noremap = true, desc = "QuickRUn with argument" } },
   },
   config = function()
     vim.g.quickrun_config = {
