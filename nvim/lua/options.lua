@@ -58,3 +58,7 @@ vim.opt.wrapscan   = true  -- " 検索時にファイルの最後まで行った
 -- colorscheme = 'hybrid'
 vim.cmd("colorscheme hybrid")
 
+-- undoの永続化
+vim.opt.undodir = vim.fn.stdpath("state")
+vim.opt.undofile = true
+
