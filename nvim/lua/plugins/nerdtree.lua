@@ -4,7 +4,7 @@ return {
   cond = not (vim.g.vscode == 1),
   lazy = false,
   keys = {
-    { "<Leader>n", ":NERDTreeFind<Enter>", { silent = true, noremap = true, desc = "" } },
+    { "<Leader>n", ":NERDTreeFind<CR>", { silent = true, noremap = true, desc = "" } },
   },
   config = function()
     -- ファイルを開いたときにNERDTreeを閉じる

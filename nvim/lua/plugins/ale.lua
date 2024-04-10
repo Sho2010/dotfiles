@@ -14,19 +14,18 @@ return {
   'w0rp/ale',
   cond = true,
   config = function()
-  vim.g.ale_fix_on_save = 1
+    vim.g.ale_fix_on_save = 1
+    vim.g.ale_sign_error = 'E'
+    vim.g.ale_sign_offset = 1000000
+    vim.g.ale_sign_warning = 'W'
 
-  vim.g.ale_sign_error = 'E'
-  vim.g.ale_sign_offset = 1000000
-  vim.g.ale_sign_warning = 'W'
+    vim.g.ale_completion_enabled = 1
+    vim.g.ale_set_highlights = 1
+    vim.g.ale_sign_column_always = 1
 
-  vim.g.ale_completion_enabled = 1
-  vim.g.ale_set_highlights = 1
-  vim.g.ale_sign_column_always = 1
+    vim.g.ale_linter_aliases = { vue = { 'vue', 'javascript' } }
 
-  vim.g.ale_linter_aliases = { vue = { 'vue', 'javascript' } }
-
-  vim.g.ale_fixers = {
+    vim.g.ale_fixers = {
       javascript = {'eslint', 'prettier'},
       typescript = {'eslint', 'prettier'},
       typescriptreact = {'eslint', 'prettier'},
@@ -36,9 +35,9 @@ return {
       json = {'fixjson'},
       terraform = {'terraform'},
       rego = {'opafmt'},
-  }
+    }
 
-  vim.g.ale_linters = {
+    vim.g.ale_linters = {
       javascript = {'eslint'},
       typescript = {'eslint'},
       typescriptreact = {'eslint'},
@@ -49,10 +48,10 @@ return {
       markdown = {'textlint'},
       terraform = {'terraform', 'tflint', 'tfsec'},
       rego = {'opacheck'},
-  }
+    }
 
-  vim.api.nvim_command('command! Fa ALEFix')
-  vim.api.nvim_command('command! Fl ALELint')
+    vim.api.nvim_command('command! Fa ALEFix')
+    vim.api.nvim_command('command! Fl ALELint')
 
   end
 }

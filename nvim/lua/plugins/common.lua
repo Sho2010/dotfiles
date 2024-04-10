@@ -9,5 +9,6 @@ return {
   "bronson/vim-trailing-whitespace", -- 行末の空白を表示
   "vim-scripts/AnsiEsc.vim",         -- coloring ansi code
   { "windwp/nvim-autopairs",event = 'InsertEnter' } -- 括弧を勝手に閉じるやつ
+  -- "mattn/vim-findroot",
 }
 
