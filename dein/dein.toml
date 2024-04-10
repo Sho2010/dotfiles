@@ -136,3 +136,6 @@ repo = 'liuchengxu/vista.vim'
 
 [[plugins]]
 repo = 'github/copilot.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
