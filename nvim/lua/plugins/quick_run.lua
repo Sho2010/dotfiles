@@ -15,6 +15,7 @@ return {
         ["runner"] = "neovim_job",
         ["outputter/buffer/opener"] = "new",
         ["outputter/buffer/close_on_empty"] = 1,
+        ["outputter/buffer/into"] = 1, -- 実行後、出力Buffにフォーカスを移す
       },
       -- ["go"] = {
       -- },
