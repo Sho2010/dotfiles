@@ -91,20 +91,6 @@ else
 
             ["<Tab>"] = cmp.mapping(tab, { "i", "s" }),
             ["<C-k>"] = cmp.mapping(tab, { "i", "s" }),
-
-            -- ["<Tab>"] = cmp.mapping(function(fallback)
-            --   if cmp.visible() and has_words_before() then
-            --     if cmp.get_selected_entry() then
-            --       cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
-            --     else
-            --       cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            --     end
-            --   elseif luasnip.expand_or_jumpable() then
-            --     luasnip.expand_or_jump()
-            --   else
-            --     fallback()
-            --   end
-            -- end, { "i", "s" }),
             ["<S-Tab>"] = cmp.mapping(function(fallback)
               if cmp.visible() then
                 cmp.select_prev_item()
