@@ -48,6 +48,7 @@ return {
       markdown = {'textlint'},
       terraform = {'terraform', 'tflint', 'tfsec'},
       rego = {'opacheck'},
+      rust = {'analyzer'}
     }
 
     vim.api.nvim_command('command! Fa ALEFix')
