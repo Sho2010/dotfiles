@@ -59,11 +59,13 @@ vim.opt.wrapscan   = true  -- " 検索時にファイルの最後まで行った
 vim.cmd("colorscheme hybrid")
 
 -- undoの永続化
+-- 戻りすぎて結構めんどくさい時があるので無効化
 vim.opt.undodir = vim.fn.stdpath("state")
-vim.opt.undofile = true
+vim.opt.undofile = false
 
 -- r, rr などの連続キーの待ち時間
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 
 vim.opt.helplang = { "ja", "en" }
+
