@@ -46,6 +46,16 @@ else
         lspconfig.bashls.setup({ capabilities = capabilities })
         lspconfig.ruby_ls.setup({ capabilities = capabilities })
 
+        -- rust
+        lspconfig.rust_analyzer.setup({
+          capabilities = capabilities,
+        })
+
+        -- python
+        lspconfig.ruff.setup({
+          capabilities = capabilities,
+        })
+
         -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
         lspconfig.tsserver.setup({
           capabilities = capabilities,
