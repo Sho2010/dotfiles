@@ -1,3 +1,6 @@
+-- NOTE:
+-- copilotとの共存がうまくいってないのでcmp連携は無効化
+
 if vim.g.vscode == 1 then
   return {}
 else
@@ -8,12 +11,15 @@ else
       dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-cmdline",
+        "dmitmel/cmp-cmdline-history",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-path",
         "neovim/nvim-lspconfig",
         "onsails/lspkind.nvim",
         "saadparwaiz1/cmp_luasnip",
-        "zbirenbaum/copilot-cmp"
+        -- "hrsh7th/cmp-copilot",
+        -- "zbirenbaum/copilot-cmp",
+        "windwp/nvim-autopairs",
       },
       config = function()
         local has_words_before = function()
@@ -21,7 +27,6 @@ else
           local line, col = unpack(vim.api.nvim_win_get_cursor(0))
           return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
         end
-
 
         local cmp = require("cmp")
         local luasnip = require("luasnip")
@@ -32,7 +37,7 @@ else
             if cmp.get_selected_entry() then
               cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
             else
-              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Replace, select = false })
             end
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
@@ -51,6 +56,9 @@ else
             documentation = cmp.config.window.bordered({
               border = "rounded",
             }),
+            experimental = {
+              ghost_text = true,
+            },
           },
           snippet = {
             expand = function(args)
@@ -119,7 +127,7 @@ else
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
             { name = "path" },
-            { name = "copilot", group_index = 2 },
+            -- { name = "copilot"},
           },
         })
 
@@ -136,9 +144,8 @@ else
           sources = cmp.config.sources(
             {
               { name = "path" },
-            },
-            {
-              { name = "cmdline", keyword_length = 2 }, --w, qとかでサジェストされると鬱陶しいので2文字以上
+              { name = "cmdline_history", keyword_length = 2}, -- historyはみたいけど混ざるから微妙...
+              { name = "cmdline", keyword_length = 2 },        --w, qとかでサジェストされると鬱陶しいので2文字以上
             }
           ),
           matching = { disallow_symbol_nonprefix_matching = false }
