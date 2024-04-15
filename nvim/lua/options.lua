@@ -65,3 +65,5 @@ vim.opt.undofile = true
 -- r, rr などの連続キーの待ち時間
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
+
+vim.opt.helplang = { "ja", "en" }
