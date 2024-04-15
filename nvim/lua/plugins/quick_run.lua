@@ -8,7 +8,8 @@ return {
   keys = {
     { "<Leader>rr", ":QuickRun<CR>", { silent = true, noremap = true, desc = "Default quick run" } },
     { "<Leader>r", ":QuickRun -args ", { silent = true, noremap = true, desc = "QuickRUn with argument" } },
-    { "<CR>", ":q<CR>", { silent = true, noremap = true, desc = "Quit QuickRun Buffer", ft="quickrun" } },
+    -- TODO: ftが機能してない
+    { "<CR>", ":q<CR>", {silent = true, noremap = true, desc = "Quit QuickRun Buffer", ft="quickrun" } },
   },
   config = function()
     vim.g.quickrun_config = {
