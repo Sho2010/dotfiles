@@ -1,3 +1,4 @@
+export SAVEHIST=10000000
 export HISTSIZE=10000000
 export HISTFILESIZE=10000000
 export HISTIGNORE=ls:ll:la:pwd:gs:gb:history
