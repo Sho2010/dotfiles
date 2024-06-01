@@ -18,7 +18,7 @@ else
         "onsails/lspkind.nvim",
         "saadparwaiz1/cmp_luasnip",
         -- "hrsh7th/cmp-copilot",
-        -- "zbirenbaum/copilot-cmp",
+        "zbirenbaum/copilot-cmp",
         "windwp/nvim-autopairs",
       },
       config = function()
@@ -123,11 +123,11 @@ else
           },
           sources = {
             { name = "dictionary", keyword_length = 2 },
+            { name = "copilot", keyword_length = 0, priority = 1000 },
             { name = "luasnip" },
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
             { name = "path" },
-            -- { name = "copilot"},
           },
         })
 
