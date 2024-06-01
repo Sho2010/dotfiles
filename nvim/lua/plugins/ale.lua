@@ -12,7 +12,8 @@
 
 return {
   'w0rp/ale',
-  cond = true,
+  enabled = true,
+  cond = not (vim.g.vscode == 1),
   config = function()
     vim.g.ale_fix_on_save = 1
     vim.g.ale_sign_error = 'E'
