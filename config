@@ -4,3 +4,4 @@ export HISTFILESIZE=10000000
 export HISTIGNORE=ls:ll:la:pwd:gs:gb:history
 export KUBE_EDITOR=nvim
 
+export FZF_DEFAULT_OPTS="--preview='head -$LINES {}' --height=70%"
