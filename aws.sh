@@ -1,18 +1,14 @@
 function sw-aws-environment() {
+
   if [ ! -z $1 ]; then
     echo "Set AWS_PROFILE=$1"
     export AWS_PROFILE=$1
     return
   fi
 
-#   read -r -d '' envs <<-'EOF'
-# staging
-# production
-# EOF
-#
-#   env=$(echo $envs | peco)
-
   env=$(cat ~/.aws/config | grep -e '\[.*' | peco | tr -d [ | tr -d ] )
+  # delete profile prefix if exists
+  env=$(echo $env | sed -e 's/^profile //')
 
   if [ ! -z $env ]; then
     echo "Set AWS_PROFILE=$env"
@@ -41,3 +37,6 @@ EOF
 
 }
 
+function sso-login-topotal() {
+  aws sso login --profile topotal-sre
+}
