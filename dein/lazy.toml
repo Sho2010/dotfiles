@@ -7,24 +7,6 @@ on_ft = 'javascript'
 repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
-[[plugins]]
-repo = 'hashivim/vim-terraform'
-on_ft = 'terraform'
-hook_add = '''
-    source ~/.vim/vimrcs/terraform.vim
-'''
-
-[[plugins]]
-repo = 'juliosueiras/vim-terraform-completion'
-on_ft = 'terraform'
-depends_on = ['deoplete.nvim', 'vim-terraform']
-hook_add = '''
-  let g:deoplete#omni_patterns = {}
-  let g:deoplete#omni_patterns.terraform = '[^ \*\t"{=$]\w\*'
-'''
-hook_post_source = '''
-call deoplete#initialize()
-'''
 
 [[plugins]]
 repo = 'ekalinin/Dockerfile.vim'
@@ -45,4 +27,8 @@ on_ft = 'json5'
 [[plugins]]
 repo = 'google/vim-jsonnet'
 on_ft = 'jsonnet'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = 'terraform'
 
