@@ -41,3 +41,5 @@
   rebase = true
 [url "ssh://git@github.com/FiNCDeveloper/"]
 	insteadOf = https://github.com/FiNCDeveloper/
+[init]
+	defaultBranch = main
