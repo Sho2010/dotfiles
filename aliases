@@ -71,8 +71,10 @@ function gpeco() {
 }
 
 function git-grep-edit() {
-  result=$(git grep -i --color=always "${1}" | fzf --ansi)
+  result=$(GREP_HEADER=false git grep -i -l -n --color=always "${1}" | fzf --ansi --preview='head -75 {}' --height=70%)
+
   if [ -z "$result" ]; then
+
     return
   fi
   ${EDITOR} $(echo $result | cut -d: -f1)
@@ -89,6 +91,10 @@ function manifest-dir-peco() {
 function ghq-peco() {
   cd $(ghq list -p | peco --query "$1")
 }
+
+function ghq-fzf() {
+  cd $(ghq list | fzf --preview "bat --color=always --style=header,grid --line-range :80 $(ghq root)/{}/README.*"
+)}
 
 function history-cd-peco() {
   cd $(history | grep cd | awk '{ print $3 }' | sort | uniq | peco --query "$1")
