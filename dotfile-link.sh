@@ -32,3 +32,4 @@ ln -s ~/dotfiles/dot.tigrc ~/.tigrc
 # Setup neovim
 ln -s ~/dotfiles/dot.vim ~/.config/nvim
 
+ln -s ~/dotfiles/wezterm ~/.config/wezterm
