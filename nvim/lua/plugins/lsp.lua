@@ -44,7 +44,7 @@ else
         lspconfig.cssls.setup({ capabilities = capabilities })
         lspconfig.sqls.setup({ capabilities = capabilities })
         lspconfig.bashls.setup({ capabilities = capabilities })
-        lspconfig.ruby_ls.setup({ capabilities = capabilities })
+        lspconfig.ruby_lsp.setup({ capabilities = capabilities })
 
         -- rust
         lspconfig.rust_analyzer.setup({
