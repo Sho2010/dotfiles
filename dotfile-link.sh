@@ -30,6 +30,6 @@ ln -s ~/dotfiles/dot.tigrc ~/.tigrc
 # ln -s ~/dotfiles/dein/dein.toml    ~/.config/dein/dein.toml
 
 # Setup neovim
-ln -s ~/dotfiles/dot.vim ~/.config/nvim
+ln -s ~/dotfiles/nvim ~/.config/nvim
 
 ln -s ~/dotfiles/wezterm ~/.config/wezterm
