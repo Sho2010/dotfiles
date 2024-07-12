@@ -34,6 +34,7 @@ brew install rg
 brew install ag
 brew install fzf
 brew install ctags
+brew install hey
 
 brew install aquasecurity/trivy/trivy
 
