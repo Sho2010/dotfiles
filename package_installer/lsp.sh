@@ -7,3 +7,7 @@ pip install cmake-language-server
 npm i -g vscode-langservers-extracted
 npm i -g bash-language-server
 npm i -g typescript-language-server typescript
+npm i -g bash-language-server
+
+gem install ruby-lsp
+
