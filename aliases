@@ -142,7 +142,10 @@ alias m='minikube'
 
 alias k='kubectl'
 alias kapi='kubectl api-resources'
-alias kb='kustomize build'
+alias kb='kustomize build --enable-helm'
+alias kbh='kustomize build --enable-helm'
+
+alias kbsplit=' kustomize build --enable-helm | $HOME/dotfiles/scripts/ysplit'
 alias kc='kubectx'
 alias kd='kubectl describe'
 alias kg='kubectl get'
@@ -150,6 +153,8 @@ alias kgyaml='kubectl get -oyaml'
 alias kns='kubens'
 alias ct='conftest'
 alias ctt='conftest test'
+
+alias argo='argocd'
 
 # telepresence
 alias tele=telepresence
@@ -172,7 +177,7 @@ alias sw-ns='switch-k8s-namespace'
 alias sw-kubeconfig='switch-k8s-config'
 
 alias h='hub'
-alias hb='hub browse'
+alias hb='gh browse'
 alias v='code'
 alias vscode='code'
 alias gw='ghkw'
