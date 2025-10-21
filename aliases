@@ -100,6 +100,15 @@ function history-cd-peco() {
   cd $(history | grep cd | awk '{ print $3 }' | sort | uniq | peco --query "$1")
 }
 
+function codews() {
+  DIR="$HOME/workspaces"
+  ws="$(find "$DIR" -type f -name '*.code-workspace' 2>/dev/null | fzf --prompt='workspace> ')"
+  [[ -z "${ws:-}" ]] && return 0  # キャンセル時は終了
+
+  code "$ws" --new-window $@
+}
+
+
 # OSTYPE settings ls, pbcopy...
 case "${OSTYPE}" in
 darwin*)
@@ -178,11 +187,14 @@ alias sw-kubeconfig='switch-k8s-config'
 
 alias h='hub'
 alias hb='gh browse'
-alias v='code'
-alias vscode='code'
 alias gw='ghkw'
 alias gwr='ghkw --language=ruby'
 
+# vscode
+alias v='code'
+alias vscode='code'
+alias cw='codews'
+alias ws='codews'
 function gssh() {
   $(gcloud compute instances list | peco | awk '{print "gcloud compute ssh --zone " $2 " " $1}')
 }
