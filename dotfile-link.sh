@@ -33,3 +33,6 @@ ln -s ~/dotfiles/dot.tigrc ~/.tigrc
 ln -s ~/dotfiles/nvim ~/.config/nvim
 
 ln -s ~/dotfiles/wezterm ~/.config/wezterm
+
+# claude 
+ln -s ~/dotfiles/claude/commands ~/.claude/commands
