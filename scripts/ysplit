@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# ヘルプメッセージ
+usage() {
+  echo "Usage: $0 [--out output_directory] [input_file]"
+  echo "Usage: kustomize build | $0 [--out output_directory]"
+  echo "  --out, -o output_directory  Specify the directory to save the split YAML files"
+  exit 1
+}
+
+# デフォルト出力ディレクトリ
+output_dir="./splitted_yaml"
+
+# 引数の解析
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    -o|--out)
+      output_dir="$2"
+      shift 2
+      ;;
+    *)
+      input_file="$1"
+      shift
+      ;;
+  esac
+done
+
+# 入力ファイルの設定
+if [ -n "$input_file" ]; then
+  input=$(cat "$input_file")
+else
+  if [ ! -t 0 ]; then
+    input=$(cat -)
+  else
+    usage
+  fi
+fi
+
+# 出力ディレクトリの作成
+mkdir -p "$output_dir"
+
+# 一時的にカレントディレクトリを変更してyamlの分割
+(
+  cd "$output_dir"
+  echo "$input" | yq --split-exp '.kind + "_" + .metadata.name + ".yaml"' --no-doc
+)
+
+echo "YAML files have been split and saved to $output_dir"
