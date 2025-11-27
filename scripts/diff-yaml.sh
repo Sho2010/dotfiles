@@ -34,3 +34,5 @@ diff_sorted_yaml() {
   # Clean up temporary files
   rm "$temp_json1" "$temp_json2"
 }
+
+diff_sorted_yaml "$@"
