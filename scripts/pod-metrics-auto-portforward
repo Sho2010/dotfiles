@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+NAMESPACE=""
+POD_NAME=""
+POD_JSON=""
+PF_PID=""
+SLEEP="1.5"
+
+cleanup() {
+  if [[ -n "${PF_PID:-}" ]]; then
+    kill "${PF_PID}" 2>/dev/null || true
+    wait "${PF_PID}" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT INT TERM
+
+require_cmd() {
+  local cmd="$1"
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "required command not found: $cmd" >&2
+    exit 1
+  fi
+}
+
+select_pod() {
+  local sel
+  sel="$(kubectl get pods --no-headers | fzf)" || {
+    echo "no pod selected" >&2
+    exit 1
+  }
+  POD_NAME="$(awk '{print $1}' <<<"$sel")"
+}
+
+# annotations から prometheus_url を探す（深さは jq の再帰で見る）
+find_prometheus_url_from_annotations() {
+  jq -r '
+    .metadata.annotations // {} 
+    | [ .. 
+        | objects 
+        | .prometheus_url? // empty 
+        | select(. != "") 
+      ][0] // empty
+  ' <<<"$POD_JSON"
+}
+
+# prometheus_url から port と path を抜き出す
+# 戻り値: "PORT PATH"（PORT は空の可能性あり）
+extract_port_and_path_from_url() {
+  local url="${1:-}"
+  local u hostport path="" port=""
+
+  # スキーム除去
+  u="${url#*://}"
+
+  # host:port/path を分解
+  hostport="$u"
+  if [[ "$u" == */* ]]; then
+    hostport="${u%%/*}"
+    path="/${u#*/}"
+  fi
+
+  # ポート抽出（:8080 / :8080? / 8080 などを雑に拾う）
+  if [[ "$hostport" =~ :([0-9]+)$ ]]; then
+    port="${BASH_REMATCH[1]}"
+  elif [[ "$hostport" =~ :([0-9]+) ]]; then
+    port="${BASH_REMATCH[1]}"
+  elif [[ "$hostport" =~ ^([0-9]+)$ ]]; then
+    port="${BASH_REMATCH[1]}"
+  fi
+
+  # path が取れなかった場合のフォールバック
+  if [[ -z "$path" ]]; then
+    if [[ "$url" == /* ]]; then
+      path="$url"
+    else
+      path="/metrics"
+    fi
+  fi
+
+  printf '%s %s\n' "$port" "$path"
+}
+
+# spec.containers[] から metrics っぽいポートをベストエフォートで探す
+# 1. name に metrics / prometheus を含む ports[].containerPort
+# 2. なければ最初の ports[].containerPort
+find_metrics_port_from_containers() {
+  jq -r '
+    (
+      [ .spec.containers[]
+        | .ports? // []
+        | .[]
+        | select((.name // "" | test("metrics|prometheus"; "i")))
+        | .containerPort
+      ][0]
+      //
+      [ .spec.containers[]
+        | .ports? // []
+        | .[]
+        | .containerPort
+      ][0]
+      //
+      ""
+    ) | tostring
+  ' <<<"$POD_JSON"
+}
+
+port_forward_and_curl() {
+  local port="$1"
+  local path="$2"
+
+  echo "namespace: $NAMESPACE"
+  echo "pod      : $POD_NAME"
+  echo "port     : $port"
+  echo "path     : $path"
+  echo
+
+  # port-forward をバックグラウンドで起動し PID を保持
+  kubectl -n "$NAMESPACE" port-forward "pod/$POD_NAME" "${port}:${port}" >/dev/null 2>&1 &
+  PF_PID=$!
+
+  # 立ち上がり待ち（雑に少し待つ）
+  sleep $SLEEP
+
+  # metrics 取得
+  curl -fsS "http://127.0.0.1:${port}${path}" || curl -fsS "http://127.0.0.1:${port}"
+}
+
+main() {
+  require_cmd kubectl
+  require_cmd fzf
+  require_cmd jq
+  require_cmd curl
+
+  select_pod
+
+  POD_JSON="$(kubectl get pod "$POD_NAME" -o json)"
+
+  local prometheus_url port path
+  prometheus_url="$(find_prometheus_url_from_annotations || true)"
+  port=""
+  path=""
+
+  if [[ -n "$prometheus_url" ]]; then
+    read -r port path < <(extract_port_and_path_from_url "$prometheus_url")
+  fi
+
+  # prometheus_url から port が取れなかった場合は containers から探す
+  if [[ -z "$port" ]]; then
+    port="$(find_metrics_port_from_containers || true)"
+  fi
+
+  if [[ -z "$port" ]]; then
+    echo "could not determine metrics port from annotations(prometheus_url) or containers" >&2
+    exit 1
+  fi
+
+  if [[ -z "$path" ]]; then
+    path="/metrics"
+  fi
+
+  echo "port/path $port $path"
+
+  port_forward_and_curl "$port" "$path"
+}
+
+main "$@"
