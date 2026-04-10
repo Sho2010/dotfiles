@@ -36,6 +36,7 @@ brew install fzf
 brew install ctags
 brew install hey
 brew install sops
+brew install iam-policy-json-to-terraform
 
 brew install aquasecurity/trivy/trivy
 

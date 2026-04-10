@@ -24,6 +24,8 @@ alias -g PB="| pbcopy"
 alias -g H=" -h"
 alias -g HH=" --help"
 
+alias commit_claude="git diff --staged | claude -p 'Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Return ONLY plain text, no markdown, no code blocks, no formatting, no backticks.'"
+
 alias -g P='$(kubectl get pods | peco | awk "{print \$1}")'
 
 function peco-history() {
