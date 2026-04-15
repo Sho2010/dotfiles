@@ -1,5 +1,8 @@
 ---
+name: commit-message
 description: Generate a Conventional Commits format message for staged changes
+disable-model-invocation: true
+allowed-tools: Bash(git *)
 ---
 
 Analyze the currently staged changes in git and generate a commit message following the Conventional Commits format.
@@ -22,6 +25,7 @@ Instructions:
 
 Format rules:
 - Type must be one of: feat, fix, docs, style, refactor, test, chore, build, ci, perf
+Type can be annotate in affected service. e.g. "feat(main):"
 - Scope should indicate the affected component (e.g., "api", "ui", "auth", "provider", "tests", "taskfile")
 - Summary should be concise, lowercase, and without period at the end
 - Body should explain the "what" and "why" (not "how"), provide context if needed

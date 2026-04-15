@@ -1,5 +1,9 @@
 ---
-description: Generate a GitHub PR description for current branch changes (usage: /pr_description [en|ja])
+name: pr-description
+description: "Generate a GitHub PR description for current branch changes (usage: /pr-description [en|ja] [base-branch])"
+disable-model-invocation: true
+allowed-tools: Bash(git *) Bash(gh *)
+argument-hint: "[en|ja] [base-branch]"
 ---
 
 Analyze the changes between the current topic branch and main branch, and generate a GitHub Pull Request description.
@@ -7,8 +11,8 @@ Analyze the changes between the current topic branch and main branch, and genera
 Instructions:
 1. Check if a language argument is provided: "en" for English, "ja" for Japanese (default)
 2. Run `git rev-parse --abbrev-ref HEAD` to get the current branch name
-3. Run `git diff main...HEAD` to see all changes from main to current branch
-4. Run `git log main..HEAD --oneline` to see the commit history
+3. Run `git diff ${base}...HEAD` to see all changes from base-branch(default:main) to current branch
+4. Run `git log ${base}..HEAD --oneline` to see the commit history
 5. Analyze the changes to understand:
    - The purpose and scope of the changes
    - What features/fixes are included
@@ -26,6 +30,10 @@ IMPORTANT:
 Template structure:
 
 ```markdown
+## Title
+
+[Provide a concise and descriptive title for the PR]
+
 ## Summary
 
 [Provide a concise summary of what this PR does and why. Include the motivation and context.]
