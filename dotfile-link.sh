@@ -34,5 +34,7 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 
 ln -s ~/dotfiles/wezterm ~/.config/wezterm
 
+ln -s ~/dotfiles/herdr ~/.config/herdr
+
 # claude 
 ln -s ~/dotfiles/claude/commands ~/.claude/commands

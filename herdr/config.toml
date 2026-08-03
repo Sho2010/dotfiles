@@ -1,0 +1,59 @@
+onboarding = false
+# Herdr config (dotfiles管理)
+# ~/dotfiles/herdr → ~/.config/herdr (symlink)
+# 変更反映: herdr server reload-config
+# 全デフォルト値の確認: herdr --default-config
+
+[keys]
+# ---- tmux (~/.tmux.conf) からの移植 ----
+
+# prefixキーをC-eに変更する
+prefix = "ctrl+e"
+
+# 設定ファイルをリロードする (tmux: bind r source-file)
+# Herdrデフォルトは reload_config=prefix+shift+r / resize_mode=prefix+r
+# tmuxの体感に寄せて入れ替え
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+
+# 縦(右)に分割 — tmuxは bind | split-window -h だったが、
+# Herdrは punctuation+shift 系の direct binding が端末環境で不安定なため、
+# Herdrデフォルトの prefix+v を採用
+split_vertical = "prefix+v"
+
+# - でペインを横(下)に分割する (tmux: bind - split-window -v)
+# Herdrデフォルトと同じ (明示)
+split_horizontal = "prefix+minus"
+
+# Vimのキーバインドでペインを移動する (tmux: bind h/j/k/l select-pane)
+# Herdrデフォルトと同じ (明示)
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# C-l でペインをローテート (tmux: bind -r -n C-l select-pane -t :.+)
+# prefix無しの direct binding
+cycle_pane_next = "ctrl+l"
+
+# 新規タブ (tmux: bind c new-window) — Herdrデフォルトと同じ (明示)
+new_tab = "prefix+c"
+
+
+# エージェント状態遷移時のベル音を無効化 (Claudeの動作完了ごとに鳴るのを止める)
+[ui.sound]
+enabled = false
+
+
+# ---- tmux固有で Herdr に移植できない/不要なもの ----
+# bind -n S-left/down/up/right  → Herdrは focus_pane_* に単一バインドのみ持てる。
+#   prefix+hjkl と両立不可なので prefix+hjkl を採用。
+# bind -r H/J/K/L resize-pane   → Herdrは resize_mode に入ってから操作する方式。
+#   直接 shift+hjkl でリサイズはサポート外。
+# mode-keys vi / copy-pipe pbcopy → Herdrはマウス選択で自動コピー
+#   ([ui] copy_on_select = true がデフォルト有効)。
+# bind C-a send-prefix, reattach-to-user-namespace, escape-time,
+# base-index, pane-base-index, history-limit, default-terminal,
+# allow-rename, status-* の色/フォーマット
+#   → Herdrのアーキテクチャ上、対応する概念なし or デフォルトで十分。
+#     見た目は [theme] name = "..." で選択 (catppuccin/tokyo-night 等)。
