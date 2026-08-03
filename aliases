@@ -445,3 +445,7 @@ function sw-local() {
   export KUBECONFIG="$HOME/.kube/local"
 }
 
+# herdr (tmux neww 相当)
+alias newt='herdr tab create'
+
+

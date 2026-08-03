@@ -10,15 +10,6 @@ onboarding = false
 # prefixキーをC-eに変更する
 prefix = "ctrl+e"
 
-# 設定ファイルをリロードする (tmux: bind r source-file)
-# Herdrデフォルトは reload_config=prefix+shift+r / resize_mode=prefix+r
-# tmuxの体感に寄せて入れ替え
-reload_config = "prefix+r"
-resize_mode = "prefix+shift+r"
-
-# 縦(右)に分割 — tmuxは bind | split-window -h だったが、
-# Herdrは punctuation+shift 系の direct binding が端末環境で不安定なため、
-# Herdrデフォルトの prefix+v を採用
 split_vertical = "prefix+v"
 
 # - でペインを横(下)に分割する (tmux: bind - split-window -v)
@@ -35,6 +26,9 @@ focus_pane_right = "prefix+l"
 # C-l でペインをローテート (tmux: bind -r -n C-l select-pane -t :.+)
 # prefix無しの direct binding
 cycle_pane_next = "ctrl+l"
+
+# C-t で tab ローテート (prefix なし direct binding)
+next_tab = "ctrl+t"
 
 # 新規タブ (tmux: bind c new-window) — Herdrデフォルトと同じ (明示)
 new_tab = "prefix+c"
