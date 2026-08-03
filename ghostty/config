@@ -1,0 +1,13 @@
+# Ghostty config (dotfiles管理)
+# ~/dotfiles/ghostty → ~/.config/ghostty (symlink)
+# ドキュメント: https://ghostty.org/docs/config
+# 実行中リロード: ⌘+Shift+,
+
+font-family = Iosevka
+
+# ---- キーバインド ----
+# ⌘+Return のフルスクリーントグルを無効化 (前回 ignore にしていたが、ignore だと
+# OS 側でフルスクリーンされる可能性があるため unbind に変更)
+keybind = cmd+enter=unbind
+# ⌘+Ctrl+F の macOS 標準フルスクリーンも Ghostty 側で ignore
+keybind = super+ctrl+f=ignore

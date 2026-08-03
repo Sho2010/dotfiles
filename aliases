@@ -410,8 +410,6 @@ function convert_slide_share() {
 function open_localhost() {
   open "http://localhost:${1:-3000}"
 }
-alias op=open
-alias opl=open_localhost
 alias openl=open_localhost
 
 function print_known_hosts (){

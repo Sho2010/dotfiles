@@ -15,6 +15,7 @@
     p = push
     unstage = reset HEAD --
     current-branch = rev-parse --abbrev-ref HEAD
+    bsw = "!git backlog list --format='{{.Branch}} {{.Summary}}' | fzf | awk 'NF{print $1}' | xargs -I{} git switch {}"
 [color]
     diff = always
 [include]

@@ -36,5 +36,7 @@ ln -s ~/dotfiles/wezterm ~/.config/wezterm
 
 ln -s ~/dotfiles/herdr ~/.config/herdr
 
+ln -s ~/dotfiles/ghostty ~/.config/ghostty
+
 # claude 
 ln -s ~/dotfiles/claude/commands ~/.claude/commands
