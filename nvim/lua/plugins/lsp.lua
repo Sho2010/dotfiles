@@ -35,35 +35,12 @@ else
           },
         }
         --
-        local lspconfig = require("lspconfig")
-        lspconfig.cmake.setup({ capabilities = capabilities })
-        lspconfig.pylsp.setup({ capabilities = capabilities }) -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
-        lspconfig.gopls.setup({ capabilities = capabilities }) -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#gopls
-        lspconfig.denols.setup({ capabilities = capabilities })
-        lspconfig.html.setup({ capabilities = capabilities }) -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
-        lspconfig.cssls.setup({ capabilities = capabilities })
-        lspconfig.sqls.setup({ capabilities = capabilities })
-        lspconfig.bashls.setup({ capabilities = capabilities })
-        lspconfig.ruby_lsp.setup({ capabilities = capabilities })
+        vim.lsp.config("*", { capabilities = capabilities })
 
-        -- rust
-        lspconfig.rust_analyzer.setup({
-          capabilities = capabilities,
-        })
+        -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ts_ls
+        vim.lsp.config("ts_ls", { single_file_support = false })
 
-        -- python
-        lspconfig.ruff.setup({
-          capabilities = capabilities,
-        })
-
-        -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
-        lspconfig.tsserver.setup({
-          capabilities = capabilities,
-          single_file_support = false,
-        })
-
-        lspconfig.jsonls.setup({
-          capabilities = capabilities,
+        vim.lsp.config("jsonls", {
           settings = {
             json = {
               schemas = require("schemastore").json.schemas(),
@@ -72,6 +49,21 @@ else
           },
         })
 
+        vim.lsp.enable({
+          "cmake",
+          "pylsp", -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
+          "gopls", -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#gopls
+          "denols",
+          "html", -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
+          "cssls",
+          "sqls",
+          "bashls",
+          "ruby_lsp",
+          "rust_analyzer",
+          "ruff",
+          "ts_ls",
+          "jsonls",
+        })
       end
     }
   }
