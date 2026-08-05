@@ -17,8 +17,6 @@ else
         "neovim/nvim-lspconfig",
         "onsails/lspkind.nvim",
         "saadparwaiz1/cmp_luasnip",
-        -- "hrsh7th/cmp-copilot",
-        "zbirenbaum/copilot-cmp",
         "windwp/nvim-autopairs",
       },
       config = function()
@@ -75,8 +73,6 @@ else
               ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
               show_labelDetails = true, -- show labelDetails in menu. Disabled by default
 
-              symbol_map = { Copilot = "" }
-
               -- The function below will be called before any actual modifications from lspkind
               -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
               -- before = function (entry, vim_item)
@@ -123,7 +119,6 @@ else
           },
           sources = {
             { name = "dictionary", keyword_length = 2 },
-            { name = "copilot", keyword_length = 0, priority = 1000 },
             { name = "luasnip" },
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
