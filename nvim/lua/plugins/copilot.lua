@@ -14,6 +14,7 @@ return {
   -- },
   {
     "zbirenbaum/copilot.lua",
+    enabled = false,
     event = {'InsertEnter'},
     fix_pairs = true,
     keys = {
