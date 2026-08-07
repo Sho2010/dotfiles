@@ -33,10 +33,17 @@ next_tab = "ctrl+t"
 # 新規タブ (tmux: bind c new-window) — Herdrデフォルトと同じ (明示)
 new_tab = "prefix+c"
 
+# 新規 worktree workspace 作成 (prefix なし direct binding)
+new_worktree = "ctrl+g"
+
 
 # エージェント状態遷移時のベル音を無効化 (Claudeの動作完了ごとに鳴るのを止める)
 [ui.sound]
 enabled = false
+
+# タブ切り替えで scrollback が消えるのを防ぐ (pane 画面履歴の永続化)
+[experimental]
+pane_history = true
 
 
 # ---- tmux固有で Herdr に移植できない/不要なもの ----
