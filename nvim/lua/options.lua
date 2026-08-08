@@ -19,14 +19,14 @@ vim.opt.encoding = "utf-8"
 vim.opt.number = true
 vim.opt.clipboard = "unnamed"
 
--- if has("mac")
---   -- "
---   -- " macはunix=trueなので先に判定してやる
---   -- "
--- elseif has("unix")
---   set clipboard=unnamedplus
--- endif
---
+-- macはunix=trueなので先に判定してやる
+if vim.fn.has("mac") == 1 then
+  -- macはpbcopyが*と+を同一視するのでunnamedのまま
+elseif vim.fn.has("unix") == 1 then
+  -- Linux/WSLは+(CLIPBOARD)でないとシステム側と共有されない
+  -- (WSLgは*(PRIMARY)をWindowsへ橋渡ししない)
+  vim.opt.clipboard = "unnamedplus"
+end
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
