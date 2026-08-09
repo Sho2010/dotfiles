@@ -6,3 +6,5 @@ Lite.userprefs
 .ruby-version
 tags
 ,/
+
+**/.claude/settings.local.json
