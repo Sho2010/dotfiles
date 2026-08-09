@@ -130,6 +130,11 @@ linux*)
   alias pbcopy='xsel --clipboard --input'
   alias pbpaste='xsel --clipboard --output'
   alias open='xdg-open'
+
+  # WSL only
+  if [[ -n "$WSL_DISTRO_NAME" ]] || grep -qi microsoft /proc/version 2>/dev/null; then
+    alias open='wsl-open'
+  fi
   ;;
 esac
 
