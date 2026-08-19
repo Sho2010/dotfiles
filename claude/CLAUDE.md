@@ -19,3 +19,8 @@ While resolving conflicts during a rebase or merge, never use `git add -A` or `g
 ## Destructive git operations: get it right once
 
 For multi-step or destructive git operations (rebase, reset, force-push), don't substitute extra confirmation prompts for correctness — scope the operation correctly the first time (see the two rules above) rather than asking to proceed at every step. If the user says they'd rather do a rebase-like operation themselves, back off rather than pushing to keep helping.
+
+## End-of-turn behavior
+- タスク完了時に "commit and push" 系のサジェストをUIに出さない。
+- commit, push, PR 作成は、ユーザーが明示的に依頼したときだけ実行する。
+
