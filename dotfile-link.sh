@@ -40,4 +40,5 @@ ln -s ~/dotfiles/ghostty ~/.config/ghostty
 
 # claude
 ln -s ~/dotfiles/claude/skills ~/.claude/skills
+ln -s ~/dotfiles/claude/CLAUDE.md ~/.claude/CLAUDE.md
 ln -s ~/dotfiles/.claude/settings.local.json ~/.claude/settings.local.json
