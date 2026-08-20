@@ -134,6 +134,8 @@ linux*)
   # WSL only
   if [[ -n "$WSL_DISTRO_NAME" ]] || grep -qi microsoft /proc/version 2>/dev/null; then
     alias open='wsl-open'
+    # gh browse などは shell alias を見ずに $BROWSER / xdg-open を直接 exec するため
+    export BROWSER='wsl-open'
   fi
   ;;
 esac
@@ -412,10 +414,18 @@ function convert_slide_share() {
 }
 
 
-function open_localhost() {
+function open-localhost() {
   open "http://localhost:${1:-3000}"
 }
-alias openl=open_localhost
+
+# open gh-markdown preview
+# default port:3333
+function open-markdown-preview() {
+  open "http://localhost:3333/${1}"
+}
+
+alias openl=open-localhost
+alias openmd=open-markdown-preview
 
 function print_known_hosts (){
   if [ -f $HOME/.ssh/known_hosts ]; then
