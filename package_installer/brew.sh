@@ -28,6 +28,7 @@ brew install tmux
 brew install tree
 brew install watch
 brew install yarn
+brew install gh
 brew install ghq
 brew install shellcheck
 brew install rg
@@ -38,6 +39,7 @@ brew install hey
 brew install sops
 brew install iam-policy-json-to-terraform
 
+gh extension install yusukebe/gh-markdown-preview
 brew install aquasecurity/trivy/trivy
 
 # ついでにgoの開発ツール入れちゃう
