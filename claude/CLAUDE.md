@@ -20,6 +20,20 @@ While resolving conflicts during a rebase or merge, never use `git add -A` or `g
 
 For multi-step or destructive git operations (rebase, reset, force-push), don't substitute extra confirmation prompts for correctness — scope the operation correctly the first time (see the two rules above) rather than asking to proceed at every step. If the user says they'd rather do a rebase-like operation themselves, back off rather than pushing to keep helping.
 
+Before running `git checkout --`/`restore`/`reset --hard`/`clean -f`, always read `git diff`/`git status` yourself first and scope the command precisely (explicit paths, not a bare HEAD-wide reset) — don't guess and don't ask the user to confirm the scope as a substitute for getting it right. Adding a confirmation step is not the fix; reading the actual state before acting is. (A PreToolUse hook in settings.json blocks the most common dangerous patterns as a backstop, but don't rely on that instead of checking yourself.)
+
+## Frustration is not consent
+
+A frustrated or emotional reply to a proposal (swearing, a bare interjection, an unclear short reaction) is not a yes. Don't treat it as authorization to proceed with your own judgment call — stop and wait for an explicit instruction instead. This applies even under Auto Mode's "keep going" bias; an unclear emotional reaction is exactly the kind of case that bias should not cover.
+
+## @file mentions are a scope boundary
+
+When the user specifies a file via `@file`, treat that as the working scope. Don't read or act on other files — including nearby untracked notes/docs that look relevant — without asking first. An untracked `.md` file may be a draft or an in-progress personal memo, not a confirmed spec; don't silently treat its contents as an implementation basis just because it seems related.
+
+## Self-assessment bias
+
+When investigating a complaint about your own past behavior, don't dismiss it based on a narrow literal reading of the complaint's wording (e.g., "I didn't technically call Edit, so this didn't happen"). Identify the substance of what the user is complaining about first, then judge against that substance — apply the same rigor to your own conduct that you'd apply to anyone else's.
+
 ## End-of-turn behavior
 - タスク完了時に "commit and push" 系のサジェストをUIに出さない。
 - commit, push, PR 作成は、ユーザーが明示的に依頼したときだけ実行する。
