@@ -60,11 +60,7 @@ brew install nvim
 # python and toolchain. rye, uv, ruff
 brew install python@3
 
-curl -sSf https://rye-up.com/get | bash
-echo 'source "$HOME/.rye/env"' >> ~/.zshrc.local
-
 brew install uv
-rye config --set-bool behavior.use-uv=true
 rye install ruff
 
 # TODO: ここがこけやすいのでなんとかしたい
