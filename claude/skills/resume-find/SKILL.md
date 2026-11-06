@@ -21,6 +21,8 @@ allowed-tools: Bash(~/.claude/skills/resume-find/resume-find.sh:*), Bash(bash ~/
    - `--project STR` cwd に STR を含むプロジェクトに絞る
    - `--limit N`    表示セッション数(既定 15)
 
+   実行中の自セッション(`$CLAUDE_CODE_SESSION_ID`)は常に結果から除外される(自セッションを`--resume`する使い道はないため)。
+
 3. 出力はセッション単位に集約済み(日時範囲 / プロジェクト(cwd と branch) / ヒット件数 / 抜粋 / 再開用ワンライナー)。
    これをそのまま提示しつつ、ユーザーの意図に合いそうな1〜2件を「これが近そう」と一言添えて絞る。
 4. ユーザーがどのセッションかを選んだら、そのセッションの **`cd '<cwd>' && claude --resume <id>`** のワンライナーを

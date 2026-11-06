@@ -14,6 +14,7 @@ LIMIT=15
 DAYS=""
 PROJ=""
 TERMS=()
+SELF_SID="${CLAUDE_CODE_SESSION_ID:-}"
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -69,11 +70,12 @@ done
 [ -z "$STREAM" ] && { echo "ヒットなし: ${TERMS[*]}"; exit 0; }
 
 # 期間 / プロジェクト絞り込み + セッション単位に集約し、抜粋を作る
-AGG="$(printf '%s\n' "$STREAM" | awk -F'\t' -v ft="${TERMS[0]}" -v since="$SINCE" -v proj="$PROJ" '
+AGG="$(printf '%s\n' "$STREAM" | awk -F'\t' -v ft="${TERMS[0]}" -v since="$SINCE" -v proj="$PROJ" -v self="$SELF_SID" '
   {
     ts=$1; cwd=$2; br=$3; sid=$4; role=$5; text=$6;
     if (since!="" && ts<since) next;
     if (proj!="" && index(tolower(cwd), tolower(proj))==0) next;
+    if (self!="" && sid==self) next;
     cnt[sid]++;
     if (mn[sid]=="" || ts<mn[sid]) mn[sid]=ts;
     if (mx[sid]=="" || ts>mx[sid]) mx[sid]=ts;
