@@ -8,6 +8,10 @@ Why: `python3 -c "..."` forces a real read-and-reason-about-arbitrary-code revie
 
 How to apply: before reaching for python3, ask whether grep/jq/sed/awk/Read can do it equally well — if yes, use those. Reach for python3 only when the task is genuinely awkward in shell (non-trivial data transformation, multi-step logic), not for "read a JSON field" or "filter some lines".
 
+## sed is GNU sed (even on darwin)
+
+This environment uses GNU sed on macOS too, not BSD sed. Write GNU syntax: `sed -i 's/a/b/' file` (no `''` after `-i`), and GNU extensions like `\+`, `\?`, `\|`, `-E`, `-z` are fine. Don't add BSD/GNU compatibility workarounds.
+
 ## Never touch untracked files
 
 Don't stage, delete, move, or rename untracked files (`git status` `??` entries) unless explicitly asked, even when trying to help or clean up. Many workflows deliberately leave scratch/debug files untracked in a repo as in-progress work, not disposable clutter. Looking at or listing untracked files is fine; changing them is not.
